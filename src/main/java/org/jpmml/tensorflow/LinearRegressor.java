@@ -19,8 +19,8 @@
 package org.jpmml.tensorflow;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 import org.dmg.pmml.DataField;
 import org.dmg.pmml.DataType;
@@ -28,14 +28,14 @@ import org.dmg.pmml.FieldName;
 import org.dmg.pmml.MiningFunction;
 import org.dmg.pmml.OpType;
 import org.dmg.pmml.regression.RegressionModel;
+import org.jpmml.converter.BinaryFeature;
 import org.jpmml.converter.ContinuousLabel;
 import org.jpmml.converter.Feature;
 import org.jpmml.converter.Label;
 import org.jpmml.converter.ModelUtil;
 import org.jpmml.converter.Schema;
+import org.jpmml.converter.ValueUtil;
 import org.jpmml.converter.regression.RegressionModelUtil;
-import org.tensorflow.Operation;
-import org.tensorflow.Output;
 import org.tensorflow.Tensor;
 import org.tensorflow.framework.NodeDef;
 
@@ -53,6 +53,8 @@ public class LinearRegressor extends Estimator {
 	public RegressionModel encodeModel(TensorFlowEncoder encoder){
 		SavedModel savedModel = getSavedModel();
 
+		NodeDef biasAdd = savedModel.getOnlyInput(getHead(), "BiasAdd");
+
 		Label label;
 
 		{
@@ -65,26 +67,66 @@ public class LinearRegressor extends Estimator {
 
 		List<Double> coefficients = new ArrayList<>();
 
-		List<NodeDef> matMuls = getMatMulList();
-		for(NodeDef matMul : matMuls){
-			NodeDef multiplicand = getNodeDef(matMul.getInput(0));
-			NodeDef multiplier = checkOp(getNodeDef(matMul.getInput(1)), "VariableV2");
+		NodeDef addN = savedModel.getOnlyInput(biasAdd.getInput(0), "AddN");
 
-			Feature feature = encodeFeature(multiplicand, encoder);
+		List<String> inputNames = addN.getInputList();
+		for(String inputName : inputNames){
+			NodeDef term = savedModel.getOnlyInput(inputName, "MatMul", "Select");
 
-			features.add(feature);
+			if(("MatMul").equals(term.getOp())){
+				NodeDef multiplicand = savedModel.getNodeDef(term.getInput(0));
+				NodeDef multiplier = savedModel.getOnlyInput(term.getInput(1), "VariableV2");
 
-			try(Tensor tensor = savedModel.run(multiplier.getName())){
-				float value = TensorUtil.toFloatScalar(tensor);
+				Feature feature = encodeContinuousFeature(multiplicand, encoder);
 
-				coefficients.add(floatToDouble(value));
+				features.add(feature);
+
+				try(Tensor tensor = savedModel.run(multiplier.getName())){
+					float value = TensorUtil.toFloatScalar(tensor);
+
+					coefficients.add(floatToDouble(value));
+				}
+			} else
+
+			if(("Select").equals(term.getOp())){
+				NodeDef multiplicand = savedModel.getOnlyInput(term.getInput(0), "Placeholder");
+				NodeDef findTable = savedModel.getOnlyInput(term.getInput(1), "LookupTableFind");
+				NodeDef multiplier = savedModel.getOnlyInput(term.getInput(2), "VariableV2");
+
+				Map<?, ?> table = savedModel.getTable(findTable.getInput(0));
+
+				List<String> categories = new ArrayList(table.keySet());
+
+				Feature feature = encodeCategoricalFeature(multiplicand, categories, encoder);
+
+				float[] values;
+
+				try(Tensor tensor = savedModel.run(multiplier.getName())){
+					values = TensorUtil.toFloatArray(tensor);
+				}
+
+				DataField dataField = (DataField)encoder.getField(feature.getName());
+
+				for(String category : categories){
+					BinaryFeature binaryFeature = new BinaryFeature(encoder, dataField, category);
+
+					features.add(binaryFeature);
+
+					int index = ValueUtil.asInt((Number)table.get(category));
+
+					coefficients.add(floatToDouble(values[index]));
+				}
+			} else
+
+			{
+				throw new IllegalArgumentException();
 			}
 		}
 
 		Double intercept;
 
 		{
-			NodeDef bias = getBias();
+			NodeDef bias = savedModel.getOnlyInput(biasAdd.getInput(1), "VariableV2");
 
 			try(Tensor tensor = savedModel.run(bias.getName())){
 				float value = TensorUtil.toFloatScalar(tensor);
@@ -99,49 +141,6 @@ public class LinearRegressor extends Estimator {
 			.addRegressionTables(RegressionModelUtil.createRegressionTable(schema.getFeatures(), intercept, coefficients));
 
 		return regressionModel;
-	}
-
-	@Override
-	public NodeDef simplify(NodeDef nodeDef){
-		SavedModel savedModel = getSavedModel();
-
-		if(("Reshape").equals(nodeDef.getOp())){
-			Operation operation = savedModel.getOperation(nodeDef.getName());
-
-			Output output = operation.output(0);
-			if(Arrays.equals(ShapeUtil.toArray(output.shape()), new long[]{-1, 1})){
-				return getNodeDef(nodeDef.getInput(0));
-			}
-		}
-
-		return super.simplify(nodeDef);
-	}
-
-	public NodeDef getBiasAdd(){
-		return checkOp(getNodeDef(getHead()), "BiasAdd");
-	}
-
-	public List<NodeDef> getMatMulList(){
-		NodeDef biasAdd = getBiasAdd();
-
-		List<NodeDef> result = new ArrayList<>();
-
-		NodeDef addN = checkOp(getNodeDef(biasAdd.getInput(0)), "AddN");
-
-		List<String> inputNames = addN.getInputList();
-		for(String inputName : inputNames){
-			NodeDef matMul = checkOp(getNodeDef(inputName), "MatMul");
-
-			result.add(matMul);
-		}
-
-		return result;
-	}
-
-	public NodeDef getBias(){
-		NodeDef biasAdd = getBiasAdd();
-
-		return checkOp(getNodeDef(biasAdd.getInput(1)), "VariableV2");
 	}
 
 	static

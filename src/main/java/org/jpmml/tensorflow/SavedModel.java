@@ -18,11 +18,22 @@
  */
 package org.jpmml.tensorflow;
 
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Deque;
+import java.util.HashSet;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
+import com.google.common.base.Function;
 import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 import com.google.protobuf.InvalidProtocolBufferException;
 import org.tensorflow.Graph;
 import org.tensorflow.Operation;
@@ -30,6 +41,7 @@ import org.tensorflow.SavedModelBundle;
 import org.tensorflow.Session;
 import org.tensorflow.Session.Runner;
 import org.tensorflow.Tensor;
+import org.tensorflow.framework.CollectionDef;
 import org.tensorflow.framework.GraphDef;
 import org.tensorflow.framework.MetaGraphDef;
 import org.tensorflow.framework.NodeDef;
@@ -41,6 +53,8 @@ public class SavedModel implements AutoCloseable {
 	private MetaGraphDef metaGraphDef = null;
 
 	private Map<String, NodeDef> nodeMap = null;
+
+	private Map<String, Map<?, ?>> tableMap = new LinkedHashMap<>();
 
 
 	public SavedModel(SavedModelBundle bundle) throws InvalidProtocolBufferException {
@@ -62,6 +76,51 @@ public class SavedModel implements AutoCloseable {
 		}
 
 		setNodeMap(nodeMap);
+
+		initializeTables();
+	}
+
+	private void initializeTables(){
+		Collection<String> tableInitializerNames = Collections.emptyList();
+
+		try {
+			CollectionDef collectionDef = getCollectionDef("table_initializer");
+
+			CollectionDef.NodeList nodeList = collectionDef.getNodeList();
+
+			tableInitializerNames = nodeList.getValueList();
+		} catch(IllegalArgumentException iae){
+			// Ignored
+		}
+
+		for(String tableInitializerName : tableInitializerNames){
+			NodeDef tableInitializer = getNodeDef(tableInitializerName);
+
+			String name = tableInitializer.getInput(0);
+
+			List<?> keys;
+			List<?> values;
+
+			try(Tensor tensor = run(tableInitializer.getInput(1))){
+				keys = TensorUtil.getValues(tensor);
+			} // End try
+
+			try(Tensor tensor = run(tableInitializer.getInput(2))){
+				values = TensorUtil.getValues(tensor);
+			}
+
+			Map<Object, Object> table = new LinkedHashMap<>();
+
+			if(keys.size() != values.size()){
+				throw new IllegalArgumentException();
+			}
+
+			for(int i = 0; i < keys.size(); i++){
+				table.put(keys.get(i), values.get(i));
+			}
+
+			putTable(name, table);
+		}
 	}
 
 	@Override
@@ -90,12 +149,87 @@ public class SavedModel implements AutoCloseable {
 	public NodeDef getNodeDef(String name){
 		Map<String, NodeDef> nodeMap = getNodeMap();
 
-		NodeDef nodeDef = nodeMap.get(name);
+		int colon = name.indexOf(':');
+
+		NodeDef nodeDef = nodeMap.get(colon > -1 ? name.substring(0, colon) : name);
 		if(nodeDef == null){
 			throw new IllegalArgumentException(name);
 		}
 
 		return nodeDef;
+	}
+
+	public CollectionDef getCollectionDef(String key){
+		MetaGraphDef metaGraphDef = getMetaGraphDef();
+
+		Map<String, CollectionDef> collectionMap = metaGraphDef.getCollectionDefMap();
+
+		CollectionDef collectionDef = collectionMap.get(key);
+		if(collectionDef == null){
+			throw new IllegalArgumentException(key);
+		}
+
+		return collectionDef;
+	}
+
+	public NodeDef getOnlyInput(String name, String... ops){
+		Collection<NodeDef> inputs = getInputs(name, ops);
+
+		if(inputs.size() > 1){
+			inputs = new LinkedHashSet<>(inputs);
+		}
+
+		return Iterables.getOnlyElement(inputs);
+	}
+
+	public List<NodeDef> getInputs(String name, String... ops){
+		NodeDef nodeDef = getNodeDef(name);
+
+		List<Trail> inputs = new ArrayList<>();
+
+		collectInputs(new ArrayDeque<>(), nodeDef, new HashSet<>(Arrays.asList(ops)), inputs);
+
+		Function<Trail, NodeDef> function = new Function<Trail, NodeDef>(){
+
+			@Override
+			public NodeDef apply(Trail trail){
+				return trail.getNodeDef();
+			}
+		};
+
+		return Lists.transform(inputs, function);
+	}
+
+	private void collectInputs(Deque<NodeDef> parentNodeDefs, NodeDef nodeDef, Set<String> ops, List<Trail> trails){
+
+		if(ops.contains(nodeDef.getOp())){
+			trails.add(new Trail(parentNodeDefs, nodeDef));
+		}
+
+		List<String> inputNames = nodeDef.getInputList();
+		for(String inputName : inputNames){
+			NodeDef inputNodeDef = getNodeDef(inputName);
+
+			parentNodeDefs.addFirst(inputNodeDef);
+
+			collectInputs(parentNodeDefs, inputNodeDef, ops, trails);
+
+			parentNodeDefs.removeFirst();
+		}
+	}
+
+	public Map<?, ?> getTable(String name){
+		Map<?, ?> table = this.tableMap.get(name);
+
+		if(table == null){
+			throw new IllegalArgumentException(name);
+		}
+
+		return table;
+	}
+
+	private void putTable(String name, Map<Object, Object> table){
+		this.tableMap.put(name, table);
 	}
 
 	public Session getSession(){

@@ -18,16 +18,47 @@
  */
 package org.jpmml.tensorflow;
 
+import java.nio.ByteBuffer;
 import java.nio.DoubleBuffer;
 import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
+import java.nio.LongBuffer;
 import java.util.Arrays;
+import java.util.List;
 
+import com.google.common.primitives.Booleans;
+import com.google.common.primitives.Doubles;
+import com.google.common.primitives.Floats;
+import com.google.common.primitives.Ints;
+import com.google.common.primitives.Longs;
+import org.tensorflow.DataType;
 import org.tensorflow.Tensor;
 
 public class TensorUtil {
 
 	private TensorUtil(){
+	}
+
+	static
+	public List<?> getValues(Tensor tensor){
+		DataType dataType = tensor.dataType();
+
+		switch(dataType){
+			case FLOAT:
+				return Floats.asList(TensorUtil.toFloatArray(tensor));
+			case DOUBLE:
+				return Doubles.asList(TensorUtil.toDoubleArray(tensor));
+			case INT32:
+				return Ints.asList(TensorUtil.toIntArray(tensor));
+			case INT64:
+				return Longs.asList(TensorUtil.toLongArray(tensor));
+			case STRING:
+				return Arrays.asList(TensorUtil.toStringArray(tensor));
+			case BOOL:
+				return Booleans.asList(TensorUtil.toBooleanArray(tensor));
+			default:
+				throw new IllegalArgumentException();
+		}
 	}
 
 	static
@@ -71,5 +102,52 @@ public class TensorUtil {
 		tensor.writeTo(intBuffer);
 
 		return intBuffer.array();
+	}
+
+	static
+	public long[] toLongArray(Tensor tensor){
+		LongBuffer longBuffer = LongBuffer.allocate(tensor.numElements());
+
+		tensor.writeTo(longBuffer);
+
+		return longBuffer.array();
+	}
+
+	static
+	public String[] toStringArray(Tensor tensor){
+		ByteBuffer byteBuffer = ByteBuffer.allocate(tensor.numBytes());
+
+		tensor.writeTo(byteBuffer);
+
+		byteBuffer.position(tensor.numElements() * 8);
+
+		String[] result = new String[tensor.numElements()];
+
+		for(int i = 0; i < result.length; i++){
+			int length = byteBuffer.get();
+
+			byte[] buffer = new byte[length];
+
+			byteBuffer.get(buffer);
+
+			result[i] = new String(buffer);
+		}
+
+		return result;
+	}
+
+	static
+	public boolean[] toBooleanArray(Tensor tensor){
+		ByteBuffer byteBuffer = ByteBuffer.allocate(tensor.numElements());
+
+		tensor.writeTo(byteBuffer);
+
+		boolean[] result = new boolean[tensor.numElements()];
+
+		for(int i = 0; i < result.length; i++){
+			result[i] = (byteBuffer.get(i) != 0);
+		}
+
+		return result;
 	}
 }

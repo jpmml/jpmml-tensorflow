@@ -9,6 +9,7 @@ Java library and command-line application for converting [TensorFlow](http://ten
   * [`learn.LinearRegressor`](https://www.tensorflow.org/api_docs/python/tf/contrib/learn/LinearRegressor)
 * Supported Feature column types:
   * [`layers.real_valued_column`](https://www.tensorflow.org/api_docs/python/tf/contrib/layers/real_valued_column)
+  * [`layers.sparse_column_with_keys`](https://www.tensorflow.org/api_docs/python/tf/contrib/layers/sparse_column_with_keys)
 * Production quality:
   * Complete test coverage.
   * Fully compliant with the [JPMML-Evaluator](https://github.com/jpmml/jpmml-evaluator) library.

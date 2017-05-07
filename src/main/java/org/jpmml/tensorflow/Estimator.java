@@ -18,13 +18,14 @@
  */
 package org.jpmml.tensorflow;
 
-import java.util.Arrays;
+import java.util.List;
 
 import org.dmg.pmml.DataField;
 import org.dmg.pmml.FieldName;
 import org.dmg.pmml.Model;
 import org.dmg.pmml.OpType;
 import org.dmg.pmml.PMML;
+import org.jpmml.converter.CategoricalFeature;
 import org.jpmml.converter.ContinuousFeature;
 import org.jpmml.converter.Feature;
 import org.tensorflow.Operation;
@@ -57,7 +58,7 @@ public class Estimator {
 		return pmml;
 	}
 
-	public Feature encodeFeature(NodeDef nodeDef, TensorFlowEncoder encoder){
+	public Feature encodeContinuousFeature(NodeDef nodeDef, TensorFlowEncoder encoder){
 		SavedModel savedModel = getSavedModel();
 
 		NodeDef castNodeDef;
@@ -65,7 +66,7 @@ public class Estimator {
 
 		if(("Cast").equals(nodeDef.getOp())){
 			castNodeDef = checkOp(nodeDef, "Cast");
-			placeholderNodeDef = checkOp(getNodeDef(nodeDef.getInput(0)), "Placeholder");
+			placeholderNodeDef = checkOp(savedModel.getNodeDef(nodeDef.getInput(0)), "Placeholder");
 		} else
 
 		{
@@ -90,45 +91,19 @@ public class Estimator {
 		return feature;
 	}
 
-	public NodeDef getNodeDef(String name){
-		return getNodeDef(name, true);
-	}
-
-	public NodeDef getNodeDef(String name, boolean simplify){
+	public Feature encodeCategoricalFeature(NodeDef nodeDef, List<String> categories, TensorFlowEncoder encoder){
 		SavedModel savedModel = getSavedModel();
 
-		NodeDef nodeDef = savedModel.getNodeDef(name);
+		NodeDef placeholderNodeDef = checkOp(nodeDef, "Placeholder");
 
-		while(simplify){
-			NodeDef simplifiedNodeDef = simplify(nodeDef);
+		Operation placeholderOperation = savedModel.getOperation(placeholderNodeDef.getName());
+		Output placeholderOutput = placeholderOperation.output(0);
 
-			if(simplifiedNodeDef == nodeDef){
-				break;
-			}
+		DataField dataField = encoder.createDataField(FieldName.create(placeholderNodeDef.getName()), OpType.CATEGORICAL, TypeUtil.translateDataType(placeholderOutput.dataType()), categories);
 
-			nodeDef = simplifiedNodeDef;
-		}
+		Feature feature = new CategoricalFeature(encoder, dataField);
 
-		return nodeDef;
-	}
-
-	public NodeDef simplify(NodeDef nodeDef){
-		SavedModel savedModel = getSavedModel();
-
-		if(("Identity").equals(nodeDef.getOp())){
-			return getNodeDef(nodeDef.getInput(0));
-		} else
-
-		if(("Squeeze").equals(nodeDef.getOp())){
-			Operation operation = savedModel.getOperation(nodeDef.getName());
-
-			Output output = operation.output(0);
-			if(Arrays.equals(ShapeUtil.toArray(output.shape()), new long[]{-1})){
-				return getNodeDef(nodeDef.getInput(0));
-			}
-		}
-
-		return nodeDef;
+		return feature;
 	}
 
 	public SavedModel getSavedModel(){

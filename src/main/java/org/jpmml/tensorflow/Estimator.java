@@ -18,19 +18,8 @@
  */
 package org.jpmml.tensorflow;
 
-import java.util.List;
-
-import org.dmg.pmml.DataField;
-import org.dmg.pmml.FieldName;
 import org.dmg.pmml.Model;
-import org.dmg.pmml.OpType;
 import org.dmg.pmml.PMML;
-import org.jpmml.converter.CategoricalFeature;
-import org.jpmml.converter.ContinuousFeature;
-import org.jpmml.converter.Feature;
-import org.tensorflow.Operation;
-import org.tensorflow.Output;
-import org.tensorflow.framework.NodeDef;
 
 abstract
 public class Estimator {
@@ -58,54 +47,6 @@ public class Estimator {
 		return pmml;
 	}
 
-	public Feature encodeContinuousFeature(NodeDef nodeDef, TensorFlowEncoder encoder){
-		SavedModel savedModel = getSavedModel();
-
-		NodeDef castNodeDef;
-		NodeDef placeholderNodeDef;
-
-		if(("Cast").equals(nodeDef.getOp())){
-			castNodeDef = checkOp(nodeDef, "Cast");
-			placeholderNodeDef = checkOp(savedModel.getNodeDef(nodeDef.getInput(0)), "Placeholder");
-		} else
-
-		{
-			castNodeDef = null;
-			placeholderNodeDef = checkOp(nodeDef, "Placeholder");
-		}
-
-		Operation placeholderOperation = savedModel.getOperation(placeholderNodeDef.getName());
-		Output placeholderOutput = placeholderOperation.output(0);
-
-		DataField dataField = encoder.createDataField(FieldName.create(placeholderNodeDef.getName()), OpType.CONTINUOUS, TypeUtil.translateDataType(placeholderOutput.dataType()));
-
-		Feature feature = new ContinuousFeature(encoder, dataField);
-
-		if(castNodeDef != null){
-			Operation castOperation = savedModel.getOperation(castNodeDef.getName());
-			Output castOutput = castOperation.output(0);
-
-			feature = feature.toContinuousFeature(TypeUtil.translateDataType(castOutput.dataType()));
-		}
-
-		return feature;
-	}
-
-	public Feature encodeCategoricalFeature(NodeDef nodeDef, List<String> categories, TensorFlowEncoder encoder){
-		SavedModel savedModel = getSavedModel();
-
-		NodeDef placeholderNodeDef = checkOp(nodeDef, "Placeholder");
-
-		Operation placeholderOperation = savedModel.getOperation(placeholderNodeDef.getName());
-		Output placeholderOutput = placeholderOperation.output(0);
-
-		DataField dataField = encoder.createDataField(FieldName.create(placeholderNodeDef.getName()), OpType.CATEGORICAL, TypeUtil.translateDataType(placeholderOutput.dataType()), categories);
-
-		Feature feature = new CategoricalFeature(encoder, dataField);
-
-		return feature;
-	}
-
 	public SavedModel getSavedModel(){
 		return this.savedModel;
 	}
@@ -120,15 +61,5 @@ public class Estimator {
 
 	private void setHead(String head){
 		this.head = head;
-	}
-
-	static
-	protected NodeDef checkOp(NodeDef nodeDef, String op){
-
-		if(!(op).equals(nodeDef.getOp())){
-			throw new IllegalArgumentException("Expected " + op + ", got " + nodeDef.getOp());
-		}
-
-		return nodeDef;
 	}
 }

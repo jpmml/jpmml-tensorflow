@@ -6,6 +6,7 @@ Java library and command-line application for converting [TensorFlow](http://ten
 # Features #
 
 * Supported Estimator types:
+  * [`learn.LinearClassifier`](https://www.tensorflow.org/api_docs/python/tf/contrib/learn/LinearClassifier)
   * [`learn.LinearRegressor`](https://www.tensorflow.org/api_docs/python/tf/contrib/learn/LinearRegressor)
 * Supported Feature column types:
   * [`layers.real_valued_column`](https://www.tensorflow.org/api_docs/python/tf/contrib/layers/real_valued_column)

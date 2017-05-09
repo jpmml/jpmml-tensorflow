@@ -19,6 +19,8 @@
 package org.jpmml.tensorflow;
 
 import org.dmg.pmml.DataType;
+import org.dmg.pmml.OpType;
+import org.tensorflow.Output;
 
 public class TypeUtil {
 
@@ -26,7 +28,26 @@ public class TypeUtil {
 	}
 
 	static
-	public DataType translateDataType(org.tensorflow.DataType dataType){
+	public OpType getOpType(Output output){
+		org.tensorflow.DataType dataType = output.dataType();
+
+		switch(dataType){
+			case FLOAT:
+			case DOUBLE:
+			case INT32:
+			case INT64:
+				return OpType.CONTINUOUS;
+			case STRING:
+			case BOOL:
+				return OpType.CATEGORICAL;
+			default:
+				throw new IllegalArgumentException();
+		}
+	}
+
+	static
+	public DataType getDataType(Output output){
+		org.tensorflow.DataType dataType = output.dataType();
 
 		switch(dataType){
 			case FLOAT:

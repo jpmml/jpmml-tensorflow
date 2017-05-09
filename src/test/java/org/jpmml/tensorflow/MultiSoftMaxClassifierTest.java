@@ -18,37 +18,21 @@
  */
 package org.jpmml.tensorflow;
 
-import java.util.Map;
+import java.util.Set;
 
-import org.tensorflow.framework.NodeDef;
+import org.dmg.pmml.FieldName;
+import org.jpmml.evaluator.Batch;
+import org.junit.Test;
 
-public class EstimatorFactory {
+public class MultiSoftMaxClassifierTest extends EstimatorTest {
 
-	protected EstimatorFactory(){
+	@Test
+	public void evaluateIris() throws Exception {
+		evaluate("MultiSoftMaxClassification", "Iris");
 	}
 
-	public Estimator newEstimator(SavedModel savedModel){
-		Map<String, NodeDef> nodeMap = savedModel.getNodeMap();
-
-		if(nodeMap.containsKey(BinaryLogisticClassifier.HEAD)){
-			return new BinaryLogisticClassifier(savedModel);
-		} else
-
-		if(nodeMap.containsKey(LinearRegressor.HEAD)){
-			return new LinearRegressor(savedModel);
-		} else
-
-		if(nodeMap.containsKey(MultiSoftMaxClassifier.HEAD)){
-			return new MultiSoftMaxClassifier(savedModel);
-		} else
-
-		{
-			throw new IllegalArgumentException();
-		}
-	}
-
-	static
-	public EstimatorFactory newInstance(){
-		return new EstimatorFactory();
+	@Override
+	public void evaluate(Batch batch, Set<FieldName> ignoredFields) throws Exception {
+		evaluate(batch, ignoredFields, 1e-5, 1e-5);
 	}
 }

@@ -18,7 +18,46 @@
  */
 package org.jpmml.tensorflow;
 
+import java.util.List;
+
+import org.dmg.pmml.DataField;
+import org.dmg.pmml.FieldName;
 import org.jpmml.converter.ModelEncoder;
+import org.tensorflow.Operation;
+import org.tensorflow.Output;
+import org.tensorflow.framework.NodeDef;
 
 public class TensorFlowEncoder extends ModelEncoder {
+
+	public DataField ensureDataField(SavedModel savedModel, NodeDef nodeDef){
+
+		if(!("Placeholder").equals(nodeDef.getOp())){
+			throw new IllegalArgumentException(nodeDef.getName());
+		}
+
+		FieldName name = FieldName.create(nodeDef.getName());
+
+		DataField dataField = getDataField(name);
+		if(dataField == null){
+			Operation operation = savedModel.getOperation(nodeDef.getName());
+
+			Output output = operation.output(0);
+
+			dataField = createDataField(name, TypeUtil.getOpType(output), TypeUtil.getDataType(output));
+		}
+
+		return dataField;
+	}
+
+	public DataField ensureContinuousDataField(SavedModel savedModel, NodeDef nodeDef){
+		DataField dataField = ensureDataField(savedModel, nodeDef);
+
+		return toContinuous(dataField.getName());
+	}
+
+	public DataField ensureCategoricalDataField(SavedModel savedModel, NodeDef nodeDef, List<String> values){
+		DataField dataField = ensureDataField(savedModel, nodeDef);
+
+		return toCategorical(dataField.getName(), values);
+	}
 }

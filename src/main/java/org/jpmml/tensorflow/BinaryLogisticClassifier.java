@@ -18,24 +18,24 @@
  */
 package org.jpmml.tensorflow;
 
+import java.util.Arrays;
+
 import org.dmg.pmml.DataField;
 import org.dmg.pmml.DataType;
 import org.dmg.pmml.FieldName;
-import org.dmg.pmml.MiningFunction;
 import org.dmg.pmml.OpType;
 import org.dmg.pmml.regression.RegressionModel;
-import org.jpmml.converter.ContinuousLabel;
-import org.jpmml.converter.ModelUtil;
+import org.jpmml.converter.CategoricalLabel;
 import org.jpmml.converter.Schema;
 import org.jpmml.converter.regression.RegressionModelUtil;
 
-public class LinearRegressor extends LinearEstimator {
+public class BinaryLogisticClassifier extends LinearEstimator {
 
-	public LinearRegressor(SavedModel savedModel){
-		this(savedModel, LinearRegressor.HEAD);
+	public BinaryLogisticClassifier(SavedModel savedModel){
+		this(savedModel, BinaryLogisticClassifier.HEAD);
 	}
 
-	public LinearRegressor(SavedModel savedModel, String head){
+	public BinaryLogisticClassifier(SavedModel savedModel, String head){
 		super(savedModel, head);
 	}
 
@@ -43,15 +43,12 @@ public class LinearRegressor extends LinearEstimator {
 	public RegressionModel encodeModel(TensorFlowEncoder encoder){
 		LinearEstimator.RegressionTable regressionTable = extractOnlyRegressionTable(getHead(), encoder);
 
-		DataField dataField = encoder.createDataField(FieldName.create("_target"), OpType.CONTINUOUS, DataType.FLOAT);
+		DataField dataField = encoder.createDataField(FieldName.create("_target"), OpType.CATEGORICAL, DataType.INTEGER, Arrays.asList("0", "1"));
 
-		Schema schema = new Schema(new ContinuousLabel(dataField), regressionTable.getFeatures());
+		Schema schema = new Schema(new CategoricalLabel(dataField), regressionTable.getFeatures());
 
-		RegressionModel regressionModel = new RegressionModel(MiningFunction.REGRESSION, ModelUtil.createMiningSchema(schema), null)
-			.addRegressionTables(RegressionModelUtil.createRegressionTable(regressionTable.getFeatures(), regressionTable.getIntercept(), regressionTable.getCoefficients()));
-
-		return regressionModel;
+		return RegressionModelUtil.createBinaryLogisticClassification(regressionTable.getFeatures(), regressionTable.getIntercept(), regressionTable.getCoefficients(), RegressionModel.NormalizationMethod.SOFTMAX, true, schema);
 	}
 
-	public static final String HEAD = "linear/regression_head/predictions/scores";
+	public static final String HEAD = "linear/binary_logistic_head/predictions/probabilities";
 }

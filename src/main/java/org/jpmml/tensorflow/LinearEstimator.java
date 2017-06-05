@@ -24,10 +24,7 @@ import java.util.Map;
 
 import com.google.common.collect.Iterables;
 import com.google.common.primitives.Floats;
-import org.dmg.pmml.DataField;
-import org.jpmml.converter.BinaryFeature;
 import org.jpmml.converter.CMatrixUtil;
-import org.jpmml.converter.ContinuousFeature;
 import org.jpmml.converter.Feature;
 import org.jpmml.converter.ValueUtil;
 import org.tensorflow.Operation;
@@ -84,26 +81,10 @@ public class LinearEstimator extends Estimator {
 
 			// "real_valued_column"
 			if(("MatMul").equals(term.getOp())){
-				NodeDef typeCast = null;
-				NodeDef multiplicand = savedModel.getNodeDef(term.getInput(0));
-
-				if(("Cast").equals(multiplicand.getOp())){
-					typeCast = multiplicand;
-					multiplicand = savedModel.getNodeDef(multiplicand.getInput(0));
-				}
-
+				NodeDef placeholder = savedModel.getNodeDef(term.getInput(0));
 				NodeDef multiplier = savedModel.getOnlyInput(term.getInput(1), "VariableV2");
 
-				DataField dataField = encoder.ensureContinuousDataField(savedModel, multiplicand);
-
-				Feature feature = new ContinuousFeature(encoder, dataField);
-				if(typeCast != null){
-					Operation operation = savedModel.getOperation(typeCast.getName());
-
-					Output output = operation.output(0);
-
-					feature = feature.toContinuousFeature(TypeUtil.getDataType(output));
-				}
+				Feature feature = encoder.createContinuousFeature(savedModel, placeholder);
 
 				try(Tensor tensor = savedModel.run(multiplier.getName())){
 					float[] values = TensorUtil.toFloatArray(tensor);
@@ -118,7 +99,7 @@ public class LinearEstimator extends Estimator {
 
 			// "sparse_column_with_keys"
 			if(("Select").equals(term.getOp())){
-				NodeDef multiplicand = savedModel.getOnlyInput(term.getInput(0), "Placeholder");
+				NodeDef placeholder = savedModel.getOnlyInput(term.getInput(0), "Placeholder");
 				NodeDef findTable = savedModel.getOnlyInput(term.getInput(1), "LookupTableFind");
 				NodeDef multiplier = savedModel.getOnlyInput(term.getInput(2), "VariableV2");
 
@@ -126,15 +107,7 @@ public class LinearEstimator extends Estimator {
 
 				List<String> categories = (List)new ArrayList<>(table.keySet());
 
-				DataField dataField = encoder.ensureCategoricalDataField(savedModel, multiplicand, categories);
-
-				List<BinaryFeature> binaryFeatures = new ArrayList<>();
-
-				for(String category : categories){
-					BinaryFeature binaryFeature = new BinaryFeature(encoder, dataField, category);
-
-					binaryFeatures.add(binaryFeature);
-				}
+				List<? extends Feature> features = encoder.createBinaryFeatures(savedModel, placeholder, categories);
 
 				float[] values;
 
@@ -145,14 +118,14 @@ public class LinearEstimator extends Estimator {
 				for(int i = 0; i < regressionTables.size(); i++){
 					RegressionTable regressionTable = regressionTables.get(i);
 
-					List<Float> categoryValues = CMatrixUtil.getColumn(Floats.asList(values), binaryFeatures.size(), regressionTables.size(), i);
+					List<Float> categoryValues = CMatrixUtil.getColumn(Floats.asList(values), features.size(), regressionTables.size(), i);
 
-					for(int j = 0; j < binaryFeatures.size(); j++){
-						BinaryFeature binaryFeature = binaryFeatures.get(j);
+					for(int j = 0; j < features.size(); j++){
+						Feature feature = features.get(j);
 
 						int index = ValueUtil.asInt((Number)table.get(categories.get(j)));
 
-						regressionTable.addTerm(binaryFeature, floatToDouble(categoryValues.get(index)));
+						regressionTable.addTerm(feature, floatToDouble(categoryValues.get(index)));
 					}
 				}
 			} else
@@ -175,11 +148,6 @@ public class LinearEstimator extends Estimator {
 		}
 
 		return regressionTables;
-	}
-
-	static
-	public double floatToDouble(float value){
-		return Double.parseDouble(Float.toString(value));
 	}
 
 	static

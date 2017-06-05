@@ -62,4 +62,9 @@ public class Estimator {
 	private void setHead(String head){
 		this.head = head;
 	}
+
+	static
+	public double floatToDouble(float value){
+		return Double.parseDouble(Float.toString(value));
+	}
 }

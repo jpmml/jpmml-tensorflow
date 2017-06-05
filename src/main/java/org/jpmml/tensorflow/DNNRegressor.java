@@ -20,6 +20,7 @@ package org.jpmml.tensorflow;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
@@ -31,6 +32,7 @@ import org.dmg.pmml.Entity;
 import org.dmg.pmml.FieldName;
 import org.dmg.pmml.FieldRef;
 import org.dmg.pmml.MiningFunction;
+import org.dmg.pmml.NormDiscrete;
 import org.dmg.pmml.OpType;
 import org.dmg.pmml.neural_network.Connection;
 import org.dmg.pmml.neural_network.NeuralInput;
@@ -40,6 +42,7 @@ import org.dmg.pmml.neural_network.NeuralNetwork;
 import org.dmg.pmml.neural_network.NeuralOutput;
 import org.dmg.pmml.neural_network.NeuralOutputs;
 import org.dmg.pmml.neural_network.Neuron;
+import org.jpmml.converter.BinaryFeature;
 import org.jpmml.converter.CMatrixUtil;
 import org.jpmml.converter.ContinuousLabel;
 import org.jpmml.converter.Feature;
@@ -80,22 +83,69 @@ public class DNNRegressor extends Estimator {
 		{
 			NodeDef biasAdd = biasAdds.get(0);
 
-			NodeDef concat = savedModel.getOnlyInput(biasAdd.getInput(0), "ConcatV2");
+			NodeDef matMul = savedModel.getNodeDef(biasAdd.getInput(0));
+			if(!("MatMul").equals(matMul.getOp())){
+				throw new IllegalArgumentException();
+			}
+
+			NodeDef concat = savedModel.getNodeDef(matMul.getInput(0));
+			if(!("ConcatV2").equals(concat.getOp())){
+				throw new IllegalArgumentException();
+			}
+
+			int id = 0;
 
 			List<String> inputNames = concat.getInputList();
 			for(int i = 0; i < inputNames.size() - 1; i++){
 				String inputName = inputNames.get(i);
 
-				NodeDef placeholder = savedModel.getNodeDef(inputName);
+				NodeDef term = savedModel.getNodeDef(inputName);
 
-				Feature feature = encoder.createContinuousFeature(savedModel, placeholder);
+				// "real_valued_column"
+				if(("Cast").equals(term.getOp()) || ("Placeholder").equals(term.getOp())){
+					NodeDef placeholder = term;
 
-				DerivedField derivedField = new DerivedField(OpType.CONTINUOUS, feature.getDataType())
-					.setExpression(feature.ref());
+					Feature feature = encoder.createContinuousFeature(savedModel, placeholder);
 
-				NeuralInput neuralInput = new NeuralInput(String.valueOf(i), derivedField);
+					DerivedField derivedField = new DerivedField(OpType.CONTINUOUS, feature.getDataType())
+						.setExpression(feature.ref());
 
-				neuralInputs.addNeuralInputs(neuralInput);
+					NeuralInput neuralInput = new NeuralInput(String.valueOf(id), derivedField);
+
+					neuralInputs.addNeuralInputs(neuralInput);
+
+					id++;
+				} else
+
+				// "one_hot_column(sparse_column_with_keys)"
+				if(("Sum").equals(term.getOp())){
+					NodeDef oneHot = savedModel.getOnlyInput(term.getInput(0), "OneHot");
+
+					NodeDef placeholder = savedModel.getOnlyInput(oneHot.getInput(0), "Placeholder");
+					NodeDef findTable = savedModel.getOnlyInput(oneHot.getInput(0), "LookupTableFind");
+
+					Map<?, ?> table = savedModel.getTable(findTable.getInput(0));
+
+					List<String> categories = (List)new ArrayList<>(table.keySet());
+
+					List<BinaryFeature> binaryFeatures = encoder.createBinaryFeatures(savedModel, placeholder, categories);
+					for(BinaryFeature binaryFeature : binaryFeatures){
+						NormDiscrete normDiscrete = new NormDiscrete(binaryFeature.getName(), binaryFeature.getValue());
+
+						DerivedField derivedField = new DerivedField(OpType.CONTINUOUS, binaryFeature.getDataType())
+							.setExpression(normDiscrete);
+
+						NeuralInput neuralInput = new NeuralInput(String.valueOf(id), derivedField);
+
+						neuralInputs.addNeuralInputs(neuralInput);
+
+						id++;
+					}
+				} else
+
+				{
+					throw new IllegalArgumentException(term.getName());
+				}
 			}
 		}
 

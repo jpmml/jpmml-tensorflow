@@ -33,6 +33,6 @@ public class DNNRegressorTest extends EstimatorTest {
 
 	@Override
 	public void evaluate(Batch batch, Set<FieldName> ignoredFields) throws Exception {
-		evaluate(batch, ignoredFields, 1e-5, 1e-5);
+		evaluate(batch, ignoredFields, 1e-3, 1e-4);
 	}
 }

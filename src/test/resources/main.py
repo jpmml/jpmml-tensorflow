@@ -1,6 +1,7 @@
 from pandas import DataFrame
 from tensorflow.contrib.learn import DNNRegressor, LinearClassifier, LinearRegressor
-from tensorflow.contrib.layers import real_valued_column, sparse_column_with_keys
+from tensorflow.contrib.layers import one_hot_column, real_valued_column, sparse_column_with_keys
+from tensorflow.contrib.layers.python.layers.feature_column import _OneHotColumn, _RealValuedColumn, _SparseColumnKeys
 from tensorflow.contrib.learn.python.learn.utils.input_fn_utils import InputFnOps
 
 import numpy
@@ -23,6 +24,9 @@ def store_savedmodel(estimator, serving_input_fn, name):
 	if(os.path.isdir("savedmodel/" + name)):
 		shutil.rmtree("savedmodel/" + name)
 	shutil.move(savemodel_dir, "savedmodel/" + name)
+
+def _dnn_feature_columns(feature_columns):
+	return list(map(lambda x: one_hot_column(x) if isinstance(x, _SparseColumnKeys) else x, feature_columns))
 
 def _input_fn(df, cont_feature_columns, cat_feature_columns, label_column):
 	cont_features = {column : tf.constant(df[column].values, dtype = tf.float64, shape = [df[column].size, 1]) for column in cont_feature_columns}
@@ -126,5 +130,5 @@ def build_auto(regressor, name):
 
 	store_savedmodel(regressor, auto_serving_input_fn, name)
 
-build_auto(DNNRegressor(hidden_units = [7, 5, 3], feature_columns = auto_feature_columns[:-1]), "NeuralNetworkAuto")
+build_auto(DNNRegressor(hidden_units = [7, 5, 3], feature_columns = _dnn_feature_columns(auto_feature_columns)), "NeuralNetworkAuto")
 build_auto(LinearRegressor(feature_columns = auto_feature_columns), "LinearRegressionAuto")

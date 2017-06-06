@@ -25,9 +25,8 @@ import org.dmg.pmml.MiningFunction;
 import org.dmg.pmml.OpType;
 import org.dmg.pmml.regression.RegressionModel;
 import org.jpmml.converter.ContinuousLabel;
+import org.jpmml.converter.Label;
 import org.jpmml.converter.ModelUtil;
-import org.jpmml.converter.Schema;
-import org.jpmml.converter.regression.RegressionModelUtil;
 
 public class LinearRegressor extends LinearEstimator {
 
@@ -37,14 +36,13 @@ public class LinearRegressor extends LinearEstimator {
 
 	@Override
 	public RegressionModel encodeModel(TensorFlowEncoder encoder){
-		LinearEstimator.RegressionTable regressionTable = extractOnlyRegressionTable(getHead(), encoder);
-
 		DataField dataField = encoder.createDataField(FieldName.create("_target"), OpType.CONTINUOUS, DataType.FLOAT);
 
-		Schema schema = new Schema(new ContinuousLabel(dataField), regressionTable.getFeatures());
+		Label label = new ContinuousLabel(dataField);
 
-		RegressionModel regressionModel = new RegressionModel(MiningFunction.REGRESSION, ModelUtil.createMiningSchema(schema), null)
-			.addRegressionTables(RegressionModelUtil.createRegressionTable(regressionTable.getFeatures(), regressionTable.getIntercept(), regressionTable.getCoefficients()));
+		RegressionModel regressionModel = encodeRegressionModel(encoder)
+			.setMiningFunction(MiningFunction.REGRESSION)
+			.setMiningSchema(ModelUtil.createMiningSchema(label));
 
 		return regressionModel;
 	}

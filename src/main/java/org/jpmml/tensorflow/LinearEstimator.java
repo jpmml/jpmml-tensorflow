@@ -22,11 +22,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import com.google.common.collect.Iterables;
 import com.google.common.primitives.Floats;
+import org.dmg.pmml.regression.RegressionModel;
+import org.dmg.pmml.regression.RegressionTable;
 import org.jpmml.converter.CMatrixUtil;
 import org.jpmml.converter.Feature;
 import org.jpmml.converter.ValueUtil;
+import org.jpmml.converter.regression.RegressionModelUtil;
 import org.tensorflow.Operation;
 import org.tensorflow.Output;
 import org.tensorflow.Tensor;
@@ -39,16 +41,10 @@ public class LinearEstimator extends Estimator {
 		super(savedModel, head);
 	}
 
-	public RegressionTable extractOnlyRegressionTable(String name, TensorFlowEncoder encoder){
-		List<RegressionTable> regressionTables = extractRegressionTables(name, encoder);
-
-		return Iterables.getOnlyElement(regressionTables);
-	}
-
-	public List<RegressionTable> extractRegressionTables(String name, TensorFlowEncoder encoder){
+	public RegressionModel encodeRegressionModel(TensorFlowEncoder encoder){
 		SavedModel savedModel = getSavedModel();
 
-		NodeDef biasAdd = savedModel.getOnlyInput(name, "BiasAdd");
+		NodeDef biasAdd = savedModel.getOnlyInput(getHead(), "BiasAdd");
 
 		int count;
 
@@ -65,12 +61,12 @@ public class LinearEstimator extends Estimator {
 			count = (int)shape[1];
 		}
 
-		List<RegressionTable> regressionTables = new ArrayList<>();
+		List<Equation> equations = new ArrayList<>();
 
 		for(int i = 0; i < count; i++){
-			RegressionTable regressionTable = new RegressionTable();
+			Equation equation = new Equation();
 
-			regressionTables.add(regressionTable);
+			equations.add(equation);
 		}
 
 		NodeDef addN = savedModel.getOnlyInput(biasAdd.getInput(0), "AddN");
@@ -90,9 +86,9 @@ public class LinearEstimator extends Estimator {
 					float[] values = TensorUtil.toFloatArray(tensor);
 
 					for(int i = 0; i < count; i++){
-						RegressionTable regressionTable = regressionTables.get(i);
+						Equation equation = equations.get(i);
 
-						regressionTable.addTerm(feature, floatToDouble(values[i]));
+						equation.addTerm(feature, floatToDouble(values[i]));
 					}
 				}
 			} else
@@ -115,17 +111,17 @@ public class LinearEstimator extends Estimator {
 					values = TensorUtil.toFloatArray(tensor);
 				}
 
-				for(int i = 0; i < regressionTables.size(); i++){
-					RegressionTable regressionTable = regressionTables.get(i);
+				for(int i = 0; i < equations.size(); i++){
+					Equation equation = equations.get(i);
 
-					List<Float> categoryValues = CMatrixUtil.getColumn(Floats.asList(values), features.size(), regressionTables.size(), i);
+					List<Float> categoryValues = CMatrixUtil.getColumn(Floats.asList(values), features.size(), equations.size(), i);
 
 					for(int j = 0; j < features.size(); j++){
 						Feature feature = features.get(j);
 
 						int index = ValueUtil.asInt((Number)table.get(categories.get(j)));
 
-						regressionTable.addTerm(feature, floatToDouble(categoryValues.get(index)));
+						equation.addTerm(feature, floatToDouble(categoryValues.get(index)));
 					}
 				}
 			} else
@@ -141,17 +137,25 @@ public class LinearEstimator extends Estimator {
 			float[] values = TensorUtil.toFloatArray(tensor);
 
 			for(int i = 0; i < count; i++){
-				RegressionTable regressionTable = regressionTables.get(i);
+				Equation equation = equations.get(i);
 
-				regressionTable.setIntercept(floatToDouble(values[i]));
+				equation.setIntercept(floatToDouble(values[i]));
 			}
 		}
 
-		return regressionTables;
+		RegressionModel regressionModel = new RegressionModel();
+
+		for(Equation equation : equations){
+			RegressionTable regressionTable = RegressionModelUtil.createRegressionTable(equation.getFeatures(), equation.getIntercept(), equation.getCoefficients());
+
+			regressionModel.addRegressionTables(regressionTable);
+		}
+
+		return regressionModel;
 	}
 
 	static
-	public class RegressionTable {
+	private class Equation {
 
 		private List<Feature> features = new ArrayList<>();
 
@@ -160,7 +164,7 @@ public class LinearEstimator extends Estimator {
 		private Double intercept = null;
 
 
-		public RegressionTable(){
+		private Equation(){
 		}
 
 		public void addTerm(Feature feature, Double coefficient){

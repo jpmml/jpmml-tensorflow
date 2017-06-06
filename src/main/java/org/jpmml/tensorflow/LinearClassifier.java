@@ -19,6 +19,7 @@
 package org.jpmml.tensorflow;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.dmg.pmml.DataField;
@@ -27,51 +28,68 @@ import org.dmg.pmml.FieldName;
 import org.dmg.pmml.MiningFunction;
 import org.dmg.pmml.OpType;
 import org.dmg.pmml.regression.RegressionModel;
+import org.dmg.pmml.regression.RegressionTable;
 import org.jpmml.converter.CategoricalLabel;
 import org.jpmml.converter.ModelUtil;
-import org.jpmml.converter.regression.RegressionModelUtil;
 
-public class MultiSoftMaxClassifier extends LinearEstimator {
+public class LinearClassifier extends LinearEstimator {
 
-	public MultiSoftMaxClassifier(SavedModel savedModel, String head){
+	public LinearClassifier(SavedModel savedModel, String head){
 		super(savedModel, head);
 	}
 
 	@Override
 	public RegressionModel encodeModel(TensorFlowEncoder encoder){
-		List<LinearEstimator.RegressionTable> regressionTables = extractRegressionTables(getHead(), encoder);
+		DataField dataField = encoder.createDataField(FieldName.create("_target"), OpType.CATEGORICAL, DataType.INTEGER);
 
-		if(regressionTables.size() < 3){
+		RegressionModel regressionModel = encodeRegressionModel(encoder);
+
+		List<RegressionTable> regressionTables = regressionModel.getRegressionTables();
+
+		List<String> categories;
+
+		if(regressionTables.size() == 1){
+			categories = Arrays.asList("0", "1");
+
+			RegressionTable passiveRegressionTable = new RegressionTable(0)
+				.setTargetCategory(categories.get(0));
+
+			regressionModel.addRegressionTables(passiveRegressionTable);
+
+			RegressionTable activeRegressionTable = regressionTables.get(0)
+				.setTargetCategory(categories.get(1));
+		} else
+
+		if(regressionTables.size() > 2){
+			categories = new ArrayList<>();
+
+			for(int i = 0; i < regressionTables.size(); i++){
+				RegressionTable regressionTable = regressionTables.get(i);
+				String category = String.valueOf(i);
+
+				regressionTable.setTargetCategory(category);
+
+				categories.add(category);
+			}
+		} else
+
+		{
 			throw new IllegalArgumentException();
 		}
 
-		List<String> categories = new ArrayList<>();
-
-		List<org.dmg.pmml.regression.RegressionTable> pmmlRegressionTables = new ArrayList<>();
-
-		for(int i = 0; i < regressionTables.size(); i++){
-			LinearEstimator.RegressionTable regressionTable = regressionTables.get(i);
-
-			String category = String.valueOf(i);
-
-			categories.add(category);
-
-			org.dmg.pmml.regression.RegressionTable pmmlRegressionTable = RegressionModelUtil.createRegressionTable(regressionTable.getFeatures(), regressionTable.getIntercept(), regressionTable.getCoefficients())
-				.setTargetCategory(category);
-
-			pmmlRegressionTables.add(pmmlRegressionTable);
-		}
-
-		DataField dataField = encoder.createDataField(FieldName.create("_target"), OpType.CATEGORICAL, DataType.INTEGER, categories);
+		dataField = encoder.toCategorical(dataField.getName(), categories);
 
 		CategoricalLabel categoricalLabel = new CategoricalLabel(dataField);
 
-		RegressionModel regressionModel = new RegressionModel(MiningFunction.CLASSIFICATION, ModelUtil.createMiningSchema(categoricalLabel), pmmlRegressionTables)
+		regressionModel
+			.setMiningFunction(MiningFunction.CLASSIFICATION)
 			.setNormalizationMethod(RegressionModel.NormalizationMethod.SOFTMAX)
+			.setMiningSchema(ModelUtil.createMiningSchema(categoricalLabel))
 			.setOutput(ModelUtil.createProbabilityOutput(categoricalLabel));
 
 		return regressionModel;
 	}
 
+	public static final String BINARY_LOGISTIC_HEAD = "linear/binary_logistic_head/predictions/probabilities";
 	public static final String MULTI_CLASS_HEAD = "linear/multi_class_head/predictions/probabilities";
 }

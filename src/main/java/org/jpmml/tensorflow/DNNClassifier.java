@@ -96,7 +96,9 @@ public class DNNClassifier extends DNNEstimator {
 			categories = new ArrayList<>();
 
 			for(int i = 0; i < neurons.size(); i++){
-				categories.add(String.valueOf(i));
+				String category = String.valueOf(i);
+
+				categories.add(category);
 			}
 		} else
 

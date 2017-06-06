@@ -30,10 +30,6 @@ public class EstimatorFactory {
 	public Estimator newEstimator(SavedModel savedModel){
 		Map<String, NodeDef> nodeMap = savedModel.getNodeMap();
 
-		if(nodeMap.containsKey(BinaryLogisticClassifier.BINARY_LOGISTIC_HEAD)){
-			return new BinaryLogisticClassifier(savedModel, BinaryLogisticClassifier.BINARY_LOGISTIC_HEAD);
-		} else
-
 		if(nodeMap.containsKey(DNNClassifier.BINARY_LOGISTIC_HEAD)){
 			return new DNNClassifier(savedModel, DNNClassifier.BINARY_LOGISTIC_HEAD);
 		} else
@@ -46,12 +42,16 @@ public class EstimatorFactory {
 			return new DNNRegressor(savedModel, DNNRegressor.REGRESSION_HEAD);
 		} else
 
-		if(nodeMap.containsKey(LinearRegressor.REGRESSION_HEAD)){
-			return new LinearRegressor(savedModel, LinearRegressor.REGRESSION_HEAD);
+		if(nodeMap.containsKey(LinearClassifier.BINARY_LOGISTIC_HEAD)){
+			return new LinearClassifier(savedModel, LinearClassifier.BINARY_LOGISTIC_HEAD);
 		} else
 
-		if(nodeMap.containsKey(MultiSoftMaxClassifier.MULTI_CLASS_HEAD)){
-			return new MultiSoftMaxClassifier(savedModel, MultiSoftMaxClassifier.MULTI_CLASS_HEAD);
+		if(nodeMap.containsKey(LinearClassifier.MULTI_CLASS_HEAD)){
+			return new LinearClassifier(savedModel, LinearClassifier.MULTI_CLASS_HEAD);
+		} else
+
+		if(nodeMap.containsKey(LinearRegressor.REGRESSION_HEAD)){
+			return new LinearRegressor(savedModel, LinearRegressor.REGRESSION_HEAD);
 		} else
 
 		{

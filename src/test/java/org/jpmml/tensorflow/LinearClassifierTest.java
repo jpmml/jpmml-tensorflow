@@ -24,7 +24,12 @@ import org.dmg.pmml.FieldName;
 import org.jpmml.evaluator.Batch;
 import org.junit.Test;
 
-public class MultiSoftMaxClassifierTest extends EstimatorTest {
+public class LinearClassifierTest extends EstimatorTest {
+
+	@Test
+	public void evaluateAudit() throws Exception {
+		evaluate("BinaryLogisticClassification", "Audit");
+	}
 
 	@Test
 	public void evaluateIris() throws Exception {

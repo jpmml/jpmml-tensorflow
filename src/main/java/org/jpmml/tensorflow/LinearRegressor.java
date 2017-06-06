@@ -31,10 +31,6 @@ import org.jpmml.converter.regression.RegressionModelUtil;
 
 public class LinearRegressor extends LinearEstimator {
 
-	public LinearRegressor(SavedModel savedModel){
-		this(savedModel, LinearRegressor.HEAD);
-	}
-
 	public LinearRegressor(SavedModel savedModel, String head){
 		super(savedModel, head);
 	}
@@ -53,5 +49,5 @@ public class LinearRegressor extends LinearEstimator {
 		return regressionModel;
 	}
 
-	public static final String HEAD = "linear/regression_head/predictions/scores";
+	public static final String REGRESSION_HEAD = "linear/regression_head/predictions/scores";
 }

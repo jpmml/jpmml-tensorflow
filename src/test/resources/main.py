@@ -1,5 +1,5 @@
 from pandas import DataFrame
-from tensorflow.contrib.learn import DNNRegressor, LinearClassifier, LinearRegressor
+from tensorflow.contrib.learn import DNNClassifier, DNNRegressor, LinearClassifier, LinearRegressor
 from tensorflow.contrib.layers import one_hot_column, real_valued_column, sparse_column_with_keys
 from tensorflow.contrib.layers.python.layers.feature_column import _OneHotColumn, _RealValuedColumn, _SparseColumnKeys
 from tensorflow.contrib.learn.python.learn.utils.input_fn_utils import InputFnOps
@@ -72,6 +72,7 @@ def build_audit(classifier, name, with_proba = True):
 
 	store_savedmodel(classifier, audit_serving_input_fn, name)
 
+build_audit(DNNClassifier(hidden_units = [71, 11], feature_columns = _dnn_feature_columns(audit_feature_columns)), "NeuralNetworkAudit")
 build_audit(LinearClassifier(feature_columns = audit_feature_columns), "BinaryLogisticClassificationAudit")
 
 #
@@ -102,6 +103,7 @@ def build_iris(classifier, name, with_proba = True):
 
 	store_savedmodel(classifier, iris_serving_input_fn, name)
 
+build_iris(DNNClassifier(hidden_units = [11], feature_columns = _dnn_feature_columns(iris_feature_columns), n_classes = 3), "NeuralNetworkIris")
 build_iris(LinearClassifier(feature_columns = iris_feature_columns, n_classes = 3), "MultiSoftMaxClassificationIris")
 
 #

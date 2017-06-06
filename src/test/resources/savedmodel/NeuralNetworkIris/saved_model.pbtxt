@@ -1,0 +1,6503 @@
+saved_model_schema_version: 1
+meta_graphs {
+  meta_info_def {
+    stripped_op_list {
+      op {
+        name: "Add"
+        input_arg {
+          name: "x"
+          type_attr: "T"
+        }
+        input_arg {
+          name: "y"
+          type_attr: "T"
+        }
+        output_arg {
+          name: "z"
+          type_attr: "T"
+        }
+        attr {
+          name: "T"
+          type: "type"
+          allowed_values {
+            list {
+              type: DT_HALF
+              type: DT_FLOAT
+              type: DT_DOUBLE
+              type: DT_UINT8
+              type: DT_INT8
+              type: DT_INT16
+              type: DT_INT32
+              type: DT_INT64
+              type: DT_COMPLEX64
+              type: DT_COMPLEX128
+              type: DT_STRING
+            }
+          }
+        }
+      }
+      op {
+        name: "ArgMax"
+        input_arg {
+          name: "input"
+          type_attr: "T"
+        }
+        input_arg {
+          name: "dimension"
+          type_attr: "Tidx"
+        }
+        output_arg {
+          name: "output"
+          type: DT_INT64
+        }
+        attr {
+          name: "T"
+          type: "type"
+          allowed_values {
+            list {
+              type: DT_FLOAT
+              type: DT_DOUBLE
+              type: DT_INT64
+              type: DT_INT32
+              type: DT_UINT8
+              type: DT_UINT16
+              type: DT_INT16
+              type: DT_INT8
+              type: DT_COMPLEX64
+              type: DT_COMPLEX128
+              type: DT_QINT8
+              type: DT_QUINT8
+              type: DT_QINT32
+              type: DT_HALF
+            }
+          }
+        }
+        attr {
+          name: "Tidx"
+          type: "type"
+          default_value {
+            type: DT_INT32
+          }
+          allowed_values {
+            list {
+              type: DT_INT32
+              type: DT_INT64
+            }
+          }
+        }
+      }
+      op {
+        name: "Assign"
+        input_arg {
+          name: "ref"
+          type_attr: "T"
+          is_ref: true
+        }
+        input_arg {
+          name: "value"
+          type_attr: "T"
+        }
+        output_arg {
+          name: "output_ref"
+          type_attr: "T"
+          is_ref: true
+        }
+        attr {
+          name: "T"
+          type: "type"
+        }
+        attr {
+          name: "validate_shape"
+          type: "bool"
+          default_value {
+            b: true
+          }
+        }
+        attr {
+          name: "use_locking"
+          type: "bool"
+          default_value {
+            b: true
+          }
+        }
+        allows_uninitialized_input: true
+      }
+      op {
+        name: "BiasAdd"
+        input_arg {
+          name: "value"
+          type_attr: "T"
+        }
+        input_arg {
+          name: "bias"
+          type_attr: "T"
+        }
+        output_arg {
+          name: "output"
+          type_attr: "T"
+        }
+        attr {
+          name: "T"
+          type: "type"
+          allowed_values {
+            list {
+              type: DT_FLOAT
+              type: DT_DOUBLE
+              type: DT_INT64
+              type: DT_INT32
+              type: DT_UINT8
+              type: DT_UINT16
+              type: DT_INT16
+              type: DT_INT8
+              type: DT_COMPLEX64
+              type: DT_COMPLEX128
+              type: DT_QINT8
+              type: DT_QUINT8
+              type: DT_QINT32
+              type: DT_HALF
+            }
+          }
+        }
+        attr {
+          name: "data_format"
+          type: "string"
+          default_value {
+            s: "NHWC"
+          }
+          allowed_values {
+            list {
+              s: "NHWC"
+              s: "NCHW"
+            }
+          }
+        }
+      }
+      op {
+        name: "Cast"
+        input_arg {
+          name: "x"
+          type_attr: "SrcT"
+        }
+        output_arg {
+          name: "y"
+          type_attr: "DstT"
+        }
+        attr {
+          name: "SrcT"
+          type: "type"
+        }
+        attr {
+          name: "DstT"
+          type: "type"
+        }
+      }
+      op {
+        name: "ConcatV2"
+        input_arg {
+          name: "values"
+          type_attr: "T"
+          number_attr: "N"
+        }
+        input_arg {
+          name: "axis"
+          type_attr: "Tidx"
+        }
+        output_arg {
+          name: "output"
+          type_attr: "T"
+        }
+        attr {
+          name: "N"
+          type: "int"
+          has_minimum: true
+          minimum: 2
+        }
+        attr {
+          name: "T"
+          type: "type"
+        }
+        attr {
+          name: "Tidx"
+          type: "type"
+          default_value {
+            type: DT_INT32
+          }
+          allowed_values {
+            list {
+              type: DT_INT32
+              type: DT_INT64
+            }
+          }
+        }
+      }
+      op {
+        name: "Const"
+        output_arg {
+          name: "output"
+          type_attr: "dtype"
+        }
+        attr {
+          name: "value"
+          type: "tensor"
+        }
+        attr {
+          name: "dtype"
+          type: "type"
+        }
+      }
+      op {
+        name: "Equal"
+        input_arg {
+          name: "x"
+          type_attr: "T"
+        }
+        input_arg {
+          name: "y"
+          type_attr: "T"
+        }
+        output_arg {
+          name: "z"
+          type: DT_BOOL
+        }
+        attr {
+          name: "T"
+          type: "type"
+          allowed_values {
+            list {
+              type: DT_HALF
+              type: DT_FLOAT
+              type: DT_DOUBLE
+              type: DT_UINT8
+              type: DT_INT8
+              type: DT_INT16
+              type: DT_INT32
+              type: DT_INT64
+              type: DT_COMPLEX64
+              type: DT_QUINT8
+              type: DT_QINT8
+              type: DT_QINT32
+              type: DT_STRING
+              type: DT_BOOL
+              type: DT_COMPLEX128
+            }
+          }
+        }
+        is_commutative: true
+      }
+      op {
+        name: "ExpandDims"
+        input_arg {
+          name: "input"
+          type_attr: "T"
+        }
+        input_arg {
+          name: "dim"
+          type_attr: "Tdim"
+        }
+        output_arg {
+          name: "output"
+          type_attr: "T"
+        }
+        attr {
+          name: "T"
+          type: "type"
+        }
+        attr {
+          name: "Tdim"
+          type: "type"
+          default_value {
+            type: DT_INT32
+          }
+          allowed_values {
+            list {
+              type: DT_INT32
+              type: DT_INT64
+            }
+          }
+        }
+      }
+      op {
+        name: "HistogramSummary"
+        input_arg {
+          name: "tag"
+          type: DT_STRING
+        }
+        input_arg {
+          name: "values"
+          type_attr: "T"
+        }
+        output_arg {
+          name: "summary"
+          type: DT_STRING
+        }
+        attr {
+          name: "T"
+          type: "type"
+          default_value {
+            type: DT_FLOAT
+          }
+          allowed_values {
+            list {
+              type: DT_FLOAT
+              type: DT_DOUBLE
+              type: DT_INT32
+              type: DT_INT64
+              type: DT_UINT8
+              type: DT_INT16
+              type: DT_INT8
+              type: DT_UINT16
+              type: DT_HALF
+            }
+          }
+        }
+      }
+      op {
+        name: "Identity"
+        input_arg {
+          name: "input"
+          type_attr: "T"
+        }
+        output_arg {
+          name: "output"
+          type_attr: "T"
+        }
+        attr {
+          name: "T"
+          type: "type"
+        }
+      }
+      op {
+        name: "MatMul"
+        input_arg {
+          name: "a"
+          type_attr: "T"
+        }
+        input_arg {
+          name: "b"
+          type_attr: "T"
+        }
+        output_arg {
+          name: "product"
+          type_attr: "T"
+        }
+        attr {
+          name: "transpose_a"
+          type: "bool"
+          default_value {
+            b: false
+          }
+        }
+        attr {
+          name: "transpose_b"
+          type: "bool"
+          default_value {
+            b: false
+          }
+        }
+        attr {
+          name: "T"
+          type: "type"
+          allowed_values {
+            list {
+              type: DT_HALF
+              type: DT_FLOAT
+              type: DT_DOUBLE
+              type: DT_INT32
+              type: DT_COMPLEX64
+              type: DT_COMPLEX128
+            }
+          }
+        }
+      }
+      op {
+        name: "Mean"
+        input_arg {
+          name: "input"
+          type_attr: "T"
+        }
+        input_arg {
+          name: "reduction_indices"
+          type_attr: "Tidx"
+        }
+        output_arg {
+          name: "output"
+          type_attr: "T"
+        }
+        attr {
+          name: "keep_dims"
+          type: "bool"
+          default_value {
+            b: false
+          }
+        }
+        attr {
+          name: "T"
+          type: "type"
+          allowed_values {
+            list {
+              type: DT_FLOAT
+              type: DT_DOUBLE
+              type: DT_INT64
+              type: DT_INT32
+              type: DT_UINT8
+              type: DT_UINT16
+              type: DT_INT16
+              type: DT_INT8
+              type: DT_COMPLEX64
+              type: DT_COMPLEX128
+              type: DT_QINT8
+              type: DT_QUINT8
+              type: DT_QINT32
+              type: DT_HALF
+            }
+          }
+        }
+        attr {
+          name: "Tidx"
+          type: "type"
+          default_value {
+            type: DT_INT32
+          }
+          allowed_values {
+            list {
+              type: DT_INT32
+              type: DT_INT64
+            }
+          }
+        }
+      }
+      op {
+        name: "MergeV2Checkpoints"
+        input_arg {
+          name: "checkpoint_prefixes"
+          type: DT_STRING
+        }
+        input_arg {
+          name: "destination_prefix"
+          type: DT_STRING
+        }
+        attr {
+          name: "delete_old_dirs"
+          type: "bool"
+          default_value {
+            b: true
+          }
+        }
+      }
+      op {
+        name: "Mul"
+        input_arg {
+          name: "x"
+          type_attr: "T"
+        }
+        input_arg {
+          name: "y"
+          type_attr: "T"
+        }
+        output_arg {
+          name: "z"
+          type_attr: "T"
+        }
+        attr {
+          name: "T"
+          type: "type"
+          allowed_values {
+            list {
+              type: DT_HALF
+              type: DT_FLOAT
+              type: DT_DOUBLE
+              type: DT_UINT8
+              type: DT_INT8
+              type: DT_UINT16
+              type: DT_INT16
+              type: DT_INT32
+              type: DT_INT64
+              type: DT_COMPLEX64
+              type: DT_COMPLEX128
+            }
+          }
+        }
+        is_commutative: true
+      }
+      op {
+        name: "NoOp"
+      }
+      op {
+        name: "Pack"
+        input_arg {
+          name: "values"
+          type_attr: "T"
+          number_attr: "N"
+        }
+        output_arg {
+          name: "output"
+          type_attr: "T"
+        }
+        attr {
+          name: "N"
+          type: "int"
+          has_minimum: true
+          minimum: 1
+        }
+        attr {
+          name: "T"
+          type: "type"
+        }
+        attr {
+          name: "axis"
+          type: "int"
+          default_value {
+            i: 0
+          }
+        }
+      }
+      op {
+        name: "Placeholder"
+        output_arg {
+          name: "output"
+          type_attr: "dtype"
+        }
+        attr {
+          name: "dtype"
+          type: "type"
+        }
+        attr {
+          name: "shape"
+          type: "shape"
+          default_value {
+            shape {
+            }
+          }
+        }
+      }
+      op {
+        name: "RandomUniform"
+        input_arg {
+          name: "shape"
+          type_attr: "T"
+        }
+        output_arg {
+          name: "output"
+          type_attr: "dtype"
+        }
+        attr {
+          name: "seed"
+          type: "int"
+          default_value {
+            i: 0
+          }
+        }
+        attr {
+          name: "seed2"
+          type: "int"
+          default_value {
+            i: 0
+          }
+        }
+        attr {
+          name: "dtype"
+          type: "type"
+          allowed_values {
+            list {
+              type: DT_HALF
+              type: DT_FLOAT
+              type: DT_DOUBLE
+            }
+          }
+        }
+        attr {
+          name: "T"
+          type: "type"
+          allowed_values {
+            list {
+              type: DT_INT32
+              type: DT_INT64
+            }
+          }
+        }
+        is_stateful: true
+      }
+      op {
+        name: "Range"
+        input_arg {
+          name: "start"
+          type_attr: "Tidx"
+        }
+        input_arg {
+          name: "limit"
+          type_attr: "Tidx"
+        }
+        input_arg {
+          name: "delta"
+          type_attr: "Tidx"
+        }
+        output_arg {
+          name: "output"
+          type_attr: "Tidx"
+        }
+        attr {
+          name: "Tidx"
+          type: "type"
+          default_value {
+            type: DT_INT32
+          }
+          allowed_values {
+            list {
+              type: DT_FLOAT
+              type: DT_DOUBLE
+              type: DT_INT32
+              type: DT_INT64
+            }
+          }
+        }
+      }
+      op {
+        name: "Relu"
+        input_arg {
+          name: "features"
+          type_attr: "T"
+        }
+        output_arg {
+          name: "activations"
+          type_attr: "T"
+        }
+        attr {
+          name: "T"
+          type: "type"
+          allowed_values {
+            list {
+              type: DT_FLOAT
+              type: DT_DOUBLE
+              type: DT_INT32
+              type: DT_INT64
+              type: DT_UINT8
+              type: DT_INT16
+              type: DT_INT8
+              type: DT_UINT16
+              type: DT_HALF
+            }
+          }
+        }
+      }
+      op {
+        name: "RestoreV2"
+        input_arg {
+          name: "prefix"
+          type: DT_STRING
+        }
+        input_arg {
+          name: "tensor_names"
+          type: DT_STRING
+        }
+        input_arg {
+          name: "shape_and_slices"
+          type: DT_STRING
+        }
+        output_arg {
+          name: "tensors"
+          type_list_attr: "dtypes"
+        }
+        attr {
+          name: "dtypes"
+          type: "list(type)"
+          has_minimum: true
+          minimum: 1
+        }
+      }
+      op {
+        name: "SaveV2"
+        input_arg {
+          name: "prefix"
+          type: DT_STRING
+        }
+        input_arg {
+          name: "tensor_names"
+          type: DT_STRING
+        }
+        input_arg {
+          name: "shape_and_slices"
+          type: DT_STRING
+        }
+        input_arg {
+          name: "tensors"
+          type_list_attr: "dtypes"
+        }
+        attr {
+          name: "dtypes"
+          type: "list(type)"
+          has_minimum: true
+          minimum: 1
+        }
+      }
+      op {
+        name: "ScalarSummary"
+        input_arg {
+          name: "tags"
+          type: DT_STRING
+        }
+        input_arg {
+          name: "values"
+          type_attr: "T"
+        }
+        output_arg {
+          name: "summary"
+          type: DT_STRING
+        }
+        attr {
+          name: "T"
+          type: "type"
+          allowed_values {
+            list {
+              type: DT_FLOAT
+              type: DT_DOUBLE
+              type: DT_INT32
+              type: DT_INT64
+              type: DT_UINT8
+              type: DT_INT16
+              type: DT_INT8
+              type: DT_UINT16
+              type: DT_HALF
+            }
+          }
+        }
+      }
+      op {
+        name: "Shape"
+        input_arg {
+          name: "input"
+          type_attr: "T"
+        }
+        output_arg {
+          name: "output"
+          type_attr: "out_type"
+        }
+        attr {
+          name: "T"
+          type: "type"
+        }
+        attr {
+          name: "out_type"
+          type: "type"
+          default_value {
+            type: DT_INT32
+          }
+          allowed_values {
+            list {
+              type: DT_INT32
+              type: DT_INT64
+            }
+          }
+        }
+      }
+      op {
+        name: "ShardedFilename"
+        input_arg {
+          name: "basename"
+          type: DT_STRING
+        }
+        input_arg {
+          name: "shard"
+          type: DT_INT32
+        }
+        input_arg {
+          name: "num_shards"
+          type: DT_INT32
+        }
+        output_arg {
+          name: "filename"
+          type: DT_STRING
+        }
+      }
+      op {
+        name: "Softmax"
+        input_arg {
+          name: "logits"
+          type_attr: "T"
+        }
+        output_arg {
+          name: "softmax"
+          type_attr: "T"
+        }
+        attr {
+          name: "T"
+          type: "type"
+          allowed_values {
+            list {
+              type: DT_HALF
+              type: DT_FLOAT
+              type: DT_DOUBLE
+            }
+          }
+        }
+      }
+      op {
+        name: "StridedSlice"
+        input_arg {
+          name: "input"
+          type_attr: "T"
+        }
+        input_arg {
+          name: "begin"
+          type_attr: "Index"
+        }
+        input_arg {
+          name: "end"
+          type_attr: "Index"
+        }
+        input_arg {
+          name: "strides"
+          type_attr: "Index"
+        }
+        output_arg {
+          name: "output"
+          type_attr: "T"
+        }
+        attr {
+          name: "T"
+          type: "type"
+        }
+        attr {
+          name: "Index"
+          type: "type"
+          allowed_values {
+            list {
+              type: DT_INT32
+              type: DT_INT64
+            }
+          }
+        }
+        attr {
+          name: "begin_mask"
+          type: "int"
+          default_value {
+            i: 0
+          }
+        }
+        attr {
+          name: "end_mask"
+          type: "int"
+          default_value {
+            i: 0
+          }
+        }
+        attr {
+          name: "ellipsis_mask"
+          type: "int"
+          default_value {
+            i: 0
+          }
+        }
+        attr {
+          name: "new_axis_mask"
+          type: "int"
+          default_value {
+            i: 0
+          }
+        }
+        attr {
+          name: "shrink_axis_mask"
+          type: "int"
+          default_value {
+            i: 0
+          }
+        }
+      }
+      op {
+        name: "StringJoin"
+        input_arg {
+          name: "inputs"
+          type: DT_STRING
+          number_attr: "N"
+        }
+        output_arg {
+          name: "output"
+          type: DT_STRING
+        }
+        attr {
+          name: "N"
+          type: "int"
+          has_minimum: true
+          minimum: 1
+        }
+        attr {
+          name: "separator"
+          type: "string"
+          default_value {
+            s: ""
+          }
+        }
+      }
+      op {
+        name: "Sub"
+        input_arg {
+          name: "x"
+          type_attr: "T"
+        }
+        input_arg {
+          name: "y"
+          type_attr: "T"
+        }
+        output_arg {
+          name: "z"
+          type_attr: "T"
+        }
+        attr {
+          name: "T"
+          type: "type"
+          allowed_values {
+            list {
+              type: DT_HALF
+              type: DT_FLOAT
+              type: DT_DOUBLE
+              type: DT_INT32
+              type: DT_INT64
+              type: DT_COMPLEX64
+              type: DT_COMPLEX128
+            }
+          }
+        }
+      }
+      op {
+        name: "Tile"
+        input_arg {
+          name: "input"
+          type_attr: "T"
+        }
+        input_arg {
+          name: "multiples"
+          type_attr: "Tmultiples"
+        }
+        output_arg {
+          name: "output"
+          type_attr: "T"
+        }
+        attr {
+          name: "T"
+          type: "type"
+        }
+        attr {
+          name: "Tmultiples"
+          type: "type"
+          default_value {
+            type: DT_INT32
+          }
+          allowed_values {
+            list {
+              type: DT_INT32
+              type: DT_INT64
+            }
+          }
+        }
+      }
+      op {
+        name: "VariableV2"
+        output_arg {
+          name: "ref"
+          type_attr: "dtype"
+          is_ref: true
+        }
+        attr {
+          name: "shape"
+          type: "shape"
+        }
+        attr {
+          name: "dtype"
+          type: "type"
+        }
+        attr {
+          name: "container"
+          type: "string"
+          default_value {
+            s: ""
+          }
+        }
+        attr {
+          name: "shared_name"
+          type: "string"
+          default_value {
+            s: ""
+          }
+        }
+        is_stateful: true
+      }
+    }
+    tags: "serve"
+    tensorflow_version: "1.1.0"
+    tensorflow_git_version: "v1.1.0-rc0-61-g1ec6ed5"
+  }
+  graph_def {
+    node {
+      name: "global_step/Initializer/Const"
+      op: "Const"
+      attr {
+        key: "_class"
+        value {
+          list {
+            s: "loc:@global_step"
+          }
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_INT64
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_INT64
+            tensor_shape {
+            }
+            int64_val: 0
+          }
+        }
+      }
+    }
+    node {
+      name: "global_step"
+      op: "VariableV2"
+      attr {
+        key: "_class"
+        value {
+          list {
+            s: "loc:@global_step"
+          }
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "container"
+        value {
+          s: ""
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_INT64
+        }
+      }
+      attr {
+        key: "shape"
+        value {
+          shape {
+          }
+        }
+      }
+      attr {
+        key: "shared_name"
+        value {
+          s: ""
+        }
+      }
+    }
+    node {
+      name: "global_step/Assign"
+      op: "Assign"
+      input: "global_step"
+      input: "global_step/Initializer/Const"
+      attr {
+        key: "T"
+        value {
+          type: DT_INT64
+        }
+      }
+      attr {
+        key: "_class"
+        value {
+          list {
+            s: "loc:@global_step"
+          }
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "use_locking"
+        value {
+          b: true
+        }
+      }
+      attr {
+        key: "validate_shape"
+        value {
+          b: true
+        }
+      }
+    }
+    node {
+      name: "global_step/read"
+      op: "Identity"
+      input: "global_step"
+      attr {
+        key: "T"
+        value {
+          type: DT_INT64
+        }
+      }
+      attr {
+        key: "_class"
+        value {
+          list {
+            s: "loc:@global_step"
+          }
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+    }
+    node {
+      name: "Sepal.Length"
+      op: "Placeholder"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: -1
+              }
+              dim {
+                size: 1
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_DOUBLE
+        }
+      }
+      attr {
+        key: "shape"
+        value {
+          shape {
+          }
+        }
+      }
+    }
+    node {
+      name: "Sepal.Width"
+      op: "Placeholder"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: -1
+              }
+              dim {
+                size: 1
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_DOUBLE
+        }
+      }
+      attr {
+        key: "shape"
+        value {
+          shape {
+          }
+        }
+      }
+    }
+    node {
+      name: "Petal.Length"
+      op: "Placeholder"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: -1
+              }
+              dim {
+                size: 1
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_DOUBLE
+        }
+      }
+      attr {
+        key: "shape"
+        value {
+          shape {
+          }
+        }
+      }
+    }
+    node {
+      name: "Petal.Width"
+      op: "Placeholder"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: -1
+              }
+              dim {
+                size: 1
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_DOUBLE
+        }
+      }
+      attr {
+        key: "shape"
+        value {
+          shape {
+          }
+        }
+      }
+    }
+    node {
+      name: "dnn/input_from_feature_columns/input_from_feature_columns/Petal.Length/ToFloat"
+      op: "Cast"
+      input: "Petal.Length"
+      attr {
+        key: "DstT"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "SrcT"
+        value {
+          type: DT_DOUBLE
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: -1
+              }
+              dim {
+                size: 1
+              }
+            }
+          }
+        }
+      }
+    }
+    node {
+      name: "dnn/input_from_feature_columns/input_from_feature_columns/Petal.Width/ToFloat"
+      op: "Cast"
+      input: "Petal.Width"
+      attr {
+        key: "DstT"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "SrcT"
+        value {
+          type: DT_DOUBLE
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: -1
+              }
+              dim {
+                size: 1
+              }
+            }
+          }
+        }
+      }
+    }
+    node {
+      name: "dnn/input_from_feature_columns/input_from_feature_columns/Sepal.Length/ToFloat"
+      op: "Cast"
+      input: "Sepal.Length"
+      attr {
+        key: "DstT"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "SrcT"
+        value {
+          type: DT_DOUBLE
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: -1
+              }
+              dim {
+                size: 1
+              }
+            }
+          }
+        }
+      }
+    }
+    node {
+      name: "dnn/input_from_feature_columns/input_from_feature_columns/Sepal.Width/ToFloat"
+      op: "Cast"
+      input: "Sepal.Width"
+      attr {
+        key: "DstT"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "SrcT"
+        value {
+          type: DT_DOUBLE
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: -1
+              }
+              dim {
+                size: 1
+              }
+            }
+          }
+        }
+      }
+    }
+    node {
+      name: "dnn/input_from_feature_columns/input_from_feature_columns/concat/axis"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_INT32
+            tensor_shape {
+            }
+            int_val: 1
+          }
+        }
+      }
+    }
+    node {
+      name: "dnn/input_from_feature_columns/input_from_feature_columns/concat"
+      op: "ConcatV2"
+      input: "dnn/input_from_feature_columns/input_from_feature_columns/Petal.Length/ToFloat"
+      input: "dnn/input_from_feature_columns/input_from_feature_columns/Petal.Width/ToFloat"
+      input: "dnn/input_from_feature_columns/input_from_feature_columns/Sepal.Length/ToFloat"
+      input: "dnn/input_from_feature_columns/input_from_feature_columns/Sepal.Width/ToFloat"
+      input: "dnn/input_from_feature_columns/input_from_feature_columns/concat/axis"
+      attr {
+        key: "N"
+        value {
+          i: 4
+        }
+      }
+      attr {
+        key: "T"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "Tidx"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: -1
+              }
+              dim {
+                size: 4
+              }
+            }
+          }
+        }
+      }
+    }
+    node {
+      name: "dnn/hiddenlayer_0/weights/part_0/Initializer/random_uniform/shape"
+      op: "Const"
+      attr {
+        key: "_class"
+        value {
+          list {
+            s: "loc:@dnn/hiddenlayer_0/weights/part_0"
+          }
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 2
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_INT32
+            tensor_shape {
+              dim {
+                size: 2
+              }
+            }
+            tensor_content: "\004\000\000\000\013\000\000\000"
+          }
+        }
+      }
+    }
+    node {
+      name: "dnn/hiddenlayer_0/weights/part_0/Initializer/random_uniform/min"
+      op: "Const"
+      attr {
+        key: "_class"
+        value {
+          list {
+            s: "loc:@dnn/hiddenlayer_0/weights/part_0"
+          }
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_FLOAT
+            tensor_shape {
+            }
+            float_val: -0.6324555277824402
+          }
+        }
+      }
+    }
+    node {
+      name: "dnn/hiddenlayer_0/weights/part_0/Initializer/random_uniform/max"
+      op: "Const"
+      attr {
+        key: "_class"
+        value {
+          list {
+            s: "loc:@dnn/hiddenlayer_0/weights/part_0"
+          }
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_FLOAT
+            tensor_shape {
+            }
+            float_val: 0.6324555277824402
+          }
+        }
+      }
+    }
+    node {
+      name: "dnn/hiddenlayer_0/weights/part_0/Initializer/random_uniform/RandomUniform"
+      op: "RandomUniform"
+      input: "dnn/hiddenlayer_0/weights/part_0/Initializer/random_uniform/shape"
+      attr {
+        key: "T"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "_class"
+        value {
+          list {
+            s: "loc:@dnn/hiddenlayer_0/weights/part_0"
+          }
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 4
+              }
+              dim {
+                size: 11
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "seed"
+        value {
+          i: 0
+        }
+      }
+      attr {
+        key: "seed2"
+        value {
+          i: 0
+        }
+      }
+    }
+    node {
+      name: "dnn/hiddenlayer_0/weights/part_0/Initializer/random_uniform/sub"
+      op: "Sub"
+      input: "dnn/hiddenlayer_0/weights/part_0/Initializer/random_uniform/max"
+      input: "dnn/hiddenlayer_0/weights/part_0/Initializer/random_uniform/min"
+      attr {
+        key: "T"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "_class"
+        value {
+          list {
+            s: "loc:@dnn/hiddenlayer_0/weights/part_0"
+          }
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+    }
+    node {
+      name: "dnn/hiddenlayer_0/weights/part_0/Initializer/random_uniform/mul"
+      op: "Mul"
+      input: "dnn/hiddenlayer_0/weights/part_0/Initializer/random_uniform/RandomUniform"
+      input: "dnn/hiddenlayer_0/weights/part_0/Initializer/random_uniform/sub"
+      attr {
+        key: "T"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "_class"
+        value {
+          list {
+            s: "loc:@dnn/hiddenlayer_0/weights/part_0"
+          }
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 4
+              }
+              dim {
+                size: 11
+              }
+            }
+          }
+        }
+      }
+    }
+    node {
+      name: "dnn/hiddenlayer_0/weights/part_0/Initializer/random_uniform"
+      op: "Add"
+      input: "dnn/hiddenlayer_0/weights/part_0/Initializer/random_uniform/mul"
+      input: "dnn/hiddenlayer_0/weights/part_0/Initializer/random_uniform/min"
+      attr {
+        key: "T"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "_class"
+        value {
+          list {
+            s: "loc:@dnn/hiddenlayer_0/weights/part_0"
+          }
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 4
+              }
+              dim {
+                size: 11
+              }
+            }
+          }
+        }
+      }
+    }
+    node {
+      name: "dnn/hiddenlayer_0/weights/part_0"
+      op: "VariableV2"
+      attr {
+        key: "_class"
+        value {
+          list {
+            s: "loc:@dnn/hiddenlayer_0/weights/part_0"
+          }
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 4
+              }
+              dim {
+                size: 11
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "container"
+        value {
+          s: ""
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "shape"
+        value {
+          shape {
+            dim {
+              size: 4
+            }
+            dim {
+              size: 11
+            }
+          }
+        }
+      }
+      attr {
+        key: "shared_name"
+        value {
+          s: ""
+        }
+      }
+    }
+    node {
+      name: "dnn/hiddenlayer_0/weights/part_0/Assign"
+      op: "Assign"
+      input: "dnn/hiddenlayer_0/weights/part_0"
+      input: "dnn/hiddenlayer_0/weights/part_0/Initializer/random_uniform"
+      attr {
+        key: "T"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "_class"
+        value {
+          list {
+            s: "loc:@dnn/hiddenlayer_0/weights/part_0"
+          }
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 4
+              }
+              dim {
+                size: 11
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "use_locking"
+        value {
+          b: true
+        }
+      }
+      attr {
+        key: "validate_shape"
+        value {
+          b: true
+        }
+      }
+    }
+    node {
+      name: "dnn/hiddenlayer_0/weights/part_0/read"
+      op: "Identity"
+      input: "dnn/hiddenlayer_0/weights/part_0"
+      attr {
+        key: "T"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "_class"
+        value {
+          list {
+            s: "loc:@dnn/hiddenlayer_0/weights/part_0"
+          }
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 4
+              }
+              dim {
+                size: 11
+              }
+            }
+          }
+        }
+      }
+    }
+    node {
+      name: "dnn/hiddenlayer_0/biases/part_0/Initializer/Const"
+      op: "Const"
+      attr {
+        key: "_class"
+        value {
+          list {
+            s: "loc:@dnn/hiddenlayer_0/biases/part_0"
+          }
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 11
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_FLOAT
+            tensor_shape {
+              dim {
+                size: 11
+              }
+            }
+            float_val: 0.0
+          }
+        }
+      }
+    }
+    node {
+      name: "dnn/hiddenlayer_0/biases/part_0"
+      op: "VariableV2"
+      attr {
+        key: "_class"
+        value {
+          list {
+            s: "loc:@dnn/hiddenlayer_0/biases/part_0"
+          }
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 11
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "container"
+        value {
+          s: ""
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "shape"
+        value {
+          shape {
+            dim {
+              size: 11
+            }
+          }
+        }
+      }
+      attr {
+        key: "shared_name"
+        value {
+          s: ""
+        }
+      }
+    }
+    node {
+      name: "dnn/hiddenlayer_0/biases/part_0/Assign"
+      op: "Assign"
+      input: "dnn/hiddenlayer_0/biases/part_0"
+      input: "dnn/hiddenlayer_0/biases/part_0/Initializer/Const"
+      attr {
+        key: "T"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "_class"
+        value {
+          list {
+            s: "loc:@dnn/hiddenlayer_0/biases/part_0"
+          }
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 11
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "use_locking"
+        value {
+          b: true
+        }
+      }
+      attr {
+        key: "validate_shape"
+        value {
+          b: true
+        }
+      }
+    }
+    node {
+      name: "dnn/hiddenlayer_0/biases/part_0/read"
+      op: "Identity"
+      input: "dnn/hiddenlayer_0/biases/part_0"
+      attr {
+        key: "T"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "_class"
+        value {
+          list {
+            s: "loc:@dnn/hiddenlayer_0/biases/part_0"
+          }
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 11
+              }
+            }
+          }
+        }
+      }
+    }
+    node {
+      name: "dnn/hiddenlayer_0/weights"
+      op: "Identity"
+      input: "dnn/hiddenlayer_0/weights/part_0/read"
+      attr {
+        key: "T"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 4
+              }
+              dim {
+                size: 11
+              }
+            }
+          }
+        }
+      }
+    }
+    node {
+      name: "dnn/hiddenlayer_0/MatMul"
+      op: "MatMul"
+      input: "dnn/input_from_feature_columns/input_from_feature_columns/concat"
+      input: "dnn/hiddenlayer_0/weights"
+      attr {
+        key: "T"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: -1
+              }
+              dim {
+                size: 11
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "transpose_a"
+        value {
+          b: false
+        }
+      }
+      attr {
+        key: "transpose_b"
+        value {
+          b: false
+        }
+      }
+    }
+    node {
+      name: "dnn/hiddenlayer_0/biases"
+      op: "Identity"
+      input: "dnn/hiddenlayer_0/biases/part_0/read"
+      attr {
+        key: "T"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 11
+              }
+            }
+          }
+        }
+      }
+    }
+    node {
+      name: "dnn/hiddenlayer_0/BiasAdd"
+      op: "BiasAdd"
+      input: "dnn/hiddenlayer_0/MatMul"
+      input: "dnn/hiddenlayer_0/biases"
+      attr {
+        key: "T"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: -1
+              }
+              dim {
+                size: 11
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "data_format"
+        value {
+          s: "NHWC"
+        }
+      }
+    }
+    node {
+      name: "dnn/hiddenlayer_0/hiddenlayer_0/Relu"
+      op: "Relu"
+      input: "dnn/hiddenlayer_0/BiasAdd"
+      attr {
+        key: "T"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: -1
+              }
+              dim {
+                size: 11
+              }
+            }
+          }
+        }
+      }
+    }
+    node {
+      name: "dnn/zero_fraction/zero"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_FLOAT
+            tensor_shape {
+            }
+            float_val: 0.0
+          }
+        }
+      }
+    }
+    node {
+      name: "dnn/zero_fraction/Equal"
+      op: "Equal"
+      input: "dnn/hiddenlayer_0/hiddenlayer_0/Relu"
+      input: "dnn/zero_fraction/zero"
+      attr {
+        key: "T"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: -1
+              }
+              dim {
+                size: 11
+              }
+            }
+          }
+        }
+      }
+    }
+    node {
+      name: "dnn/zero_fraction/Cast"
+      op: "Cast"
+      input: "dnn/zero_fraction/Equal"
+      attr {
+        key: "DstT"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "SrcT"
+        value {
+          type: DT_BOOL
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: -1
+              }
+              dim {
+                size: 11
+              }
+            }
+          }
+        }
+      }
+    }
+    node {
+      name: "dnn/zero_fraction/Const"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 2
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_INT32
+            tensor_shape {
+              dim {
+                size: 2
+              }
+            }
+            tensor_content: "\000\000\000\000\001\000\000\000"
+          }
+        }
+      }
+    }
+    node {
+      name: "dnn/zero_fraction/Mean"
+      op: "Mean"
+      input: "dnn/zero_fraction/Cast"
+      input: "dnn/zero_fraction/Const"
+      attr {
+        key: "T"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "Tidx"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "keep_dims"
+        value {
+          b: false
+        }
+      }
+    }
+    node {
+      name: "dnn/dnn/hiddenlayer_0_fraction_of_zero_values/tags"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_STRING
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_STRING
+            tensor_shape {
+            }
+            string_val: "dnn/dnn/hiddenlayer_0_fraction_of_zero_values"
+          }
+        }
+      }
+    }
+    node {
+      name: "dnn/dnn/hiddenlayer_0_fraction_of_zero_values"
+      op: "ScalarSummary"
+      input: "dnn/dnn/hiddenlayer_0_fraction_of_zero_values/tags"
+      input: "dnn/zero_fraction/Mean"
+      attr {
+        key: "T"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+    }
+    node {
+      name: "dnn/dnn/hiddenlayer_0_activation/tag"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_STRING
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_STRING
+            tensor_shape {
+            }
+            string_val: "dnn/dnn/hiddenlayer_0_activation"
+          }
+        }
+      }
+    }
+    node {
+      name: "dnn/dnn/hiddenlayer_0_activation"
+      op: "HistogramSummary"
+      input: "dnn/dnn/hiddenlayer_0_activation/tag"
+      input: "dnn/hiddenlayer_0/hiddenlayer_0/Relu"
+      attr {
+        key: "T"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+    }
+    node {
+      name: "dnn/logits/weights/part_0/Initializer/random_uniform/shape"
+      op: "Const"
+      attr {
+        key: "_class"
+        value {
+          list {
+            s: "loc:@dnn/logits/weights/part_0"
+          }
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 2
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_INT32
+            tensor_shape {
+              dim {
+                size: 2
+              }
+            }
+            tensor_content: "\013\000\000\000\003\000\000\000"
+          }
+        }
+      }
+    }
+    node {
+      name: "dnn/logits/weights/part_0/Initializer/random_uniform/min"
+      op: "Const"
+      attr {
+        key: "_class"
+        value {
+          list {
+            s: "loc:@dnn/logits/weights/part_0"
+          }
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_FLOAT
+            tensor_shape {
+            }
+            float_val: -0.6546536684036255
+          }
+        }
+      }
+    }
+    node {
+      name: "dnn/logits/weights/part_0/Initializer/random_uniform/max"
+      op: "Const"
+      attr {
+        key: "_class"
+        value {
+          list {
+            s: "loc:@dnn/logits/weights/part_0"
+          }
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_FLOAT
+            tensor_shape {
+            }
+            float_val: 0.6546536684036255
+          }
+        }
+      }
+    }
+    node {
+      name: "dnn/logits/weights/part_0/Initializer/random_uniform/RandomUniform"
+      op: "RandomUniform"
+      input: "dnn/logits/weights/part_0/Initializer/random_uniform/shape"
+      attr {
+        key: "T"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "_class"
+        value {
+          list {
+            s: "loc:@dnn/logits/weights/part_0"
+          }
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 11
+              }
+              dim {
+                size: 3
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "seed"
+        value {
+          i: 0
+        }
+      }
+      attr {
+        key: "seed2"
+        value {
+          i: 0
+        }
+      }
+    }
+    node {
+      name: "dnn/logits/weights/part_0/Initializer/random_uniform/sub"
+      op: "Sub"
+      input: "dnn/logits/weights/part_0/Initializer/random_uniform/max"
+      input: "dnn/logits/weights/part_0/Initializer/random_uniform/min"
+      attr {
+        key: "T"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "_class"
+        value {
+          list {
+            s: "loc:@dnn/logits/weights/part_0"
+          }
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+    }
+    node {
+      name: "dnn/logits/weights/part_0/Initializer/random_uniform/mul"
+      op: "Mul"
+      input: "dnn/logits/weights/part_0/Initializer/random_uniform/RandomUniform"
+      input: "dnn/logits/weights/part_0/Initializer/random_uniform/sub"
+      attr {
+        key: "T"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "_class"
+        value {
+          list {
+            s: "loc:@dnn/logits/weights/part_0"
+          }
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 11
+              }
+              dim {
+                size: 3
+              }
+            }
+          }
+        }
+      }
+    }
+    node {
+      name: "dnn/logits/weights/part_0/Initializer/random_uniform"
+      op: "Add"
+      input: "dnn/logits/weights/part_0/Initializer/random_uniform/mul"
+      input: "dnn/logits/weights/part_0/Initializer/random_uniform/min"
+      attr {
+        key: "T"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "_class"
+        value {
+          list {
+            s: "loc:@dnn/logits/weights/part_0"
+          }
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 11
+              }
+              dim {
+                size: 3
+              }
+            }
+          }
+        }
+      }
+    }
+    node {
+      name: "dnn/logits/weights/part_0"
+      op: "VariableV2"
+      attr {
+        key: "_class"
+        value {
+          list {
+            s: "loc:@dnn/logits/weights/part_0"
+          }
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 11
+              }
+              dim {
+                size: 3
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "container"
+        value {
+          s: ""
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "shape"
+        value {
+          shape {
+            dim {
+              size: 11
+            }
+            dim {
+              size: 3
+            }
+          }
+        }
+      }
+      attr {
+        key: "shared_name"
+        value {
+          s: ""
+        }
+      }
+    }
+    node {
+      name: "dnn/logits/weights/part_0/Assign"
+      op: "Assign"
+      input: "dnn/logits/weights/part_0"
+      input: "dnn/logits/weights/part_0/Initializer/random_uniform"
+      attr {
+        key: "T"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "_class"
+        value {
+          list {
+            s: "loc:@dnn/logits/weights/part_0"
+          }
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 11
+              }
+              dim {
+                size: 3
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "use_locking"
+        value {
+          b: true
+        }
+      }
+      attr {
+        key: "validate_shape"
+        value {
+          b: true
+        }
+      }
+    }
+    node {
+      name: "dnn/logits/weights/part_0/read"
+      op: "Identity"
+      input: "dnn/logits/weights/part_0"
+      attr {
+        key: "T"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "_class"
+        value {
+          list {
+            s: "loc:@dnn/logits/weights/part_0"
+          }
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 11
+              }
+              dim {
+                size: 3
+              }
+            }
+          }
+        }
+      }
+    }
+    node {
+      name: "dnn/logits/biases/part_0/Initializer/Const"
+      op: "Const"
+      attr {
+        key: "_class"
+        value {
+          list {
+            s: "loc:@dnn/logits/biases/part_0"
+          }
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 3
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_FLOAT
+            tensor_shape {
+              dim {
+                size: 3
+              }
+            }
+            float_val: 0.0
+          }
+        }
+      }
+    }
+    node {
+      name: "dnn/logits/biases/part_0"
+      op: "VariableV2"
+      attr {
+        key: "_class"
+        value {
+          list {
+            s: "loc:@dnn/logits/biases/part_0"
+          }
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 3
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "container"
+        value {
+          s: ""
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "shape"
+        value {
+          shape {
+            dim {
+              size: 3
+            }
+          }
+        }
+      }
+      attr {
+        key: "shared_name"
+        value {
+          s: ""
+        }
+      }
+    }
+    node {
+      name: "dnn/logits/biases/part_0/Assign"
+      op: "Assign"
+      input: "dnn/logits/biases/part_0"
+      input: "dnn/logits/biases/part_0/Initializer/Const"
+      attr {
+        key: "T"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "_class"
+        value {
+          list {
+            s: "loc:@dnn/logits/biases/part_0"
+          }
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 3
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "use_locking"
+        value {
+          b: true
+        }
+      }
+      attr {
+        key: "validate_shape"
+        value {
+          b: true
+        }
+      }
+    }
+    node {
+      name: "dnn/logits/biases/part_0/read"
+      op: "Identity"
+      input: "dnn/logits/biases/part_0"
+      attr {
+        key: "T"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "_class"
+        value {
+          list {
+            s: "loc:@dnn/logits/biases/part_0"
+          }
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 3
+              }
+            }
+          }
+        }
+      }
+    }
+    node {
+      name: "dnn/logits/weights"
+      op: "Identity"
+      input: "dnn/logits/weights/part_0/read"
+      attr {
+        key: "T"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 11
+              }
+              dim {
+                size: 3
+              }
+            }
+          }
+        }
+      }
+    }
+    node {
+      name: "dnn/logits/MatMul"
+      op: "MatMul"
+      input: "dnn/hiddenlayer_0/hiddenlayer_0/Relu"
+      input: "dnn/logits/weights"
+      attr {
+        key: "T"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: -1
+              }
+              dim {
+                size: 3
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "transpose_a"
+        value {
+          b: false
+        }
+      }
+      attr {
+        key: "transpose_b"
+        value {
+          b: false
+        }
+      }
+    }
+    node {
+      name: "dnn/logits/biases"
+      op: "Identity"
+      input: "dnn/logits/biases/part_0/read"
+      attr {
+        key: "T"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 3
+              }
+            }
+          }
+        }
+      }
+    }
+    node {
+      name: "dnn/logits/BiasAdd"
+      op: "BiasAdd"
+      input: "dnn/logits/MatMul"
+      input: "dnn/logits/biases"
+      attr {
+        key: "T"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: -1
+              }
+              dim {
+                size: 3
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "data_format"
+        value {
+          s: "NHWC"
+        }
+      }
+    }
+    node {
+      name: "dnn/zero_fraction_1/zero"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_FLOAT
+            tensor_shape {
+            }
+            float_val: 0.0
+          }
+        }
+      }
+    }
+    node {
+      name: "dnn/zero_fraction_1/Equal"
+      op: "Equal"
+      input: "dnn/logits/BiasAdd"
+      input: "dnn/zero_fraction_1/zero"
+      attr {
+        key: "T"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: -1
+              }
+              dim {
+                size: 3
+              }
+            }
+          }
+        }
+      }
+    }
+    node {
+      name: "dnn/zero_fraction_1/Cast"
+      op: "Cast"
+      input: "dnn/zero_fraction_1/Equal"
+      attr {
+        key: "DstT"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "SrcT"
+        value {
+          type: DT_BOOL
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: -1
+              }
+              dim {
+                size: 3
+              }
+            }
+          }
+        }
+      }
+    }
+    node {
+      name: "dnn/zero_fraction_1/Const"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 2
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_INT32
+            tensor_shape {
+              dim {
+                size: 2
+              }
+            }
+            tensor_content: "\000\000\000\000\001\000\000\000"
+          }
+        }
+      }
+    }
+    node {
+      name: "dnn/zero_fraction_1/Mean"
+      op: "Mean"
+      input: "dnn/zero_fraction_1/Cast"
+      input: "dnn/zero_fraction_1/Const"
+      attr {
+        key: "T"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "Tidx"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "keep_dims"
+        value {
+          b: false
+        }
+      }
+    }
+    node {
+      name: "dnn/dnn/logits_fraction_of_zero_values/tags"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_STRING
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_STRING
+            tensor_shape {
+            }
+            string_val: "dnn/dnn/logits_fraction_of_zero_values"
+          }
+        }
+      }
+    }
+    node {
+      name: "dnn/dnn/logits_fraction_of_zero_values"
+      op: "ScalarSummary"
+      input: "dnn/dnn/logits_fraction_of_zero_values/tags"
+      input: "dnn/zero_fraction_1/Mean"
+      attr {
+        key: "T"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+    }
+    node {
+      name: "dnn/dnn/logits_activation/tag"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_STRING
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_STRING
+            tensor_shape {
+            }
+            string_val: "dnn/dnn/logits_activation"
+          }
+        }
+      }
+    }
+    node {
+      name: "dnn/dnn/logits_activation"
+      op: "HistogramSummary"
+      input: "dnn/dnn/logits_activation/tag"
+      input: "dnn/logits/BiasAdd"
+      attr {
+        key: "T"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+    }
+    node {
+      name: "dnn/multi_class_head/predictions/classes/dimension"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_INT32
+            tensor_shape {
+            }
+            int_val: 1
+          }
+        }
+      }
+    }
+    node {
+      name: "dnn/multi_class_head/predictions/classes"
+      op: "ArgMax"
+      input: "dnn/logits/BiasAdd"
+      input: "dnn/multi_class_head/predictions/classes/dimension"
+      attr {
+        key: "T"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "Tidx"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: -1
+              }
+            }
+          }
+        }
+      }
+    }
+    node {
+      name: "dnn/multi_class_head/predictions/probabilities"
+      op: "Softmax"
+      input: "dnn/logits/BiasAdd"
+      attr {
+        key: "T"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: -1
+              }
+              dim {
+                size: 3
+              }
+            }
+          }
+        }
+      }
+    }
+    node {
+      name: "dnn/multi_class_head/Shape"
+      op: "Shape"
+      input: "dnn/multi_class_head/predictions/probabilities"
+      attr {
+        key: "T"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 2
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "out_type"
+        value {
+          type: DT_INT32
+        }
+      }
+    }
+    node {
+      name: "dnn/multi_class_head/strided_slice/stack"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 1
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_INT32
+            tensor_shape {
+              dim {
+                size: 1
+              }
+            }
+            int_val: 0
+          }
+        }
+      }
+    }
+    node {
+      name: "dnn/multi_class_head/strided_slice/stack_1"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 1
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_INT32
+            tensor_shape {
+              dim {
+                size: 1
+              }
+            }
+            int_val: 1
+          }
+        }
+      }
+    }
+    node {
+      name: "dnn/multi_class_head/strided_slice/stack_2"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 1
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_INT32
+            tensor_shape {
+              dim {
+                size: 1
+              }
+            }
+            int_val: 1
+          }
+        }
+      }
+    }
+    node {
+      name: "dnn/multi_class_head/strided_slice"
+      op: "StridedSlice"
+      input: "dnn/multi_class_head/Shape"
+      input: "dnn/multi_class_head/strided_slice/stack"
+      input: "dnn/multi_class_head/strided_slice/stack_1"
+      input: "dnn/multi_class_head/strided_slice/stack_2"
+      attr {
+        key: "Index"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "T"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "begin_mask"
+        value {
+          i: 0
+        }
+      }
+      attr {
+        key: "ellipsis_mask"
+        value {
+          i: 0
+        }
+      }
+      attr {
+        key: "end_mask"
+        value {
+          i: 0
+        }
+      }
+      attr {
+        key: "new_axis_mask"
+        value {
+          i: 0
+        }
+      }
+      attr {
+        key: "shrink_axis_mask"
+        value {
+          i: 1
+        }
+      }
+    }
+    node {
+      name: "dnn/multi_class_head/range/start"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_INT32
+            tensor_shape {
+            }
+            int_val: 0
+          }
+        }
+      }
+    }
+    node {
+      name: "dnn/multi_class_head/range/limit"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_INT32
+            tensor_shape {
+            }
+            int_val: 3
+          }
+        }
+      }
+    }
+    node {
+      name: "dnn/multi_class_head/range/delta"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_INT32
+            tensor_shape {
+            }
+            int_val: 1
+          }
+        }
+      }
+    }
+    node {
+      name: "dnn/multi_class_head/range"
+      op: "Range"
+      input: "dnn/multi_class_head/range/start"
+      input: "dnn/multi_class_head/range/limit"
+      input: "dnn/multi_class_head/range/delta"
+      attr {
+        key: "Tidx"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 3
+              }
+            }
+          }
+        }
+      }
+    }
+    node {
+      name: "dnn/multi_class_head/ExpandDims/dim"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_INT32
+            tensor_shape {
+            }
+            int_val: 0
+          }
+        }
+      }
+    }
+    node {
+      name: "dnn/multi_class_head/ExpandDims"
+      op: "ExpandDims"
+      input: "dnn/multi_class_head/range"
+      input: "dnn/multi_class_head/ExpandDims/dim"
+      attr {
+        key: "T"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "Tdim"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 1
+              }
+              dim {
+                size: 3
+              }
+            }
+          }
+        }
+      }
+    }
+    node {
+      name: "dnn/multi_class_head/Tile/multiples/1"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_INT32
+            tensor_shape {
+            }
+            int_val: 1
+          }
+        }
+      }
+    }
+    node {
+      name: "dnn/multi_class_head/Tile/multiples"
+      op: "Pack"
+      input: "dnn/multi_class_head/strided_slice"
+      input: "dnn/multi_class_head/Tile/multiples/1"
+      attr {
+        key: "N"
+        value {
+          i: 2
+        }
+      }
+      attr {
+        key: "T"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 2
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "axis"
+        value {
+          i: 0
+        }
+      }
+    }
+    node {
+      name: "dnn/multi_class_head/Tile"
+      op: "Tile"
+      input: "dnn/multi_class_head/ExpandDims"
+      input: "dnn/multi_class_head/Tile/multiples"
+      attr {
+        key: "T"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "Tmultiples"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: -1
+              }
+              dim {
+                size: 3
+              }
+            }
+          }
+        }
+      }
+    }
+    node {
+      name: "init"
+      op: "NoOp"
+    }
+    node {
+      name: "init_all_tables"
+      op: "NoOp"
+    }
+    node {
+      name: "init_1"
+      op: "NoOp"
+    }
+    node {
+      name: "save/Const"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_STRING
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_STRING
+            tensor_shape {
+            }
+            string_val: "model"
+          }
+        }
+      }
+    }
+    node {
+      name: "save/StringJoin/inputs_1"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_STRING
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_STRING
+            tensor_shape {
+            }
+            string_val: "_temp_1a55a489b56b45adbd7d722395e8e923/part"
+          }
+        }
+      }
+    }
+    node {
+      name: "save/StringJoin"
+      op: "StringJoin"
+      input: "save/Const"
+      input: "save/StringJoin/inputs_1"
+      attr {
+        key: "N"
+        value {
+          i: 2
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "separator"
+        value {
+          s: ""
+        }
+      }
+    }
+    node {
+      name: "save/num_shards"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_INT32
+            tensor_shape {
+            }
+            int_val: 1
+          }
+        }
+      }
+    }
+    node {
+      name: "save/ShardedFilename/shard"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_INT32
+            tensor_shape {
+            }
+            int_val: 0
+          }
+        }
+      }
+    }
+    node {
+      name: "save/ShardedFilename"
+      op: "ShardedFilename"
+      input: "save/StringJoin"
+      input: "save/ShardedFilename/shard"
+      input: "save/num_shards"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+    }
+    node {
+      name: "save/SaveV2/tensor_names"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 5
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_STRING
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_STRING
+            tensor_shape {
+              dim {
+                size: 5
+              }
+            }
+            string_val: "dnn/hiddenlayer_0/biases"
+            string_val: "dnn/hiddenlayer_0/weights"
+            string_val: "dnn/logits/biases"
+            string_val: "dnn/logits/weights"
+            string_val: "global_step"
+          }
+        }
+      }
+    }
+    node {
+      name: "save/SaveV2/shape_and_slices"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 5
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_STRING
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_STRING
+            tensor_shape {
+              dim {
+                size: 5
+              }
+            }
+            string_val: "11 0,11"
+            string_val: "4 11 0,4:0,11"
+            string_val: "3 0,3"
+            string_val: "11 3 0,11:0,3"
+            string_val: ""
+          }
+        }
+      }
+    }
+    node {
+      name: "save/SaveV2"
+      op: "SaveV2"
+      input: "save/ShardedFilename"
+      input: "save/SaveV2/tensor_names"
+      input: "save/SaveV2/shape_and_slices"
+      input: "dnn/hiddenlayer_0/biases/part_0/read"
+      input: "dnn/hiddenlayer_0/weights/part_0/read"
+      input: "dnn/logits/biases/part_0/read"
+      input: "dnn/logits/weights/part_0/read"
+      input: "global_step"
+      attr {
+        key: "dtypes"
+        value {
+          list {
+            type: DT_FLOAT
+            type: DT_FLOAT
+            type: DT_FLOAT
+            type: DT_FLOAT
+            type: DT_INT64
+          }
+        }
+      }
+    }
+    node {
+      name: "save/control_dependency"
+      op: "Identity"
+      input: "save/ShardedFilename"
+      input: "^save/SaveV2"
+      attr {
+        key: "T"
+        value {
+          type: DT_STRING
+        }
+      }
+      attr {
+        key: "_class"
+        value {
+          list {
+            s: "loc:@save/ShardedFilename"
+          }
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+    }
+    node {
+      name: "save/MergeV2Checkpoints/checkpoint_prefixes"
+      op: "Pack"
+      input: "save/ShardedFilename"
+      input: "^save/control_dependency"
+      attr {
+        key: "N"
+        value {
+          i: 1
+        }
+      }
+      attr {
+        key: "T"
+        value {
+          type: DT_STRING
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 1
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "axis"
+        value {
+          i: 0
+        }
+      }
+    }
+    node {
+      name: "save/MergeV2Checkpoints"
+      op: "MergeV2Checkpoints"
+      input: "save/MergeV2Checkpoints/checkpoint_prefixes"
+      input: "save/Const"
+      attr {
+        key: "delete_old_dirs"
+        value {
+          b: true
+        }
+      }
+    }
+    node {
+      name: "save/Identity"
+      op: "Identity"
+      input: "save/Const"
+      input: "^save/control_dependency"
+      input: "^save/MergeV2Checkpoints"
+      attr {
+        key: "T"
+        value {
+          type: DT_STRING
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+    }
+    node {
+      name: "save/RestoreV2/tensor_names"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 1
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_STRING
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_STRING
+            tensor_shape {
+              dim {
+                size: 1
+              }
+            }
+            string_val: "dnn/hiddenlayer_0/biases"
+          }
+        }
+      }
+    }
+    node {
+      name: "save/RestoreV2/shape_and_slices"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 1
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_STRING
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_STRING
+            tensor_shape {
+              dim {
+                size: 1
+              }
+            }
+            string_val: "11 0,11"
+          }
+        }
+      }
+    }
+    node {
+      name: "save/RestoreV2"
+      op: "RestoreV2"
+      input: "save/Const"
+      input: "save/RestoreV2/tensor_names"
+      input: "save/RestoreV2/shape_and_slices"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              unknown_rank: true
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtypes"
+        value {
+          list {
+            type: DT_FLOAT
+          }
+        }
+      }
+    }
+    node {
+      name: "save/Assign"
+      op: "Assign"
+      input: "dnn/hiddenlayer_0/biases/part_0"
+      input: "save/RestoreV2"
+      attr {
+        key: "T"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "_class"
+        value {
+          list {
+            s: "loc:@dnn/hiddenlayer_0/biases/part_0"
+          }
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 11
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "use_locking"
+        value {
+          b: true
+        }
+      }
+      attr {
+        key: "validate_shape"
+        value {
+          b: true
+        }
+      }
+    }
+    node {
+      name: "save/RestoreV2_1/tensor_names"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 1
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_STRING
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_STRING
+            tensor_shape {
+              dim {
+                size: 1
+              }
+            }
+            string_val: "dnn/hiddenlayer_0/weights"
+          }
+        }
+      }
+    }
+    node {
+      name: "save/RestoreV2_1/shape_and_slices"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 1
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_STRING
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_STRING
+            tensor_shape {
+              dim {
+                size: 1
+              }
+            }
+            string_val: "4 11 0,4:0,11"
+          }
+        }
+      }
+    }
+    node {
+      name: "save/RestoreV2_1"
+      op: "RestoreV2"
+      input: "save/Const"
+      input: "save/RestoreV2_1/tensor_names"
+      input: "save/RestoreV2_1/shape_and_slices"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              unknown_rank: true
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtypes"
+        value {
+          list {
+            type: DT_FLOAT
+          }
+        }
+      }
+    }
+    node {
+      name: "save/Assign_1"
+      op: "Assign"
+      input: "dnn/hiddenlayer_0/weights/part_0"
+      input: "save/RestoreV2_1"
+      attr {
+        key: "T"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "_class"
+        value {
+          list {
+            s: "loc:@dnn/hiddenlayer_0/weights/part_0"
+          }
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 4
+              }
+              dim {
+                size: 11
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "use_locking"
+        value {
+          b: true
+        }
+      }
+      attr {
+        key: "validate_shape"
+        value {
+          b: true
+        }
+      }
+    }
+    node {
+      name: "save/RestoreV2_2/tensor_names"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 1
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_STRING
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_STRING
+            tensor_shape {
+              dim {
+                size: 1
+              }
+            }
+            string_val: "dnn/logits/biases"
+          }
+        }
+      }
+    }
+    node {
+      name: "save/RestoreV2_2/shape_and_slices"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 1
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_STRING
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_STRING
+            tensor_shape {
+              dim {
+                size: 1
+              }
+            }
+            string_val: "3 0,3"
+          }
+        }
+      }
+    }
+    node {
+      name: "save/RestoreV2_2"
+      op: "RestoreV2"
+      input: "save/Const"
+      input: "save/RestoreV2_2/tensor_names"
+      input: "save/RestoreV2_2/shape_and_slices"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              unknown_rank: true
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtypes"
+        value {
+          list {
+            type: DT_FLOAT
+          }
+        }
+      }
+    }
+    node {
+      name: "save/Assign_2"
+      op: "Assign"
+      input: "dnn/logits/biases/part_0"
+      input: "save/RestoreV2_2"
+      attr {
+        key: "T"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "_class"
+        value {
+          list {
+            s: "loc:@dnn/logits/biases/part_0"
+          }
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 3
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "use_locking"
+        value {
+          b: true
+        }
+      }
+      attr {
+        key: "validate_shape"
+        value {
+          b: true
+        }
+      }
+    }
+    node {
+      name: "save/RestoreV2_3/tensor_names"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 1
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_STRING
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_STRING
+            tensor_shape {
+              dim {
+                size: 1
+              }
+            }
+            string_val: "dnn/logits/weights"
+          }
+        }
+      }
+    }
+    node {
+      name: "save/RestoreV2_3/shape_and_slices"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 1
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_STRING
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_STRING
+            tensor_shape {
+              dim {
+                size: 1
+              }
+            }
+            string_val: "11 3 0,11:0,3"
+          }
+        }
+      }
+    }
+    node {
+      name: "save/RestoreV2_3"
+      op: "RestoreV2"
+      input: "save/Const"
+      input: "save/RestoreV2_3/tensor_names"
+      input: "save/RestoreV2_3/shape_and_slices"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              unknown_rank: true
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtypes"
+        value {
+          list {
+            type: DT_FLOAT
+          }
+        }
+      }
+    }
+    node {
+      name: "save/Assign_3"
+      op: "Assign"
+      input: "dnn/logits/weights/part_0"
+      input: "save/RestoreV2_3"
+      attr {
+        key: "T"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "_class"
+        value {
+          list {
+            s: "loc:@dnn/logits/weights/part_0"
+          }
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 11
+              }
+              dim {
+                size: 3
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "use_locking"
+        value {
+          b: true
+        }
+      }
+      attr {
+        key: "validate_shape"
+        value {
+          b: true
+        }
+      }
+    }
+    node {
+      name: "save/RestoreV2_4/tensor_names"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 1
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_STRING
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_STRING
+            tensor_shape {
+              dim {
+                size: 1
+              }
+            }
+            string_val: "global_step"
+          }
+        }
+      }
+    }
+    node {
+      name: "save/RestoreV2_4/shape_and_slices"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 1
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_STRING
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_STRING
+            tensor_shape {
+              dim {
+                size: 1
+              }
+            }
+            string_val: ""
+          }
+        }
+      }
+    }
+    node {
+      name: "save/RestoreV2_4"
+      op: "RestoreV2"
+      input: "save/Const"
+      input: "save/RestoreV2_4/tensor_names"
+      input: "save/RestoreV2_4/shape_and_slices"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              unknown_rank: true
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtypes"
+        value {
+          list {
+            type: DT_INT64
+          }
+        }
+      }
+    }
+    node {
+      name: "save/Assign_4"
+      op: "Assign"
+      input: "global_step"
+      input: "save/RestoreV2_4"
+      attr {
+        key: "T"
+        value {
+          type: DT_INT64
+        }
+      }
+      attr {
+        key: "_class"
+        value {
+          list {
+            s: "loc:@global_step"
+          }
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "use_locking"
+        value {
+          b: true
+        }
+      }
+      attr {
+        key: "validate_shape"
+        value {
+          b: true
+        }
+      }
+    }
+    node {
+      name: "save/restore_shard"
+      op: "NoOp"
+      input: "^save/Assign"
+      input: "^save/Assign_1"
+      input: "^save/Assign_2"
+      input: "^save/Assign_3"
+      input: "^save/Assign_4"
+    }
+    node {
+      name: "save/restore_all"
+      op: "NoOp"
+      input: "^save/restore_shard"
+    }
+    node {
+      name: "init_2"
+      op: "NoOp"
+    }
+    node {
+      name: "init_3"
+      op: "NoOp"
+    }
+    node {
+      name: "init_all_tables_1"
+      op: "NoOp"
+    }
+    node {
+      name: "group_deps"
+      op: "NoOp"
+      input: "^init_2"
+      input: "^init_3"
+      input: "^init_all_tables_1"
+    }
+    node {
+      name: "save_1/Const"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_STRING
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_STRING
+            tensor_shape {
+            }
+            string_val: "model"
+          }
+        }
+      }
+    }
+    node {
+      name: "save_1/StringJoin/inputs_1"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_STRING
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_STRING
+            tensor_shape {
+            }
+            string_val: "_temp_007ea7a5d44d4ffa8fd61eafbb071f39/part"
+          }
+        }
+      }
+    }
+    node {
+      name: "save_1/StringJoin"
+      op: "StringJoin"
+      input: "save_1/Const"
+      input: "save_1/StringJoin/inputs_1"
+      attr {
+        key: "N"
+        value {
+          i: 2
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "separator"
+        value {
+          s: ""
+        }
+      }
+    }
+    node {
+      name: "save_1/num_shards"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_INT32
+            tensor_shape {
+            }
+            int_val: 1
+          }
+        }
+      }
+    }
+    node {
+      name: "save_1/ShardedFilename/shard"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_INT32
+            tensor_shape {
+            }
+            int_val: 0
+          }
+        }
+      }
+    }
+    node {
+      name: "save_1/ShardedFilename"
+      op: "ShardedFilename"
+      input: "save_1/StringJoin"
+      input: "save_1/ShardedFilename/shard"
+      input: "save_1/num_shards"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+    }
+    node {
+      name: "save_1/SaveV2/tensor_names"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 5
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_STRING
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_STRING
+            tensor_shape {
+              dim {
+                size: 5
+              }
+            }
+            string_val: "dnn/hiddenlayer_0/biases"
+            string_val: "dnn/hiddenlayer_0/weights"
+            string_val: "dnn/logits/biases"
+            string_val: "dnn/logits/weights"
+            string_val: "global_step"
+          }
+        }
+      }
+    }
+    node {
+      name: "save_1/SaveV2/shape_and_slices"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 5
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_STRING
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_STRING
+            tensor_shape {
+              dim {
+                size: 5
+              }
+            }
+            string_val: "11 0,11"
+            string_val: "4 11 0,4:0,11"
+            string_val: "3 0,3"
+            string_val: "11 3 0,11:0,3"
+            string_val: ""
+          }
+        }
+      }
+    }
+    node {
+      name: "save_1/SaveV2"
+      op: "SaveV2"
+      input: "save_1/ShardedFilename"
+      input: "save_1/SaveV2/tensor_names"
+      input: "save_1/SaveV2/shape_and_slices"
+      input: "dnn/hiddenlayer_0/biases/part_0/read"
+      input: "dnn/hiddenlayer_0/weights/part_0/read"
+      input: "dnn/logits/biases/part_0/read"
+      input: "dnn/logits/weights/part_0/read"
+      input: "global_step"
+      attr {
+        key: "dtypes"
+        value {
+          list {
+            type: DT_FLOAT
+            type: DT_FLOAT
+            type: DT_FLOAT
+            type: DT_FLOAT
+            type: DT_INT64
+          }
+        }
+      }
+    }
+    node {
+      name: "save_1/control_dependency"
+      op: "Identity"
+      input: "save_1/ShardedFilename"
+      input: "^save_1/SaveV2"
+      attr {
+        key: "T"
+        value {
+          type: DT_STRING
+        }
+      }
+      attr {
+        key: "_class"
+        value {
+          list {
+            s: "loc:@save_1/ShardedFilename"
+          }
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+    }
+    node {
+      name: "save_1/MergeV2Checkpoints/checkpoint_prefixes"
+      op: "Pack"
+      input: "save_1/ShardedFilename"
+      input: "^save_1/control_dependency"
+      attr {
+        key: "N"
+        value {
+          i: 1
+        }
+      }
+      attr {
+        key: "T"
+        value {
+          type: DT_STRING
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 1
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "axis"
+        value {
+          i: 0
+        }
+      }
+    }
+    node {
+      name: "save_1/MergeV2Checkpoints"
+      op: "MergeV2Checkpoints"
+      input: "save_1/MergeV2Checkpoints/checkpoint_prefixes"
+      input: "save_1/Const"
+      attr {
+        key: "delete_old_dirs"
+        value {
+          b: true
+        }
+      }
+    }
+    node {
+      name: "save_1/Identity"
+      op: "Identity"
+      input: "save_1/Const"
+      input: "^save_1/control_dependency"
+      input: "^save_1/MergeV2Checkpoints"
+      attr {
+        key: "T"
+        value {
+          type: DT_STRING
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+    }
+    node {
+      name: "save_1/RestoreV2/tensor_names"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 1
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_STRING
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_STRING
+            tensor_shape {
+              dim {
+                size: 1
+              }
+            }
+            string_val: "dnn/hiddenlayer_0/biases"
+          }
+        }
+      }
+    }
+    node {
+      name: "save_1/RestoreV2/shape_and_slices"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 1
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_STRING
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_STRING
+            tensor_shape {
+              dim {
+                size: 1
+              }
+            }
+            string_val: "11 0,11"
+          }
+        }
+      }
+    }
+    node {
+      name: "save_1/RestoreV2"
+      op: "RestoreV2"
+      input: "save_1/Const"
+      input: "save_1/RestoreV2/tensor_names"
+      input: "save_1/RestoreV2/shape_and_slices"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              unknown_rank: true
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtypes"
+        value {
+          list {
+            type: DT_FLOAT
+          }
+        }
+      }
+    }
+    node {
+      name: "save_1/Assign"
+      op: "Assign"
+      input: "dnn/hiddenlayer_0/biases/part_0"
+      input: "save_1/RestoreV2"
+      attr {
+        key: "T"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "_class"
+        value {
+          list {
+            s: "loc:@dnn/hiddenlayer_0/biases/part_0"
+          }
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 11
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "use_locking"
+        value {
+          b: true
+        }
+      }
+      attr {
+        key: "validate_shape"
+        value {
+          b: true
+        }
+      }
+    }
+    node {
+      name: "save_1/RestoreV2_1/tensor_names"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 1
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_STRING
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_STRING
+            tensor_shape {
+              dim {
+                size: 1
+              }
+            }
+            string_val: "dnn/hiddenlayer_0/weights"
+          }
+        }
+      }
+    }
+    node {
+      name: "save_1/RestoreV2_1/shape_and_slices"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 1
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_STRING
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_STRING
+            tensor_shape {
+              dim {
+                size: 1
+              }
+            }
+            string_val: "4 11 0,4:0,11"
+          }
+        }
+      }
+    }
+    node {
+      name: "save_1/RestoreV2_1"
+      op: "RestoreV2"
+      input: "save_1/Const"
+      input: "save_1/RestoreV2_1/tensor_names"
+      input: "save_1/RestoreV2_1/shape_and_slices"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              unknown_rank: true
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtypes"
+        value {
+          list {
+            type: DT_FLOAT
+          }
+        }
+      }
+    }
+    node {
+      name: "save_1/Assign_1"
+      op: "Assign"
+      input: "dnn/hiddenlayer_0/weights/part_0"
+      input: "save_1/RestoreV2_1"
+      attr {
+        key: "T"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "_class"
+        value {
+          list {
+            s: "loc:@dnn/hiddenlayer_0/weights/part_0"
+          }
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 4
+              }
+              dim {
+                size: 11
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "use_locking"
+        value {
+          b: true
+        }
+      }
+      attr {
+        key: "validate_shape"
+        value {
+          b: true
+        }
+      }
+    }
+    node {
+      name: "save_1/RestoreV2_2/tensor_names"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 1
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_STRING
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_STRING
+            tensor_shape {
+              dim {
+                size: 1
+              }
+            }
+            string_val: "dnn/logits/biases"
+          }
+        }
+      }
+    }
+    node {
+      name: "save_1/RestoreV2_2/shape_and_slices"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 1
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_STRING
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_STRING
+            tensor_shape {
+              dim {
+                size: 1
+              }
+            }
+            string_val: "3 0,3"
+          }
+        }
+      }
+    }
+    node {
+      name: "save_1/RestoreV2_2"
+      op: "RestoreV2"
+      input: "save_1/Const"
+      input: "save_1/RestoreV2_2/tensor_names"
+      input: "save_1/RestoreV2_2/shape_and_slices"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              unknown_rank: true
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtypes"
+        value {
+          list {
+            type: DT_FLOAT
+          }
+        }
+      }
+    }
+    node {
+      name: "save_1/Assign_2"
+      op: "Assign"
+      input: "dnn/logits/biases/part_0"
+      input: "save_1/RestoreV2_2"
+      attr {
+        key: "T"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "_class"
+        value {
+          list {
+            s: "loc:@dnn/logits/biases/part_0"
+          }
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 3
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "use_locking"
+        value {
+          b: true
+        }
+      }
+      attr {
+        key: "validate_shape"
+        value {
+          b: true
+        }
+      }
+    }
+    node {
+      name: "save_1/RestoreV2_3/tensor_names"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 1
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_STRING
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_STRING
+            tensor_shape {
+              dim {
+                size: 1
+              }
+            }
+            string_val: "dnn/logits/weights"
+          }
+        }
+      }
+    }
+    node {
+      name: "save_1/RestoreV2_3/shape_and_slices"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 1
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_STRING
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_STRING
+            tensor_shape {
+              dim {
+                size: 1
+              }
+            }
+            string_val: "11 3 0,11:0,3"
+          }
+        }
+      }
+    }
+    node {
+      name: "save_1/RestoreV2_3"
+      op: "RestoreV2"
+      input: "save_1/Const"
+      input: "save_1/RestoreV2_3/tensor_names"
+      input: "save_1/RestoreV2_3/shape_and_slices"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              unknown_rank: true
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtypes"
+        value {
+          list {
+            type: DT_FLOAT
+          }
+        }
+      }
+    }
+    node {
+      name: "save_1/Assign_3"
+      op: "Assign"
+      input: "dnn/logits/weights/part_0"
+      input: "save_1/RestoreV2_3"
+      attr {
+        key: "T"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "_class"
+        value {
+          list {
+            s: "loc:@dnn/logits/weights/part_0"
+          }
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 11
+              }
+              dim {
+                size: 3
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "use_locking"
+        value {
+          b: true
+        }
+      }
+      attr {
+        key: "validate_shape"
+        value {
+          b: true
+        }
+      }
+    }
+    node {
+      name: "save_1/RestoreV2_4/tensor_names"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 1
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_STRING
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_STRING
+            tensor_shape {
+              dim {
+                size: 1
+              }
+            }
+            string_val: "global_step"
+          }
+        }
+      }
+    }
+    node {
+      name: "save_1/RestoreV2_4/shape_and_slices"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 1
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_STRING
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_STRING
+            tensor_shape {
+              dim {
+                size: 1
+              }
+            }
+            string_val: ""
+          }
+        }
+      }
+    }
+    node {
+      name: "save_1/RestoreV2_4"
+      op: "RestoreV2"
+      input: "save_1/Const"
+      input: "save_1/RestoreV2_4/tensor_names"
+      input: "save_1/RestoreV2_4/shape_and_slices"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              unknown_rank: true
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtypes"
+        value {
+          list {
+            type: DT_INT64
+          }
+        }
+      }
+    }
+    node {
+      name: "save_1/Assign_4"
+      op: "Assign"
+      input: "global_step"
+      input: "save_1/RestoreV2_4"
+      attr {
+        key: "T"
+        value {
+          type: DT_INT64
+        }
+      }
+      attr {
+        key: "_class"
+        value {
+          list {
+            s: "loc:@global_step"
+          }
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "use_locking"
+        value {
+          b: true
+        }
+      }
+      attr {
+        key: "validate_shape"
+        value {
+          b: true
+        }
+      }
+    }
+    node {
+      name: "save_1/restore_shard"
+      op: "NoOp"
+      input: "^save_1/Assign"
+      input: "^save_1/Assign_1"
+      input: "^save_1/Assign_2"
+      input: "^save_1/Assign_3"
+      input: "^save_1/Assign_4"
+    }
+    node {
+      name: "save_1/restore_all"
+      op: "NoOp"
+      input: "^save_1/restore_shard"
+    }
+    versions {
+      producer: 21
+    }
+  }
+  saver_def {
+    filename_tensor_name: "save_1/Const:0"
+    save_tensor_name: "save_1/Identity:0"
+    restore_op_name: "save_1/restore_all"
+    max_to_keep: 5
+    sharded: true
+    keep_checkpoint_every_n_hours: 10000.0
+    version: V2
+  }
+  collection_def {
+    key: "dnn"
+    value {
+      node_list {
+        value: "dnn/hiddenlayer_0/weights/part_0:0"
+        value: "dnn/hiddenlayer_0/biases/part_0:0"
+        value: "dnn/logits/weights/part_0:0"
+        value: "dnn/logits/biases/part_0:0"
+      }
+    }
+  }
+  collection_def {
+    key: "global_step"
+    value {
+      node_list {
+        value: "global_step:0"
+      }
+    }
+  }
+  collection_def {
+    key: "legacy_init_op"
+    value {
+      node_list {
+        value: "group_deps"
+      }
+    }
+  }
+  collection_def {
+    key: "model_variables"
+    value {
+      node_list {
+        value: "dnn/hiddenlayer_0/weights/part_0:0"
+        value: "dnn/hiddenlayer_0/biases/part_0:0"
+        value: "dnn/logits/weights/part_0:0"
+        value: "dnn/logits/biases/part_0:0"
+      }
+    }
+  }
+  collection_def {
+    key: "summaries"
+    value {
+      node_list {
+        value: "dnn/dnn/hiddenlayer_0_fraction_of_zero_values:0"
+        value: "dnn/dnn/hiddenlayer_0_activation:0"
+        value: "dnn/dnn/logits_fraction_of_zero_values:0"
+        value: "dnn/dnn/logits_activation:0"
+      }
+    }
+  }
+  collection_def {
+    key: "trainable_variables"
+    value {
+      bytes_list {
+        value: "\n\"dnn/hiddenlayer_0/weights/part_0:0\022\'dnn/hiddenlayer_0/weights/part_0/Assign\032\'dnn/hiddenlayer_0/weights/part_0/read:0\"\'\n\031dnn/hiddenlayer_0/weights\022\002\004\013\032\002\000\000\"\002\004\013"
+        value: "\n!dnn/hiddenlayer_0/biases/part_0:0\022&dnn/hiddenlayer_0/biases/part_0/Assign\032&dnn/hiddenlayer_0/biases/part_0/read:0\"#\n\030dnn/hiddenlayer_0/biases\022\001\013\032\001\000\"\001\013"
+        value: "\n\033dnn/logits/weights/part_0:0\022 dnn/logits/weights/part_0/Assign\032 dnn/logits/weights/part_0/read:0\" \n\022dnn/logits/weights\022\002\013\003\032\002\000\000\"\002\013\003"
+        value: "\n\032dnn/logits/biases/part_0:0\022\037dnn/logits/biases/part_0/Assign\032\037dnn/logits/biases/part_0/read:0\"\034\n\021dnn/logits/biases\022\001\003\032\001\000\"\001\003"
+      }
+    }
+  }
+  collection_def {
+    key: "variables"
+    value {
+      bytes_list {
+        value: "\n\rglobal_step:0\022\022global_step/Assign\032\022global_step/read:0"
+        value: "\n\"dnn/hiddenlayer_0/weights/part_0:0\022\'dnn/hiddenlayer_0/weights/part_0/Assign\032\'dnn/hiddenlayer_0/weights/part_0/read:0\"\'\n\031dnn/hiddenlayer_0/weights\022\002\004\013\032\002\000\000\"\002\004\013"
+        value: "\n!dnn/hiddenlayer_0/biases/part_0:0\022&dnn/hiddenlayer_0/biases/part_0/Assign\032&dnn/hiddenlayer_0/biases/part_0/read:0\"#\n\030dnn/hiddenlayer_0/biases\022\001\013\032\001\000\"\001\013"
+        value: "\n\033dnn/logits/weights/part_0:0\022 dnn/logits/weights/part_0/Assign\032 dnn/logits/weights/part_0/read:0\" \n\022dnn/logits/weights\022\002\013\003\032\002\000\000\"\002\013\003"
+        value: "\n\032dnn/logits/biases/part_0:0\022\037dnn/logits/biases/part_0/Assign\032\037dnn/logits/biases/part_0/read:0\"\034\n\021dnn/logits/biases\022\001\003\032\001\000\"\001\003"
+      }
+    }
+  }
+  signature_def {
+    key: "default_input_alternative:None"
+    value {
+      inputs {
+        key: "Petal.Length"
+        value {
+          name: "Petal.Length:0"
+          dtype: DT_DOUBLE
+          tensor_shape {
+            dim {
+              size: -1
+            }
+            dim {
+              size: 1
+            }
+          }
+        }
+      }
+      inputs {
+        key: "Petal.Width"
+        value {
+          name: "Petal.Width:0"
+          dtype: DT_DOUBLE
+          tensor_shape {
+            dim {
+              size: -1
+            }
+            dim {
+              size: 1
+            }
+          }
+        }
+      }
+      inputs {
+        key: "Sepal.Length"
+        value {
+          name: "Sepal.Length:0"
+          dtype: DT_DOUBLE
+          tensor_shape {
+            dim {
+              size: -1
+            }
+            dim {
+              size: 1
+            }
+          }
+        }
+      }
+      inputs {
+        key: "Sepal.Width"
+        value {
+          name: "Sepal.Width:0"
+          dtype: DT_DOUBLE
+          tensor_shape {
+            dim {
+              size: -1
+            }
+            dim {
+              size: 1
+            }
+          }
+        }
+      }
+      outputs {
+        key: "classes"
+        value {
+          name: "dnn/multi_class_head/Tile:0"
+          dtype: DT_INT32
+          tensor_shape {
+            dim {
+              size: -1
+            }
+            dim {
+              size: 3
+            }
+          }
+        }
+      }
+      outputs {
+        key: "probabilities"
+        value {
+          name: "dnn/multi_class_head/predictions/probabilities:0"
+          dtype: DT_FLOAT
+          tensor_shape {
+            dim {
+              size: -1
+            }
+            dim {
+              size: 3
+            }
+          }
+        }
+      }
+      method_name: "tensorflow/serving/predict"
+    }
+  }
+  signature_def {
+    key: "serving_default"
+    value {
+      inputs {
+        key: "Petal.Length"
+        value {
+          name: "Petal.Length:0"
+          dtype: DT_DOUBLE
+          tensor_shape {
+            dim {
+              size: -1
+            }
+            dim {
+              size: 1
+            }
+          }
+        }
+      }
+      inputs {
+        key: "Petal.Width"
+        value {
+          name: "Petal.Width:0"
+          dtype: DT_DOUBLE
+          tensor_shape {
+            dim {
+              size: -1
+            }
+            dim {
+              size: 1
+            }
+          }
+        }
+      }
+      inputs {
+        key: "Sepal.Length"
+        value {
+          name: "Sepal.Length:0"
+          dtype: DT_DOUBLE
+          tensor_shape {
+            dim {
+              size: -1
+            }
+            dim {
+              size: 1
+            }
+          }
+        }
+      }
+      inputs {
+        key: "Sepal.Width"
+        value {
+          name: "Sepal.Width:0"
+          dtype: DT_DOUBLE
+          tensor_shape {
+            dim {
+              size: -1
+            }
+            dim {
+              size: 1
+            }
+          }
+        }
+      }
+      outputs {
+        key: "classes"
+        value {
+          name: "dnn/multi_class_head/Tile:0"
+          dtype: DT_INT32
+          tensor_shape {
+            dim {
+              size: -1
+            }
+            dim {
+              size: 3
+            }
+          }
+        }
+      }
+      outputs {
+        key: "probabilities"
+        value {
+          name: "dnn/multi_class_head/predictions/probabilities:0"
+          dtype: DT_FLOAT
+          tensor_shape {
+            dim {
+              size: -1
+            }
+            dim {
+              size: 3
+            }
+          }
+        }
+      }
+      method_name: "tensorflow/serving/predict"
+    }
+  }
+}

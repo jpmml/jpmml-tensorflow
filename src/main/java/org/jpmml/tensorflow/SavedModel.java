@@ -19,7 +19,6 @@
 package org.jpmml.tensorflow;
 
 import java.util.ArrayDeque;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
@@ -33,7 +32,6 @@ import java.util.Set;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 import com.google.protobuf.InvalidProtocolBufferException;
 import org.tensorflow.Graph;
 import org.tensorflow.Operation;
@@ -173,21 +171,17 @@ public class SavedModel implements AutoCloseable {
 	}
 
 	public NodeDef getOnlyInput(String name, String... ops){
-		Collection<NodeDef> inputs = getInputs(name, ops);
-
-		if(inputs.size() > 1){
-			inputs = new LinkedHashSet<>(inputs);
-		}
+		Iterable<NodeDef> inputs = getInputs(name, ops);
 
 		return Iterables.getOnlyElement(inputs);
 	}
 
-	public List<NodeDef> getInputs(String name, String... ops){
+	public Iterable<NodeDef> getInputs(String name, String... ops){
 		NodeDef nodeDef = getNodeDef(name);
 
-		List<Trail> inputs = new ArrayList<>();
+		Collection<Trail> trails = new LinkedHashSet<>();
 
-		collectInputs(new ArrayDeque<>(), nodeDef, new HashSet<>(Arrays.asList(ops)), inputs);
+		collectInputs(new ArrayDeque<>(), nodeDef, new HashSet<>(Arrays.asList(ops)), trails);
 
 		Function<Trail, NodeDef> function = new Function<Trail, NodeDef>(){
 
@@ -197,10 +191,14 @@ public class SavedModel implements AutoCloseable {
 			}
 		};
 
-		return Lists.transform(inputs, function);
+		Collection<NodeDef> inputs = new LinkedHashSet<>();
+
+		Iterables.addAll(inputs, Iterables.transform(trails, function));
+
+		return inputs;
 	}
 
-	private void collectInputs(Deque<NodeDef> parentNodeDefs, NodeDef nodeDef, Set<String> ops, List<Trail> trails){
+	private void collectInputs(Deque<NodeDef> parentNodeDefs, NodeDef nodeDef, Set<String> ops, Collection<Trail> trails){
 
 		if(ops.contains(nodeDef.getOp())){
 			trails.add(new Trail(parentNodeDefs, nodeDef));

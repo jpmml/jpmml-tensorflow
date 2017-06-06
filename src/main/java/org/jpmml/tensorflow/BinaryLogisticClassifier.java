@@ -31,10 +31,6 @@ import org.jpmml.converter.regression.RegressionModelUtil;
 
 public class BinaryLogisticClassifier extends LinearEstimator {
 
-	public BinaryLogisticClassifier(SavedModel savedModel){
-		this(savedModel, BinaryLogisticClassifier.HEAD);
-	}
-
 	public BinaryLogisticClassifier(SavedModel savedModel, String head){
 		super(savedModel, head);
 	}
@@ -50,5 +46,5 @@ public class BinaryLogisticClassifier extends LinearEstimator {
 		return RegressionModelUtil.createBinaryLogisticClassification(regressionTable.getFeatures(), regressionTable.getIntercept(), regressionTable.getCoefficients(), RegressionModel.NormalizationMethod.SOFTMAX, true, schema);
 	}
 
-	public static final String HEAD = "linear/binary_logistic_head/predictions/probabilities";
+	public static final String BINARY_LOGISTIC_HEAD = "linear/binary_logistic_head/predictions/probabilities";
 }

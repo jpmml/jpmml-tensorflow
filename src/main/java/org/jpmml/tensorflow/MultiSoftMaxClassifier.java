@@ -33,10 +33,6 @@ import org.jpmml.converter.regression.RegressionModelUtil;
 
 public class MultiSoftMaxClassifier extends LinearEstimator {
 
-	public MultiSoftMaxClassifier(SavedModel savedModel){
-		this(savedModel, MultiSoftMaxClassifier.HEAD);
-	}
-
 	public MultiSoftMaxClassifier(SavedModel savedModel, String head){
 		super(savedModel, head);
 	}
@@ -77,5 +73,5 @@ public class MultiSoftMaxClassifier extends LinearEstimator {
 		return regressionModel;
 	}
 
-	public static final String HEAD = "linear/multi_class_head/predictions/probabilities";
+	public static final String MULTI_CLASS_HEAD = "linear/multi_class_head/predictions/probabilities";
 }

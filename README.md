@@ -6,6 +6,7 @@ Java library and command-line application for converting [TensorFlow](http://ten
 # Features #
 
 * Supported Estimator types:
+  * [`learn.DNNClassifier`](https://www.tensorflow.org/api_docs/python/tf/contrib/learn/DNNClassifier)
   * [`learn.DNNRegressor`](https://www.tensorflow.org/api_docs/python/tf/contrib/learn/DNNRegressor)
   * [`learn.LinearClassifier`](https://www.tensorflow.org/api_docs/python/tf/contrib/learn/LinearClassifier)
   * [`learn.LinearRegressor`](https://www.tensorflow.org/api_docs/python/tf/contrib/learn/LinearRegressor)

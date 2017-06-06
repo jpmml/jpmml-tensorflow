@@ -28,7 +28,7 @@ public class DNNRegressorTest extends EstimatorTest {
 
 	@Test
 	public void evaluateAuto() throws Exception {
-		evaluate("NeuralNetwork", "Auto");
+		evaluate("DNNRegression", "Auto");
 	}
 
 	@Override

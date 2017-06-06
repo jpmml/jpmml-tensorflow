@@ -28,12 +28,12 @@ public class DNNClassifierTest extends EstimatorTest {
 
 	@Test
 	public void evaluateAudit() throws Exception {
-		evaluate("NeuralNetwork", "Audit");
+		evaluate("DNNClassification", "Audit");
 	}
 
 	@Test
 	public void evaluateIris() throws Exception {
-		evaluate("NeuralNetwork", "Iris");
+		evaluate("DNNClassification", "Iris");
 	}
 
 	@Override

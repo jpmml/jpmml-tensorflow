@@ -28,12 +28,12 @@ public class LinearClassifierTest extends EstimatorTest {
 
 	@Test
 	public void evaluateAudit() throws Exception {
-		evaluate("BinaryLogisticClassification", "Audit");
+		evaluate("LinearClassification", "Audit");
 	}
 
 	@Test
 	public void evaluateIris() throws Exception {
-		evaluate("MultiSoftMaxClassification", "Iris");
+		evaluate("LinearClassification", "Iris");
 	}
 
 	@Override

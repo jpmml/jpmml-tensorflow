@@ -72,8 +72,8 @@ def build_audit(classifier, name, with_proba = True):
 
 	store_savedmodel(classifier, audit_serving_input_fn, name)
 
-build_audit(DNNClassifier(hidden_units = [71, 11], feature_columns = _dnn_feature_columns(audit_feature_columns)), "NeuralNetworkAudit")
-build_audit(LinearClassifier(feature_columns = audit_feature_columns), "BinaryLogisticClassificationAudit")
+build_audit(DNNClassifier(hidden_units = [71, 11], feature_columns = _dnn_feature_columns(audit_feature_columns)), "DNNClassificationAudit")
+build_audit(LinearClassifier(feature_columns = audit_feature_columns), "LinearClassificationAudit")
 
 #
 # Multi-class classification
@@ -103,8 +103,8 @@ def build_iris(classifier, name, with_proba = True):
 
 	store_savedmodel(classifier, iris_serving_input_fn, name)
 
-build_iris(DNNClassifier(hidden_units = [11], feature_columns = _dnn_feature_columns(iris_feature_columns), n_classes = 3), "NeuralNetworkIris")
-build_iris(LinearClassifier(feature_columns = iris_feature_columns, n_classes = 3), "MultiSoftMaxClassificationIris")
+build_iris(DNNClassifier(hidden_units = [11], feature_columns = _dnn_feature_columns(iris_feature_columns), n_classes = 3), "DNNClassificationIris")
+build_iris(LinearClassifier(feature_columns = iris_feature_columns, n_classes = 3), "LinearClassificationIris")
 
 #
 # Regression
@@ -132,5 +132,5 @@ def build_auto(regressor, name):
 
 	store_savedmodel(regressor, auto_serving_input_fn, name)
 
-build_auto(DNNRegressor(hidden_units = [7, 5, 3], feature_columns = _dnn_feature_columns(auto_feature_columns)), "NeuralNetworkAuto")
+build_auto(DNNRegressor(hidden_units = [7, 5, 3], feature_columns = _dnn_feature_columns(auto_feature_columns)), "DNNRegressionAuto")
 build_auto(LinearRegressor(feature_columns = auto_feature_columns), "LinearRegressionAuto")

@@ -25,6 +25,9 @@ import java.net.URL;
 import java.nio.file.NoSuchFileException;
 import java.nio.file.Paths;
 
+import com.google.common.base.Equivalence;
+import com.google.common.base.Predicate;
+import org.dmg.pmml.FieldName;
 import org.dmg.pmml.PMML;
 import org.jpmml.evaluator.ArchiveBatch;
 import org.jpmml.evaluator.IntegrationTest;
@@ -34,9 +37,13 @@ import org.tensorflow.SavedModelBundle;
 abstract
 public class EstimatorTest extends IntegrationTest {
 
+	public EstimatorTest(Equivalence<Object> equivalence){
+		super(equivalence);
+	}
+
 	@Override
-	protected ArchiveBatch createBatch(String name, String dataset){
-		ArchiveBatch result = new IntegrationTestBatch(name, dataset){
+	protected ArchiveBatch createBatch(String name, String dataset, Predicate<FieldName> predicate){
+		ArchiveBatch result = new IntegrationTestBatch(name, dataset, predicate){
 
 			@Override
 			public IntegrationTest getIntegrationTest(){

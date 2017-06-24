@@ -18,21 +18,17 @@
  */
 package org.jpmml.tensorflow;
 
-import java.util.Set;
-
-import org.dmg.pmml.FieldName;
-import org.jpmml.evaluator.Batch;
+import org.jpmml.evaluator.PMMLEquivalence;
 import org.junit.Test;
 
 public class LinearRegressorTest extends EstimatorTest {
 
+	public LinearRegressorTest(){
+		super(new PMMLEquivalence(1e-6, 1e-6));
+	}
+
 	@Test
 	public void evaluateAuto() throws Exception {
 		evaluate("LinearRegression", "Auto");
-	}
-
-	@Override
-	public void evaluate(Batch batch, Set<FieldName> ignoredFields) throws Exception {
-		evaluate(batch, ignoredFields, 1e-6, 1e-6);
 	}
 }

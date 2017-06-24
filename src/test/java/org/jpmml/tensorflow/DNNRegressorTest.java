@@ -18,21 +18,17 @@
  */
 package org.jpmml.tensorflow;
 
-import java.util.Set;
-
-import org.dmg.pmml.FieldName;
-import org.jpmml.evaluator.Batch;
+import org.jpmml.evaluator.PMMLEquivalence;
 import org.junit.Test;
 
 public class DNNRegressorTest extends EstimatorTest {
 
+	public DNNRegressorTest(){
+		super(new PMMLEquivalence(1e-3, 1e-4));
+	}
+
 	@Test
 	public void evaluateAuto() throws Exception {
 		evaluate("DNNRegression", "Auto");
-	}
-
-	@Override
-	public void evaluate(Batch batch, Set<FieldName> ignoredFields) throws Exception {
-		evaluate(batch, ignoredFields, 1e-3, 1e-4);
 	}
 }

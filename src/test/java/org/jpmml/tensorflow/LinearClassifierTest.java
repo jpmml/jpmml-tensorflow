@@ -18,13 +18,14 @@
  */
 package org.jpmml.tensorflow;
 
-import java.util.Set;
-
-import org.dmg.pmml.FieldName;
-import org.jpmml.evaluator.Batch;
+import org.jpmml.evaluator.PMMLEquivalence;
 import org.junit.Test;
 
 public class LinearClassifierTest extends EstimatorTest {
+
+	public LinearClassifierTest(){
+		super(new PMMLEquivalence(1e-5, 1e-5));
+	}
 
 	@Test
 	public void evaluateAudit() throws Exception {
@@ -34,10 +35,5 @@ public class LinearClassifierTest extends EstimatorTest {
 	@Test
 	public void evaluateIris() throws Exception {
 		evaluate("LinearClassification", "Iris");
-	}
-
-	@Override
-	public void evaluate(Batch batch, Set<FieldName> ignoredFields) throws Exception {
-		evaluate(batch, ignoredFields, 1e-5, 1e-5);
 	}
 }

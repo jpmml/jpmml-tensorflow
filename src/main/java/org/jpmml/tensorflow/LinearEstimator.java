@@ -146,7 +146,7 @@ public class LinearEstimator extends Estimator {
 		RegressionModel regressionModel = new RegressionModel();
 
 		for(Equation equation : equations){
-			RegressionTable regressionTable = RegressionModelUtil.createRegressionTable(equation.getFeatures(), equation.getIntercept(), equation.getCoefficients());
+			RegressionTable regressionTable = RegressionModelUtil.createRegressionTable(equation.getFeatures(), equation.getCoefficients(), equation.getIntercept());
 
 			regressionModel.addRegressionTables(regressionTable);
 		}

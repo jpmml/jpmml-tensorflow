@@ -25,19 +25,16 @@ import java.util.List;
 import com.google.common.collect.Iterables;
 import org.dmg.pmml.DataField;
 import org.dmg.pmml.DataType;
-import org.dmg.pmml.DerivedField;
 import org.dmg.pmml.FieldName;
 import org.dmg.pmml.MiningFunction;
-import org.dmg.pmml.NormDiscrete;
 import org.dmg.pmml.OpType;
 import org.dmg.pmml.neural_network.Connection;
 import org.dmg.pmml.neural_network.NeuralLayer;
 import org.dmg.pmml.neural_network.NeuralNetwork;
-import org.dmg.pmml.neural_network.NeuralOutput;
-import org.dmg.pmml.neural_network.NeuralOutputs;
 import org.dmg.pmml.neural_network.Neuron;
 import org.jpmml.converter.CategoricalLabel;
 import org.jpmml.converter.ModelUtil;
+import org.jpmml.converter.neural_network.NeuralNetworkUtil;
 
 public class DNNClassifier extends DNNEstimator {
 
@@ -110,25 +107,10 @@ public class DNNClassifier extends DNNEstimator {
 
 		CategoricalLabel categoricalLabel = new CategoricalLabel(dataField);
 
-		NeuralOutputs neuralOutputs = new NeuralOutputs();
-
-		for(int i = 0; i < neurons.size(); i++){
-			Neuron neuron = neurons.get(i);
-
-			NormDiscrete normDiscrete = new NormDiscrete(categoricalLabel.getName(), categoricalLabel.getValue(i));
-
-			DerivedField derivedField = new DerivedField(OpType.CONTINUOUS, DataType.FLOAT)
-				.setExpression(normDiscrete);
-
-			NeuralOutput neuralOutput = new NeuralOutput(neuron.getId(), derivedField);
-
-			neuralOutputs.addNeuralOutputs(neuralOutput);
-		}
-
 		neuralNetwork
 			.setMiningFunction(MiningFunction.CLASSIFICATION)
 			.setMiningSchema(ModelUtil.createMiningSchema(categoricalLabel))
-			.setNeuralOutputs(neuralOutputs)
+			.setNeuralOutputs(NeuralNetworkUtil.createClassificationNeuralOutputs(neurons, categoricalLabel))
 			.setOutput(ModelUtil.createProbabilityOutput(categoricalLabel));
 
 		return neuralNetwork;

@@ -24,12 +24,8 @@ import java.util.Map;
 
 import com.google.common.collect.Lists;
 import com.google.common.primitives.Floats;
-import org.dmg.pmml.DerivedField;
+import org.dmg.pmml.DataType;
 import org.dmg.pmml.Entity;
-import org.dmg.pmml.NormDiscrete;
-import org.dmg.pmml.OpType;
-import org.dmg.pmml.neural_network.Connection;
-import org.dmg.pmml.neural_network.NeuralInput;
 import org.dmg.pmml.neural_network.NeuralInputs;
 import org.dmg.pmml.neural_network.NeuralLayer;
 import org.dmg.pmml.neural_network.NeuralNetwork;
@@ -37,6 +33,7 @@ import org.dmg.pmml.neural_network.Neuron;
 import org.jpmml.converter.BinaryFeature;
 import org.jpmml.converter.CMatrixUtil;
 import org.jpmml.converter.Feature;
+import org.jpmml.converter.neural_network.NeuralNetworkUtil;
 import org.tensorflow.Operation;
 import org.tensorflow.Output;
 import org.tensorflow.Tensor;
@@ -74,9 +71,7 @@ public class DNNEstimator extends Estimator {
 				throw new IllegalArgumentException();
 			}
 
-			int id = 0;
-
-			NeuralInputs neuralInputs = new NeuralInputs();
+			List<Feature> features = new ArrayList<>();
 
 			List<String> inputNames = concat.getInputList();
 			for(int i = 0; i < inputNames.size() - 1; i++){
@@ -90,14 +85,7 @@ public class DNNEstimator extends Estimator {
 
 					Feature feature = encoder.createContinuousFeature(savedModel, placeholder);
 
-					DerivedField derivedField = new DerivedField(OpType.CONTINUOUS, feature.getDataType())
-						.setExpression(feature.ref());
-
-					NeuralInput neuralInput = new NeuralInput(String.valueOf(id), derivedField);
-
-					neuralInputs.addNeuralInputs(neuralInput);
-
-					id++;
+					features.add(feature);
 				} else
 
 				// "one_hot_column(sparse_column_with_keys)"
@@ -112,24 +100,16 @@ public class DNNEstimator extends Estimator {
 					List<String> categories = (List)new ArrayList<>(table.keySet());
 
 					List<BinaryFeature> binaryFeatures = encoder.createBinaryFeatures(savedModel, placeholder, categories);
-					for(BinaryFeature binaryFeature : binaryFeatures){
-						NormDiscrete normDiscrete = new NormDiscrete(binaryFeature.getName(), binaryFeature.getValue());
 
-						DerivedField derivedField = new DerivedField(OpType.CONTINUOUS, binaryFeature.getDataType())
-							.setExpression(normDiscrete);
-
-						NeuralInput neuralInput = new NeuralInput(String.valueOf(id), derivedField);
-
-						neuralInputs.addNeuralInputs(neuralInput);
-
-						id++;
-					}
+					features.addAll(binaryFeatures);
 				} else
 
 				{
 					throw new IllegalArgumentException(term.getName());
 				}
 			}
+
+			NeuralInputs neuralInputs = NeuralNetworkUtil.createNeuralInputs(features, DataType.FLOAT);
 
 			neuralNetwork.setNeuralInputs(neuralInputs);
 
@@ -178,19 +158,10 @@ public class DNNEstimator extends Estimator {
 			NeuralLayer neuralLayer = new NeuralLayer();
 
 			for(int j = 0; j < count; j++){
-				Neuron neuron = new Neuron(String.valueOf(i) + "/" + String.valueOf(j), null)
-					.setBias(floatToDouble(biasValues[j]));
-
 				List<Float> entityWeights = CMatrixUtil.getColumn(Floats.asList(weightValues), entities.size(), count, j);
 
-				for(int k = 0; k < entities.size(); k++){
-					Entity entity = entities.get(k);
-					Float entityWeight = entityWeights.get(k);
-
-					Connection connection = new Connection(entity.getId(), floatToDouble(entityWeight));
-
-					neuron.addConnections(connection);
-				}
+				Neuron neuron = NeuralNetworkUtil.createNeuron(entities, floatsToDoubles(entityWeights), floatToDouble(biasValues[j]))
+					.setId(String.valueOf(i + 1) + "/" + String.valueOf(j + 1));
 
 				neuralLayer.addNeurons(neuron);
 			}

@@ -23,19 +23,15 @@ import java.util.List;
 import com.google.common.collect.Iterables;
 import org.dmg.pmml.DataField;
 import org.dmg.pmml.DataType;
-import org.dmg.pmml.DerivedField;
 import org.dmg.pmml.FieldName;
-import org.dmg.pmml.FieldRef;
 import org.dmg.pmml.MiningFunction;
 import org.dmg.pmml.OpType;
 import org.dmg.pmml.neural_network.NeuralLayer;
 import org.dmg.pmml.neural_network.NeuralNetwork;
-import org.dmg.pmml.neural_network.NeuralOutput;
-import org.dmg.pmml.neural_network.NeuralOutputs;
 import org.dmg.pmml.neural_network.Neuron;
 import org.jpmml.converter.ContinuousLabel;
-import org.jpmml.converter.Label;
 import org.jpmml.converter.ModelUtil;
+import org.jpmml.converter.neural_network.NeuralNetworkUtil;
 
 public class DNNRegressor extends DNNEstimator {
 
@@ -57,22 +53,12 @@ public class DNNRegressor extends DNNEstimator {
 
 		List<Neuron> neurons = neuralLayer.getNeurons();
 
-		Neuron neuron = Iterables.getOnlyElement(neurons);
-
-		Label label = new ContinuousLabel(dataField);
-
-		DerivedField derivedField = new DerivedField(OpType.CONTINUOUS, label.getDataType())
-			.setExpression(new FieldRef(label.getName()));
-
-		NeuralOutput neuralOutput = new NeuralOutput(neuron.getId(), derivedField);
-
-		NeuralOutputs neuralOutputs = new NeuralOutputs()
-			.addNeuralOutputs(neuralOutput);
+		ContinuousLabel continuousLabel = new ContinuousLabel(dataField);
 
 		neuralNetwork
 			.setMiningFunction(MiningFunction.REGRESSION)
-			.setMiningSchema(ModelUtil.createMiningSchema(label))
-			.setNeuralOutputs(neuralOutputs);
+			.setMiningSchema(ModelUtil.createMiningSchema(continuousLabel))
+			.setNeuralOutputs(NeuralNetworkUtil.createRegressionNeuralOutputs(neurons, continuousLabel));
 
 		return neuralNetwork;
 	}

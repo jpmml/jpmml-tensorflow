@@ -88,7 +88,7 @@ public class LinearEstimator extends Estimator {
 					for(int i = 0; i < count; i++){
 						Equation equation = equations.get(i);
 
-						equation.addTerm(feature, floatToDouble(values[i]));
+						equation.addTerm(feature, ValueUtil.floatToDouble(values[i]));
 					}
 				}
 			} else
@@ -121,7 +121,7 @@ public class LinearEstimator extends Estimator {
 
 						int index = ValueUtil.asInt((Number)table.get(categories.get(j)));
 
-						equation.addTerm(feature, floatToDouble(categoryValues.get(index)));
+						equation.addTerm(feature, ValueUtil.floatToDouble(categoryValues.get(index)));
 					}
 				}
 			} else
@@ -139,7 +139,7 @@ public class LinearEstimator extends Estimator {
 			for(int i = 0; i < count; i++){
 				Equation equation = equations.get(i);
 
-				equation.setIntercept(floatToDouble(values[i]));
+				equation.setIntercept(ValueUtil.floatToDouble(values[i]));
 			}
 		}
 

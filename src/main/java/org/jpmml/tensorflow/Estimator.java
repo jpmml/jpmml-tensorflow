@@ -18,10 +18,6 @@
  */
 package org.jpmml.tensorflow;
 
-import java.util.List;
-
-import com.google.common.base.Function;
-import com.google.common.collect.Lists;
 import org.dmg.pmml.Model;
 import org.dmg.pmml.PMML;
 
@@ -65,23 +61,5 @@ public class Estimator {
 
 	private void setHead(String head){
 		this.head = head;
-	}
-
-	static
-	public double floatToDouble(float value){
-		return Double.parseDouble(Float.toString(value));
-	}
-
-	static
-	public List<Double> floatsToDoubles(List<Float> values){
-		Function<Float, Double> function = new Function<Float, Double>(){
-
-			@Override
-			public Double apply(Float value){
-				return floatToDouble(value);
-			}
-		};
-
-		return Lists.transform(values, function);
 	}
 }

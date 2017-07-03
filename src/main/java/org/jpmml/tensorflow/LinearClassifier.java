@@ -85,7 +85,7 @@ public class LinearClassifier extends LinearEstimator {
 			.setMiningFunction(MiningFunction.CLASSIFICATION)
 			.setNormalizationMethod(RegressionModel.NormalizationMethod.SOFTMAX)
 			.setMiningSchema(ModelUtil.createMiningSchema(categoricalLabel))
-			.setOutput(ModelUtil.createProbabilityOutput(categoricalLabel));
+			.setOutput(ModelUtil.createProbabilityOutput(DataType.FLOAT, categoricalLabel));
 
 		return regressionModel;
 	}

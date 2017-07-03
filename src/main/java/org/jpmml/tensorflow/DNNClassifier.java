@@ -34,6 +34,7 @@ import org.dmg.pmml.neural_network.NeuralNetwork;
 import org.dmg.pmml.neural_network.Neuron;
 import org.jpmml.converter.CategoricalLabel;
 import org.jpmml.converter.ModelUtil;
+import org.jpmml.converter.ValueUtil;
 import org.jpmml.converter.neural_network.NeuralNetworkUtil;
 
 public class DNNClassifier extends DNNEstimator {
@@ -69,7 +70,7 @@ public class DNNClassifier extends DNNEstimator {
 			// p(no event) = 1 - p(event)
 			Neuron passiveNeuron = new Neuron()
 				.setId(String.valueOf(neuralLayers.size() + 1) + "/" + categories.get(0))
-				.setBias(floatToDouble(1f))
+				.setBias(ValueUtil.floatToDouble(1f))
 				.addConnections(new Connection(neuron.getId(), -1f));
 
 			// p(event)
@@ -111,7 +112,7 @@ public class DNNClassifier extends DNNEstimator {
 			.setMiningFunction(MiningFunction.CLASSIFICATION)
 			.setMiningSchema(ModelUtil.createMiningSchema(categoricalLabel))
 			.setNeuralOutputs(NeuralNetworkUtil.createClassificationNeuralOutputs(neurons, categoricalLabel))
-			.setOutput(ModelUtil.createProbabilityOutput(categoricalLabel));
+			.setOutput(ModelUtil.createProbabilityOutput(DataType.FLOAT, categoricalLabel));
 
 		return neuralNetwork;
 	}

@@ -33,6 +33,7 @@ import org.dmg.pmml.neural_network.Neuron;
 import org.jpmml.converter.BinaryFeature;
 import org.jpmml.converter.CMatrixUtil;
 import org.jpmml.converter.Feature;
+import org.jpmml.converter.ValueUtil;
 import org.jpmml.converter.neural_network.NeuralNetworkUtil;
 import org.tensorflow.Operation;
 import org.tensorflow.Output;
@@ -160,7 +161,7 @@ public class DNNEstimator extends Estimator {
 			for(int j = 0; j < count; j++){
 				List<Float> entityWeights = CMatrixUtil.getColumn(Floats.asList(weightValues), entities.size(), count, j);
 
-				Neuron neuron = NeuralNetworkUtil.createNeuron(entities, floatsToDoubles(entityWeights), floatToDouble(biasValues[j]))
+				Neuron neuron = NeuralNetworkUtil.createNeuron(entities, ValueUtil.floatsToDoubles(entityWeights), ValueUtil.floatToDouble(biasValues[j]))
 					.setId(String.valueOf(i + 1) + "/" + String.valueOf(j + 1));
 
 				neuralLayer.addNeurons(neuron);

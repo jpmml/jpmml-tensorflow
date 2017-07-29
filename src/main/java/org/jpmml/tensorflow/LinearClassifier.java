@@ -51,13 +51,13 @@ public class LinearClassifier extends LinearEstimator {
 		if(regressionTables.size() == 1){
 			categories = Arrays.asList("0", "1");
 
+			RegressionTable activeRegressionTable = regressionTables.get(0)
+				.setTargetCategory(categories.get(1));
+
 			RegressionTable passiveRegressionTable = new RegressionTable(0)
 				.setTargetCategory(categories.get(0));
 
 			regressionModel.addRegressionTables(passiveRegressionTable);
-
-			RegressionTable activeRegressionTable = regressionTables.get(0)
-				.setTargetCategory(categories.get(1));
 		} else
 
 		if(regressionTables.size() > 2){

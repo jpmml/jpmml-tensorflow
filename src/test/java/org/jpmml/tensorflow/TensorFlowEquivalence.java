@@ -18,16 +18,30 @@
  */
 package org.jpmml.tensorflow;
 
-import org.junit.Test;
+import org.dmg.pmml.DataType;
+import org.jpmml.evaluator.Computable;
+import org.jpmml.evaluator.EvaluatorUtil;
+import org.jpmml.evaluator.RealNumberEquivalence;
+import org.jpmml.evaluator.TypeUtil;
 
-public class LinearRegressorTest extends EstimatorTest {
+public class TensorFlowEquivalence extends RealNumberEquivalence {
 
-	public LinearRegressorTest(){
-		super(new TensorFlowEquivalence(2));
+	public TensorFlowEquivalence(int tolerance){
+		super(tolerance);
 	}
 
-	@Test
-	public void evaluateAuto() throws Exception {
-		evaluate("LinearRegression", "Auto");
+	@Override
+	public boolean doEquivalent(Object expected, Object actual){
+
+		if(actual instanceof Computable){
+			actual = EvaluatorUtil.decode(actual);
+		} // End if
+
+		if(actual instanceof Number){
+			actual = TypeUtil.parseOrCast(DataType.FLOAT, actual);
+			expected = TypeUtil.parseOrCast(DataType.FLOAT, expected);
+		}
+
+		return super.doEquivalent(expected, actual);
 	}
 }

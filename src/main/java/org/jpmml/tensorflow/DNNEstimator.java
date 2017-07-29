@@ -26,6 +26,7 @@ import com.google.common.collect.Lists;
 import com.google.common.primitives.Floats;
 import org.dmg.pmml.DataType;
 import org.dmg.pmml.Entity;
+import org.dmg.pmml.MathContext;
 import org.dmg.pmml.neural_network.NeuralInputs;
 import org.dmg.pmml.neural_network.NeuralLayer;
 import org.dmg.pmml.neural_network.NeuralNetwork;
@@ -51,7 +52,8 @@ public class DNNEstimator extends Estimator {
 		SavedModel savedModel = getSavedModel();
 
 		NeuralNetwork neuralNetwork = new NeuralNetwork()
-			.setActivationFunction(NeuralNetwork.ActivationFunction.RECTIFIER);
+			.setActivationFunction(NeuralNetwork.ActivationFunction.RECTIFIER)
+			.setMathContext(MathContext.FLOAT);
 
 		List<NodeDef> biasAdds = Lists.newArrayList(savedModel.getInputs(getHead(), "BiasAdd"));
 

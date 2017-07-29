@@ -23,6 +23,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.google.common.primitives.Floats;
+import org.dmg.pmml.MathContext;
 import org.dmg.pmml.regression.RegressionModel;
 import org.dmg.pmml.regression.RegressionTable;
 import org.jpmml.converter.CMatrixUtil;
@@ -143,7 +144,8 @@ public class LinearEstimator extends Estimator {
 			}
 		}
 
-		RegressionModel regressionModel = new RegressionModel();
+		RegressionModel regressionModel = new RegressionModel()
+			.setMathContext(MathContext.FLOAT);
 
 		for(Equation equation : equations){
 			RegressionTable regressionTable = RegressionModelUtil.createRegressionTable(equation.getFeatures(), equation.getCoefficients(), equation.getIntercept());

@@ -24,7 +24,7 @@ import org.junit.Test;
 public class DNNRegressorTest extends EstimatorTest {
 
 	public DNNRegressorTest(){
-		super(new PMMLEquivalence(1e-3, 1e-4));
+		super(new PMMLEquivalence(1e-5, 1e-6));
 	}
 
 	@Test

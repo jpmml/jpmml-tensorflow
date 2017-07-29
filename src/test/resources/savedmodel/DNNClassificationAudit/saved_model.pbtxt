@@ -12166,7 +12166,7 @@ meta_graphs {
                 size: 2
               }
             }
-            tensor_content: "1\000\000\000G\000\000\000"
+            tensor_content: "1\000\000\000b\000\000\000"
           }
         }
       }
@@ -12204,7 +12204,7 @@ meta_graphs {
             dtype: DT_FLOAT
             tensor_shape {
             }
-            float_val: -0.22360679507255554
+            float_val: -0.2020305097103119
           }
         }
       }
@@ -12242,7 +12242,7 @@ meta_graphs {
             dtype: DT_FLOAT
             tensor_shape {
             }
-            float_val: 0.22360679507255554
+            float_val: 0.2020305097103119
           }
         }
       }
@@ -12274,7 +12274,7 @@ meta_graphs {
                 size: 49
               }
               dim {
-                size: 71
+                size: 98
               }
             }
           }
@@ -12356,7 +12356,7 @@ meta_graphs {
                 size: 49
               }
               dim {
-                size: 71
+                size: 98
               }
             }
           }
@@ -12391,7 +12391,7 @@ meta_graphs {
                 size: 49
               }
               dim {
-                size: 71
+                size: 98
               }
             }
           }
@@ -12418,7 +12418,7 @@ meta_graphs {
                 size: 49
               }
               dim {
-                size: 71
+                size: 98
               }
             }
           }
@@ -12444,7 +12444,7 @@ meta_graphs {
               size: 49
             }
             dim {
-              size: 71
+              size: 98
             }
           }
         }
@@ -12484,7 +12484,7 @@ meta_graphs {
                 size: 49
               }
               dim {
-                size: 71
+                size: 98
               }
             }
           }
@@ -12530,7 +12530,7 @@ meta_graphs {
                 size: 49
               }
               dim {
-                size: 71
+                size: 98
               }
             }
           }
@@ -12554,7 +12554,7 @@ meta_graphs {
           list {
             shape {
               dim {
-                size: 71
+                size: 98
               }
             }
           }
@@ -12573,7 +12573,7 @@ meta_graphs {
             dtype: DT_FLOAT
             tensor_shape {
               dim {
-                size: 71
+                size: 98
               }
             }
             float_val: 0.0
@@ -12598,7 +12598,7 @@ meta_graphs {
           list {
             shape {
               dim {
-                size: 71
+                size: 98
               }
             }
           }
@@ -12621,7 +12621,7 @@ meta_graphs {
         value {
           shape {
             dim {
-              size: 71
+              size: 98
             }
           }
         }
@@ -12658,7 +12658,7 @@ meta_graphs {
           list {
             shape {
               dim {
-                size: 71
+                size: 98
               }
             }
           }
@@ -12701,7 +12701,7 @@ meta_graphs {
           list {
             shape {
               dim {
-                size: 71
+                size: 98
               }
             }
           }
@@ -12727,7 +12727,7 @@ meta_graphs {
                 size: 49
               }
               dim {
-                size: 71
+                size: 98
               }
             }
           }
@@ -12754,7 +12754,7 @@ meta_graphs {
                 size: -1
               }
               dim {
-                size: 71
+                size: 98
               }
             }
           }
@@ -12789,7 +12789,7 @@ meta_graphs {
           list {
             shape {
               dim {
-                size: 71
+                size: 98
               }
             }
           }
@@ -12816,7 +12816,7 @@ meta_graphs {
                 size: -1
               }
               dim {
-                size: 71
+                size: 98
               }
             }
           }
@@ -12848,7 +12848,7 @@ meta_graphs {
                 size: -1
               }
               dim {
-                size: 71
+                size: 98
               }
             }
           }
@@ -12905,7 +12905,7 @@ meta_graphs {
                 size: -1
               }
               dim {
-                size: 71
+                size: 98
               }
             }
           }
@@ -12937,7 +12937,7 @@ meta_graphs {
                 size: -1
               }
               dim {
-                size: 71
+                size: 98
               }
             }
           }
@@ -13116,994 +13116,6 @@ meta_graphs {
       }
     }
     node {
-      name: "dnn/hiddenlayer_1/weights/part_0/Initializer/random_uniform/shape"
-      op: "Const"
-      attr {
-        key: "_class"
-        value {
-          list {
-            s: "loc:@dnn/hiddenlayer_1/weights/part_0"
-          }
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: 2
-              }
-            }
-          }
-        }
-      }
-      attr {
-        key: "dtype"
-        value {
-          type: DT_INT32
-        }
-      }
-      attr {
-        key: "value"
-        value {
-          tensor {
-            dtype: DT_INT32
-            tensor_shape {
-              dim {
-                size: 2
-              }
-            }
-            tensor_content: "G\000\000\000\013\000\000\000"
-          }
-        }
-      }
-    }
-    node {
-      name: "dnn/hiddenlayer_1/weights/part_0/Initializer/random_uniform/min"
-      op: "Const"
-      attr {
-        key: "_class"
-        value {
-          list {
-            s: "loc:@dnn/hiddenlayer_1/weights/part_0"
-          }
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-            }
-          }
-        }
-      }
-      attr {
-        key: "dtype"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      attr {
-        key: "value"
-        value {
-          tensor {
-            dtype: DT_FLOAT
-            tensor_shape {
-            }
-            float_val: -0.27050089836120605
-          }
-        }
-      }
-    }
-    node {
-      name: "dnn/hiddenlayer_1/weights/part_0/Initializer/random_uniform/max"
-      op: "Const"
-      attr {
-        key: "_class"
-        value {
-          list {
-            s: "loc:@dnn/hiddenlayer_1/weights/part_0"
-          }
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-            }
-          }
-        }
-      }
-      attr {
-        key: "dtype"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      attr {
-        key: "value"
-        value {
-          tensor {
-            dtype: DT_FLOAT
-            tensor_shape {
-            }
-            float_val: 0.27050089836120605
-          }
-        }
-      }
-    }
-    node {
-      name: "dnn/hiddenlayer_1/weights/part_0/Initializer/random_uniform/RandomUniform"
-      op: "RandomUniform"
-      input: "dnn/hiddenlayer_1/weights/part_0/Initializer/random_uniform/shape"
-      attr {
-        key: "T"
-        value {
-          type: DT_INT32
-        }
-      }
-      attr {
-        key: "_class"
-        value {
-          list {
-            s: "loc:@dnn/hiddenlayer_1/weights/part_0"
-          }
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: 71
-              }
-              dim {
-                size: 11
-              }
-            }
-          }
-        }
-      }
-      attr {
-        key: "dtype"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      attr {
-        key: "seed"
-        value {
-          i: 0
-        }
-      }
-      attr {
-        key: "seed2"
-        value {
-          i: 0
-        }
-      }
-    }
-    node {
-      name: "dnn/hiddenlayer_1/weights/part_0/Initializer/random_uniform/sub"
-      op: "Sub"
-      input: "dnn/hiddenlayer_1/weights/part_0/Initializer/random_uniform/max"
-      input: "dnn/hiddenlayer_1/weights/part_0/Initializer/random_uniform/min"
-      attr {
-        key: "T"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      attr {
-        key: "_class"
-        value {
-          list {
-            s: "loc:@dnn/hiddenlayer_1/weights/part_0"
-          }
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-            }
-          }
-        }
-      }
-    }
-    node {
-      name: "dnn/hiddenlayer_1/weights/part_0/Initializer/random_uniform/mul"
-      op: "Mul"
-      input: "dnn/hiddenlayer_1/weights/part_0/Initializer/random_uniform/RandomUniform"
-      input: "dnn/hiddenlayer_1/weights/part_0/Initializer/random_uniform/sub"
-      attr {
-        key: "T"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      attr {
-        key: "_class"
-        value {
-          list {
-            s: "loc:@dnn/hiddenlayer_1/weights/part_0"
-          }
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: 71
-              }
-              dim {
-                size: 11
-              }
-            }
-          }
-        }
-      }
-    }
-    node {
-      name: "dnn/hiddenlayer_1/weights/part_0/Initializer/random_uniform"
-      op: "Add"
-      input: "dnn/hiddenlayer_1/weights/part_0/Initializer/random_uniform/mul"
-      input: "dnn/hiddenlayer_1/weights/part_0/Initializer/random_uniform/min"
-      attr {
-        key: "T"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      attr {
-        key: "_class"
-        value {
-          list {
-            s: "loc:@dnn/hiddenlayer_1/weights/part_0"
-          }
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: 71
-              }
-              dim {
-                size: 11
-              }
-            }
-          }
-        }
-      }
-    }
-    node {
-      name: "dnn/hiddenlayer_1/weights/part_0"
-      op: "VariableV2"
-      attr {
-        key: "_class"
-        value {
-          list {
-            s: "loc:@dnn/hiddenlayer_1/weights/part_0"
-          }
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: 71
-              }
-              dim {
-                size: 11
-              }
-            }
-          }
-        }
-      }
-      attr {
-        key: "container"
-        value {
-          s: ""
-        }
-      }
-      attr {
-        key: "dtype"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      attr {
-        key: "shape"
-        value {
-          shape {
-            dim {
-              size: 71
-            }
-            dim {
-              size: 11
-            }
-          }
-        }
-      }
-      attr {
-        key: "shared_name"
-        value {
-          s: ""
-        }
-      }
-    }
-    node {
-      name: "dnn/hiddenlayer_1/weights/part_0/Assign"
-      op: "Assign"
-      input: "dnn/hiddenlayer_1/weights/part_0"
-      input: "dnn/hiddenlayer_1/weights/part_0/Initializer/random_uniform"
-      attr {
-        key: "T"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      attr {
-        key: "_class"
-        value {
-          list {
-            s: "loc:@dnn/hiddenlayer_1/weights/part_0"
-          }
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: 71
-              }
-              dim {
-                size: 11
-              }
-            }
-          }
-        }
-      }
-      attr {
-        key: "use_locking"
-        value {
-          b: true
-        }
-      }
-      attr {
-        key: "validate_shape"
-        value {
-          b: true
-        }
-      }
-    }
-    node {
-      name: "dnn/hiddenlayer_1/weights/part_0/read"
-      op: "Identity"
-      input: "dnn/hiddenlayer_1/weights/part_0"
-      attr {
-        key: "T"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      attr {
-        key: "_class"
-        value {
-          list {
-            s: "loc:@dnn/hiddenlayer_1/weights/part_0"
-          }
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: 71
-              }
-              dim {
-                size: 11
-              }
-            }
-          }
-        }
-      }
-    }
-    node {
-      name: "dnn/hiddenlayer_1/biases/part_0/Initializer/Const"
-      op: "Const"
-      attr {
-        key: "_class"
-        value {
-          list {
-            s: "loc:@dnn/hiddenlayer_1/biases/part_0"
-          }
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: 11
-              }
-            }
-          }
-        }
-      }
-      attr {
-        key: "dtype"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      attr {
-        key: "value"
-        value {
-          tensor {
-            dtype: DT_FLOAT
-            tensor_shape {
-              dim {
-                size: 11
-              }
-            }
-            float_val: 0.0
-          }
-        }
-      }
-    }
-    node {
-      name: "dnn/hiddenlayer_1/biases/part_0"
-      op: "VariableV2"
-      attr {
-        key: "_class"
-        value {
-          list {
-            s: "loc:@dnn/hiddenlayer_1/biases/part_0"
-          }
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: 11
-              }
-            }
-          }
-        }
-      }
-      attr {
-        key: "container"
-        value {
-          s: ""
-        }
-      }
-      attr {
-        key: "dtype"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      attr {
-        key: "shape"
-        value {
-          shape {
-            dim {
-              size: 11
-            }
-          }
-        }
-      }
-      attr {
-        key: "shared_name"
-        value {
-          s: ""
-        }
-      }
-    }
-    node {
-      name: "dnn/hiddenlayer_1/biases/part_0/Assign"
-      op: "Assign"
-      input: "dnn/hiddenlayer_1/biases/part_0"
-      input: "dnn/hiddenlayer_1/biases/part_0/Initializer/Const"
-      attr {
-        key: "T"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      attr {
-        key: "_class"
-        value {
-          list {
-            s: "loc:@dnn/hiddenlayer_1/biases/part_0"
-          }
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: 11
-              }
-            }
-          }
-        }
-      }
-      attr {
-        key: "use_locking"
-        value {
-          b: true
-        }
-      }
-      attr {
-        key: "validate_shape"
-        value {
-          b: true
-        }
-      }
-    }
-    node {
-      name: "dnn/hiddenlayer_1/biases/part_0/read"
-      op: "Identity"
-      input: "dnn/hiddenlayer_1/biases/part_0"
-      attr {
-        key: "T"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      attr {
-        key: "_class"
-        value {
-          list {
-            s: "loc:@dnn/hiddenlayer_1/biases/part_0"
-          }
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: 11
-              }
-            }
-          }
-        }
-      }
-    }
-    node {
-      name: "dnn/hiddenlayer_1/weights"
-      op: "Identity"
-      input: "dnn/hiddenlayer_1/weights/part_0/read"
-      attr {
-        key: "T"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: 71
-              }
-              dim {
-                size: 11
-              }
-            }
-          }
-        }
-      }
-    }
-    node {
-      name: "dnn/hiddenlayer_1/MatMul"
-      op: "MatMul"
-      input: "dnn/hiddenlayer_0/hiddenlayer_0/Relu"
-      input: "dnn/hiddenlayer_1/weights"
-      attr {
-        key: "T"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: -1
-              }
-              dim {
-                size: 11
-              }
-            }
-          }
-        }
-      }
-      attr {
-        key: "transpose_a"
-        value {
-          b: false
-        }
-      }
-      attr {
-        key: "transpose_b"
-        value {
-          b: false
-        }
-      }
-    }
-    node {
-      name: "dnn/hiddenlayer_1/biases"
-      op: "Identity"
-      input: "dnn/hiddenlayer_1/biases/part_0/read"
-      attr {
-        key: "T"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: 11
-              }
-            }
-          }
-        }
-      }
-    }
-    node {
-      name: "dnn/hiddenlayer_1/BiasAdd"
-      op: "BiasAdd"
-      input: "dnn/hiddenlayer_1/MatMul"
-      input: "dnn/hiddenlayer_1/biases"
-      attr {
-        key: "T"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: -1
-              }
-              dim {
-                size: 11
-              }
-            }
-          }
-        }
-      }
-      attr {
-        key: "data_format"
-        value {
-          s: "NHWC"
-        }
-      }
-    }
-    node {
-      name: "dnn/hiddenlayer_1/hiddenlayer_1/Relu"
-      op: "Relu"
-      input: "dnn/hiddenlayer_1/BiasAdd"
-      attr {
-        key: "T"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: -1
-              }
-              dim {
-                size: 11
-              }
-            }
-          }
-        }
-      }
-    }
-    node {
-      name: "dnn/zero_fraction_1/zero"
-      op: "Const"
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-            }
-          }
-        }
-      }
-      attr {
-        key: "dtype"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      attr {
-        key: "value"
-        value {
-          tensor {
-            dtype: DT_FLOAT
-            tensor_shape {
-            }
-            float_val: 0.0
-          }
-        }
-      }
-    }
-    node {
-      name: "dnn/zero_fraction_1/Equal"
-      op: "Equal"
-      input: "dnn/hiddenlayer_1/hiddenlayer_1/Relu"
-      input: "dnn/zero_fraction_1/zero"
-      attr {
-        key: "T"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: -1
-              }
-              dim {
-                size: 11
-              }
-            }
-          }
-        }
-      }
-    }
-    node {
-      name: "dnn/zero_fraction_1/Cast"
-      op: "Cast"
-      input: "dnn/zero_fraction_1/Equal"
-      attr {
-        key: "DstT"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      attr {
-        key: "SrcT"
-        value {
-          type: DT_BOOL
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: -1
-              }
-              dim {
-                size: 11
-              }
-            }
-          }
-        }
-      }
-    }
-    node {
-      name: "dnn/zero_fraction_1/Const"
-      op: "Const"
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: 2
-              }
-            }
-          }
-        }
-      }
-      attr {
-        key: "dtype"
-        value {
-          type: DT_INT32
-        }
-      }
-      attr {
-        key: "value"
-        value {
-          tensor {
-            dtype: DT_INT32
-            tensor_shape {
-              dim {
-                size: 2
-              }
-            }
-            tensor_content: "\000\000\000\000\001\000\000\000"
-          }
-        }
-      }
-    }
-    node {
-      name: "dnn/zero_fraction_1/Mean"
-      op: "Mean"
-      input: "dnn/zero_fraction_1/Cast"
-      input: "dnn/zero_fraction_1/Const"
-      attr {
-        key: "T"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      attr {
-        key: "Tidx"
-        value {
-          type: DT_INT32
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-            }
-          }
-        }
-      }
-      attr {
-        key: "keep_dims"
-        value {
-          b: false
-        }
-      }
-    }
-    node {
-      name: "dnn/dnn/hiddenlayer_1_fraction_of_zero_values/tags"
-      op: "Const"
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-            }
-          }
-        }
-      }
-      attr {
-        key: "dtype"
-        value {
-          type: DT_STRING
-        }
-      }
-      attr {
-        key: "value"
-        value {
-          tensor {
-            dtype: DT_STRING
-            tensor_shape {
-            }
-            string_val: "dnn/dnn/hiddenlayer_1_fraction_of_zero_values"
-          }
-        }
-      }
-    }
-    node {
-      name: "dnn/dnn/hiddenlayer_1_fraction_of_zero_values"
-      op: "ScalarSummary"
-      input: "dnn/dnn/hiddenlayer_1_fraction_of_zero_values/tags"
-      input: "dnn/zero_fraction_1/Mean"
-      attr {
-        key: "T"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-            }
-          }
-        }
-      }
-    }
-    node {
-      name: "dnn/dnn/hiddenlayer_1_activation/tag"
-      op: "Const"
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-            }
-          }
-        }
-      }
-      attr {
-        key: "dtype"
-        value {
-          type: DT_STRING
-        }
-      }
-      attr {
-        key: "value"
-        value {
-          tensor {
-            dtype: DT_STRING
-            tensor_shape {
-            }
-            string_val: "dnn/dnn/hiddenlayer_1_activation"
-          }
-        }
-      }
-    }
-    node {
-      name: "dnn/dnn/hiddenlayer_1_activation"
-      op: "HistogramSummary"
-      input: "dnn/dnn/hiddenlayer_1_activation/tag"
-      input: "dnn/hiddenlayer_1/hiddenlayer_1/Relu"
-      attr {
-        key: "T"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-            }
-          }
-        }
-      }
-    }
-    node {
       name: "dnn/logits/weights/part_0/Initializer/random_uniform/shape"
       op: "Const"
       attr {
@@ -14142,7 +13154,7 @@ meta_graphs {
                 size: 2
               }
             }
-            tensor_content: "\013\000\000\000\001\000\000\000"
+            tensor_content: "b\000\000\000\001\000\000\000"
           }
         }
       }
@@ -14180,7 +13192,7 @@ meta_graphs {
             dtype: DT_FLOAT
             tensor_shape {
             }
-            float_val: -0.7071067690849304
+            float_val: -0.24618297815322876
           }
         }
       }
@@ -14218,7 +13230,7 @@ meta_graphs {
             dtype: DT_FLOAT
             tensor_shape {
             }
-            float_val: 0.7071067690849304
+            float_val: 0.24618297815322876
           }
         }
       }
@@ -14247,7 +13259,7 @@ meta_graphs {
           list {
             shape {
               dim {
-                size: 11
+                size: 98
               }
               dim {
                 size: 1
@@ -14329,7 +13341,7 @@ meta_graphs {
           list {
             shape {
               dim {
-                size: 11
+                size: 98
               }
               dim {
                 size: 1
@@ -14364,7 +13376,7 @@ meta_graphs {
           list {
             shape {
               dim {
-                size: 11
+                size: 98
               }
               dim {
                 size: 1
@@ -14391,7 +13403,7 @@ meta_graphs {
           list {
             shape {
               dim {
-                size: 11
+                size: 98
               }
               dim {
                 size: 1
@@ -14417,7 +13429,7 @@ meta_graphs {
         value {
           shape {
             dim {
-              size: 11
+              size: 98
             }
             dim {
               size: 1
@@ -14457,7 +13469,7 @@ meta_graphs {
           list {
             shape {
               dim {
-                size: 11
+                size: 98
               }
               dim {
                 size: 1
@@ -14503,7 +13515,7 @@ meta_graphs {
           list {
             shape {
               dim {
-                size: 11
+                size: 98
               }
               dim {
                 size: 1
@@ -14700,7 +13712,7 @@ meta_graphs {
           list {
             shape {
               dim {
-                size: 11
+                size: 98
               }
               dim {
                 size: 1
@@ -14713,7 +13725,7 @@ meta_graphs {
     node {
       name: "dnn/logits/MatMul"
       op: "MatMul"
-      input: "dnn/hiddenlayer_1/hiddenlayer_1/Relu"
+      input: "dnn/hiddenlayer_0/hiddenlayer_0/Relu"
       input: "dnn/logits/weights"
       attr {
         key: "T"
@@ -14806,7 +13818,7 @@ meta_graphs {
       }
     }
     node {
-      name: "dnn/zero_fraction_2/zero"
+      name: "dnn/zero_fraction_1/zero"
       op: "Const"
       attr {
         key: "_output_shapes"
@@ -14836,10 +13848,10 @@ meta_graphs {
       }
     }
     node {
-      name: "dnn/zero_fraction_2/Equal"
+      name: "dnn/zero_fraction_1/Equal"
       op: "Equal"
       input: "dnn/logits/BiasAdd"
-      input: "dnn/zero_fraction_2/zero"
+      input: "dnn/zero_fraction_1/zero"
       attr {
         key: "T"
         value {
@@ -14863,9 +13875,9 @@ meta_graphs {
       }
     }
     node {
-      name: "dnn/zero_fraction_2/Cast"
+      name: "dnn/zero_fraction_1/Cast"
       op: "Cast"
-      input: "dnn/zero_fraction_2/Equal"
+      input: "dnn/zero_fraction_1/Equal"
       attr {
         key: "DstT"
         value {
@@ -14895,7 +13907,7 @@ meta_graphs {
       }
     }
     node {
-      name: "dnn/zero_fraction_2/Const"
+      name: "dnn/zero_fraction_1/Const"
       op: "Const"
       attr {
         key: "_output_shapes"
@@ -14931,10 +13943,10 @@ meta_graphs {
       }
     }
     node {
-      name: "dnn/zero_fraction_2/Mean"
+      name: "dnn/zero_fraction_1/Mean"
       op: "Mean"
-      input: "dnn/zero_fraction_2/Cast"
-      input: "dnn/zero_fraction_2/Const"
+      input: "dnn/zero_fraction_1/Cast"
+      input: "dnn/zero_fraction_1/Const"
       attr {
         key: "T"
         value {
@@ -14997,7 +14009,7 @@ meta_graphs {
       name: "dnn/dnn/logits_fraction_of_zero_values"
       op: "ScalarSummary"
       input: "dnn/dnn/logits_fraction_of_zero_values/tags"
-      input: "dnn/zero_fraction_2/Mean"
+      input: "dnn/zero_fraction_1/Mean"
       attr {
         key: "T"
         value {
@@ -15345,7 +14357,7 @@ meta_graphs {
             dtype: DT_STRING
             tensor_shape {
             }
-            string_val: "_temp_b08747654b394bdf95125e5518568bc5/part"
+            string_val: "_temp_4195c2e18fd14ac6bcd90ebd2381968b/part"
           }
         }
       }
@@ -15462,7 +14474,7 @@ meta_graphs {
           list {
             shape {
               dim {
-                size: 7
+                size: 5
               }
             }
           }
@@ -15481,13 +14493,11 @@ meta_graphs {
             dtype: DT_STRING
             tensor_shape {
               dim {
-                size: 7
+                size: 5
               }
             }
             string_val: "dnn/hiddenlayer_0/biases"
             string_val: "dnn/hiddenlayer_0/weights"
-            string_val: "dnn/hiddenlayer_1/biases"
-            string_val: "dnn/hiddenlayer_1/weights"
             string_val: "dnn/logits/biases"
             string_val: "dnn/logits/weights"
             string_val: "global_step"
@@ -15504,7 +14514,7 @@ meta_graphs {
           list {
             shape {
               dim {
-                size: 7
+                size: 5
               }
             }
           }
@@ -15523,15 +14533,13 @@ meta_graphs {
             dtype: DT_STRING
             tensor_shape {
               dim {
-                size: 7
+                size: 5
               }
             }
-            string_val: "71 0,71"
-            string_val: "49 71 0,49:0,71"
-            string_val: "11 0,11"
-            string_val: "71 11 0,71:0,11"
+            string_val: "98 0,98"
+            string_val: "49 98 0,49:0,98"
             string_val: "1 0,1"
-            string_val: "11 1 0,11:0,1"
+            string_val: "98 1 0,98:0,1"
             string_val: ""
           }
         }
@@ -15545,8 +14553,6 @@ meta_graphs {
       input: "save/SaveV2/shape_and_slices"
       input: "dnn/hiddenlayer_0/biases/part_0/read"
       input: "dnn/hiddenlayer_0/weights/part_0/read"
-      input: "dnn/hiddenlayer_1/biases/part_0/read"
-      input: "dnn/hiddenlayer_1/weights/part_0/read"
       input: "dnn/logits/biases/part_0/read"
       input: "dnn/logits/weights/part_0/read"
       input: "global_step"
@@ -15554,8 +14560,6 @@ meta_graphs {
         key: "dtypes"
         value {
           list {
-            type: DT_FLOAT
-            type: DT_FLOAT
             type: DT_FLOAT
             type: DT_FLOAT
             type: DT_FLOAT
@@ -15731,7 +14735,7 @@ meta_graphs {
                 size: 1
               }
             }
-            string_val: "71 0,71"
+            string_val: "98 0,98"
           }
         }
       }
@@ -15786,7 +14790,7 @@ meta_graphs {
           list {
             shape {
               dim {
-                size: 71
+                size: 98
               }
             }
           }
@@ -15872,7 +14876,7 @@ meta_graphs {
                 size: 1
               }
             }
-            string_val: "49 71 0,49:0,71"
+            string_val: "49 98 0,49:0,98"
           }
         }
       }
@@ -15930,7 +14934,7 @@ meta_graphs {
                 size: 49
               }
               dim {
-                size: 71
+                size: 98
               }
             }
           }
@@ -15980,7 +14984,7 @@ meta_graphs {
                 size: 1
               }
             }
-            string_val: "dnn/hiddenlayer_1/biases"
+            string_val: "dnn/logits/biases"
           }
         }
       }
@@ -16016,7 +15020,7 @@ meta_graphs {
                 size: 1
               }
             }
-            string_val: "11 0,11"
+            string_val: "1 0,1"
           }
         }
       }
@@ -16049,7 +15053,7 @@ meta_graphs {
     node {
       name: "save/Assign_2"
       op: "Assign"
-      input: "dnn/hiddenlayer_1/biases/part_0"
+      input: "dnn/logits/biases/part_0"
       input: "save/RestoreV2_2"
       attr {
         key: "T"
@@ -16061,7 +15065,7 @@ meta_graphs {
         key: "_class"
         value {
           list {
-            s: "loc:@dnn/hiddenlayer_1/biases/part_0"
+            s: "loc:@dnn/logits/biases/part_0"
           }
         }
       }
@@ -16071,7 +15075,7 @@ meta_graphs {
           list {
             shape {
               dim {
-                size: 11
+                size: 1
               }
             }
           }
@@ -16121,7 +15125,7 @@ meta_graphs {
                 size: 1
               }
             }
-            string_val: "dnn/hiddenlayer_1/weights"
+            string_val: "dnn/logits/weights"
           }
         }
       }
@@ -16157,7 +15161,7 @@ meta_graphs {
                 size: 1
               }
             }
-            string_val: "71 11 0,71:0,11"
+            string_val: "98 1 0,98:0,1"
           }
         }
       }
@@ -16190,7 +15194,7 @@ meta_graphs {
     node {
       name: "save/Assign_3"
       op: "Assign"
-      input: "dnn/hiddenlayer_1/weights/part_0"
+      input: "dnn/logits/weights/part_0"
       input: "save/RestoreV2_3"
       attr {
         key: "T"
@@ -16202,7 +15206,7 @@ meta_graphs {
         key: "_class"
         value {
           list {
-            s: "loc:@dnn/hiddenlayer_1/weights/part_0"
+            s: "loc:@dnn/logits/weights/part_0"
           }
         }
       }
@@ -16212,10 +15216,10 @@ meta_graphs {
           list {
             shape {
               dim {
-                size: 71
+                size: 98
               }
               dim {
-                size: 11
+                size: 1
               }
             }
           }
@@ -16265,7 +15269,7 @@ meta_graphs {
                 size: 1
               }
             }
-            string_val: "dnn/logits/biases"
+            string_val: "global_step"
           }
         }
       }
@@ -16301,7 +15305,7 @@ meta_graphs {
                 size: 1
               }
             }
-            string_val: "1 0,1"
+            string_val: ""
           }
         }
       }
@@ -16326,7 +15330,7 @@ meta_graphs {
         key: "dtypes"
         value {
           list {
-            type: DT_FLOAT
+            type: DT_INT64
           }
         }
       }
@@ -16334,293 +15338,8 @@ meta_graphs {
     node {
       name: "save/Assign_4"
       op: "Assign"
-      input: "dnn/logits/biases/part_0"
-      input: "save/RestoreV2_4"
-      attr {
-        key: "T"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      attr {
-        key: "_class"
-        value {
-          list {
-            s: "loc:@dnn/logits/biases/part_0"
-          }
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: 1
-              }
-            }
-          }
-        }
-      }
-      attr {
-        key: "use_locking"
-        value {
-          b: true
-        }
-      }
-      attr {
-        key: "validate_shape"
-        value {
-          b: true
-        }
-      }
-    }
-    node {
-      name: "save/RestoreV2_5/tensor_names"
-      op: "Const"
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: 1
-              }
-            }
-          }
-        }
-      }
-      attr {
-        key: "dtype"
-        value {
-          type: DT_STRING
-        }
-      }
-      attr {
-        key: "value"
-        value {
-          tensor {
-            dtype: DT_STRING
-            tensor_shape {
-              dim {
-                size: 1
-              }
-            }
-            string_val: "dnn/logits/weights"
-          }
-        }
-      }
-    }
-    node {
-      name: "save/RestoreV2_5/shape_and_slices"
-      op: "Const"
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: 1
-              }
-            }
-          }
-        }
-      }
-      attr {
-        key: "dtype"
-        value {
-          type: DT_STRING
-        }
-      }
-      attr {
-        key: "value"
-        value {
-          tensor {
-            dtype: DT_STRING
-            tensor_shape {
-              dim {
-                size: 1
-              }
-            }
-            string_val: "11 1 0,11:0,1"
-          }
-        }
-      }
-    }
-    node {
-      name: "save/RestoreV2_5"
-      op: "RestoreV2"
-      input: "save/Const"
-      input: "save/RestoreV2_5/tensor_names"
-      input: "save/RestoreV2_5/shape_and_slices"
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              unknown_rank: true
-            }
-          }
-        }
-      }
-      attr {
-        key: "dtypes"
-        value {
-          list {
-            type: DT_FLOAT
-          }
-        }
-      }
-    }
-    node {
-      name: "save/Assign_5"
-      op: "Assign"
-      input: "dnn/logits/weights/part_0"
-      input: "save/RestoreV2_5"
-      attr {
-        key: "T"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      attr {
-        key: "_class"
-        value {
-          list {
-            s: "loc:@dnn/logits/weights/part_0"
-          }
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: 11
-              }
-              dim {
-                size: 1
-              }
-            }
-          }
-        }
-      }
-      attr {
-        key: "use_locking"
-        value {
-          b: true
-        }
-      }
-      attr {
-        key: "validate_shape"
-        value {
-          b: true
-        }
-      }
-    }
-    node {
-      name: "save/RestoreV2_6/tensor_names"
-      op: "Const"
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: 1
-              }
-            }
-          }
-        }
-      }
-      attr {
-        key: "dtype"
-        value {
-          type: DT_STRING
-        }
-      }
-      attr {
-        key: "value"
-        value {
-          tensor {
-            dtype: DT_STRING
-            tensor_shape {
-              dim {
-                size: 1
-              }
-            }
-            string_val: "global_step"
-          }
-        }
-      }
-    }
-    node {
-      name: "save/RestoreV2_6/shape_and_slices"
-      op: "Const"
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: 1
-              }
-            }
-          }
-        }
-      }
-      attr {
-        key: "dtype"
-        value {
-          type: DT_STRING
-        }
-      }
-      attr {
-        key: "value"
-        value {
-          tensor {
-            dtype: DT_STRING
-            tensor_shape {
-              dim {
-                size: 1
-              }
-            }
-            string_val: ""
-          }
-        }
-      }
-    }
-    node {
-      name: "save/RestoreV2_6"
-      op: "RestoreV2"
-      input: "save/Const"
-      input: "save/RestoreV2_6/tensor_names"
-      input: "save/RestoreV2_6/shape_and_slices"
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              unknown_rank: true
-            }
-          }
-        }
-      }
-      attr {
-        key: "dtypes"
-        value {
-          list {
-            type: DT_INT64
-          }
-        }
-      }
-    }
-    node {
-      name: "save/Assign_6"
-      op: "Assign"
       input: "global_step"
-      input: "save/RestoreV2_6"
+      input: "save/RestoreV2_4"
       attr {
         key: "T"
         value {
@@ -16665,8 +15384,6 @@ meta_graphs {
       input: "^save/Assign_2"
       input: "^save/Assign_3"
       input: "^save/Assign_4"
-      input: "^save/Assign_5"
-      input: "^save/Assign_6"
     }
     node {
       name: "save/restore_all"
@@ -16752,7 +15469,7 @@ meta_graphs {
             dtype: DT_STRING
             tensor_shape {
             }
-            string_val: "_temp_8dba8a4305d646b3bf9921ff569bc909/part"
+            string_val: "_temp_8b7f668722564eb2862984caea0c8a3b/part"
           }
         }
       }
@@ -16869,7 +15586,7 @@ meta_graphs {
           list {
             shape {
               dim {
-                size: 7
+                size: 5
               }
             }
           }
@@ -16888,13 +15605,11 @@ meta_graphs {
             dtype: DT_STRING
             tensor_shape {
               dim {
-                size: 7
+                size: 5
               }
             }
             string_val: "dnn/hiddenlayer_0/biases"
             string_val: "dnn/hiddenlayer_0/weights"
-            string_val: "dnn/hiddenlayer_1/biases"
-            string_val: "dnn/hiddenlayer_1/weights"
             string_val: "dnn/logits/biases"
             string_val: "dnn/logits/weights"
             string_val: "global_step"
@@ -16911,7 +15626,7 @@ meta_graphs {
           list {
             shape {
               dim {
-                size: 7
+                size: 5
               }
             }
           }
@@ -16930,15 +15645,13 @@ meta_graphs {
             dtype: DT_STRING
             tensor_shape {
               dim {
-                size: 7
+                size: 5
               }
             }
-            string_val: "71 0,71"
-            string_val: "49 71 0,49:0,71"
-            string_val: "11 0,11"
-            string_val: "71 11 0,71:0,11"
+            string_val: "98 0,98"
+            string_val: "49 98 0,49:0,98"
             string_val: "1 0,1"
-            string_val: "11 1 0,11:0,1"
+            string_val: "98 1 0,98:0,1"
             string_val: ""
           }
         }
@@ -16952,8 +15665,6 @@ meta_graphs {
       input: "save_1/SaveV2/shape_and_slices"
       input: "dnn/hiddenlayer_0/biases/part_0/read"
       input: "dnn/hiddenlayer_0/weights/part_0/read"
-      input: "dnn/hiddenlayer_1/biases/part_0/read"
-      input: "dnn/hiddenlayer_1/weights/part_0/read"
       input: "dnn/logits/biases/part_0/read"
       input: "dnn/logits/weights/part_0/read"
       input: "global_step"
@@ -16961,8 +15672,6 @@ meta_graphs {
         key: "dtypes"
         value {
           list {
-            type: DT_FLOAT
-            type: DT_FLOAT
             type: DT_FLOAT
             type: DT_FLOAT
             type: DT_FLOAT
@@ -17138,7 +15847,7 @@ meta_graphs {
                 size: 1
               }
             }
-            string_val: "71 0,71"
+            string_val: "98 0,98"
           }
         }
       }
@@ -17193,7 +15902,7 @@ meta_graphs {
           list {
             shape {
               dim {
-                size: 71
+                size: 98
               }
             }
           }
@@ -17279,7 +15988,7 @@ meta_graphs {
                 size: 1
               }
             }
-            string_val: "49 71 0,49:0,71"
+            string_val: "49 98 0,49:0,98"
           }
         }
       }
@@ -17337,7 +16046,7 @@ meta_graphs {
                 size: 49
               }
               dim {
-                size: 71
+                size: 98
               }
             }
           }
@@ -17387,7 +16096,7 @@ meta_graphs {
                 size: 1
               }
             }
-            string_val: "dnn/hiddenlayer_1/biases"
+            string_val: "dnn/logits/biases"
           }
         }
       }
@@ -17423,7 +16132,7 @@ meta_graphs {
                 size: 1
               }
             }
-            string_val: "11 0,11"
+            string_val: "1 0,1"
           }
         }
       }
@@ -17456,7 +16165,7 @@ meta_graphs {
     node {
       name: "save_1/Assign_2"
       op: "Assign"
-      input: "dnn/hiddenlayer_1/biases/part_0"
+      input: "dnn/logits/biases/part_0"
       input: "save_1/RestoreV2_2"
       attr {
         key: "T"
@@ -17468,7 +16177,7 @@ meta_graphs {
         key: "_class"
         value {
           list {
-            s: "loc:@dnn/hiddenlayer_1/biases/part_0"
+            s: "loc:@dnn/logits/biases/part_0"
           }
         }
       }
@@ -17478,7 +16187,7 @@ meta_graphs {
           list {
             shape {
               dim {
-                size: 11
+                size: 1
               }
             }
           }
@@ -17528,7 +16237,7 @@ meta_graphs {
                 size: 1
               }
             }
-            string_val: "dnn/hiddenlayer_1/weights"
+            string_val: "dnn/logits/weights"
           }
         }
       }
@@ -17564,7 +16273,7 @@ meta_graphs {
                 size: 1
               }
             }
-            string_val: "71 11 0,71:0,11"
+            string_val: "98 1 0,98:0,1"
           }
         }
       }
@@ -17597,7 +16306,7 @@ meta_graphs {
     node {
       name: "save_1/Assign_3"
       op: "Assign"
-      input: "dnn/hiddenlayer_1/weights/part_0"
+      input: "dnn/logits/weights/part_0"
       input: "save_1/RestoreV2_3"
       attr {
         key: "T"
@@ -17609,7 +16318,7 @@ meta_graphs {
         key: "_class"
         value {
           list {
-            s: "loc:@dnn/hiddenlayer_1/weights/part_0"
+            s: "loc:@dnn/logits/weights/part_0"
           }
         }
       }
@@ -17619,10 +16328,10 @@ meta_graphs {
           list {
             shape {
               dim {
-                size: 71
+                size: 98
               }
               dim {
-                size: 11
+                size: 1
               }
             }
           }
@@ -17672,7 +16381,7 @@ meta_graphs {
                 size: 1
               }
             }
-            string_val: "dnn/logits/biases"
+            string_val: "global_step"
           }
         }
       }
@@ -17708,7 +16417,7 @@ meta_graphs {
                 size: 1
               }
             }
-            string_val: "1 0,1"
+            string_val: ""
           }
         }
       }
@@ -17733,7 +16442,7 @@ meta_graphs {
         key: "dtypes"
         value {
           list {
-            type: DT_FLOAT
+            type: DT_INT64
           }
         }
       }
@@ -17741,293 +16450,8 @@ meta_graphs {
     node {
       name: "save_1/Assign_4"
       op: "Assign"
-      input: "dnn/logits/biases/part_0"
-      input: "save_1/RestoreV2_4"
-      attr {
-        key: "T"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      attr {
-        key: "_class"
-        value {
-          list {
-            s: "loc:@dnn/logits/biases/part_0"
-          }
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: 1
-              }
-            }
-          }
-        }
-      }
-      attr {
-        key: "use_locking"
-        value {
-          b: true
-        }
-      }
-      attr {
-        key: "validate_shape"
-        value {
-          b: true
-        }
-      }
-    }
-    node {
-      name: "save_1/RestoreV2_5/tensor_names"
-      op: "Const"
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: 1
-              }
-            }
-          }
-        }
-      }
-      attr {
-        key: "dtype"
-        value {
-          type: DT_STRING
-        }
-      }
-      attr {
-        key: "value"
-        value {
-          tensor {
-            dtype: DT_STRING
-            tensor_shape {
-              dim {
-                size: 1
-              }
-            }
-            string_val: "dnn/logits/weights"
-          }
-        }
-      }
-    }
-    node {
-      name: "save_1/RestoreV2_5/shape_and_slices"
-      op: "Const"
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: 1
-              }
-            }
-          }
-        }
-      }
-      attr {
-        key: "dtype"
-        value {
-          type: DT_STRING
-        }
-      }
-      attr {
-        key: "value"
-        value {
-          tensor {
-            dtype: DT_STRING
-            tensor_shape {
-              dim {
-                size: 1
-              }
-            }
-            string_val: "11 1 0,11:0,1"
-          }
-        }
-      }
-    }
-    node {
-      name: "save_1/RestoreV2_5"
-      op: "RestoreV2"
-      input: "save_1/Const"
-      input: "save_1/RestoreV2_5/tensor_names"
-      input: "save_1/RestoreV2_5/shape_and_slices"
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              unknown_rank: true
-            }
-          }
-        }
-      }
-      attr {
-        key: "dtypes"
-        value {
-          list {
-            type: DT_FLOAT
-          }
-        }
-      }
-    }
-    node {
-      name: "save_1/Assign_5"
-      op: "Assign"
-      input: "dnn/logits/weights/part_0"
-      input: "save_1/RestoreV2_5"
-      attr {
-        key: "T"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      attr {
-        key: "_class"
-        value {
-          list {
-            s: "loc:@dnn/logits/weights/part_0"
-          }
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: 11
-              }
-              dim {
-                size: 1
-              }
-            }
-          }
-        }
-      }
-      attr {
-        key: "use_locking"
-        value {
-          b: true
-        }
-      }
-      attr {
-        key: "validate_shape"
-        value {
-          b: true
-        }
-      }
-    }
-    node {
-      name: "save_1/RestoreV2_6/tensor_names"
-      op: "Const"
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: 1
-              }
-            }
-          }
-        }
-      }
-      attr {
-        key: "dtype"
-        value {
-          type: DT_STRING
-        }
-      }
-      attr {
-        key: "value"
-        value {
-          tensor {
-            dtype: DT_STRING
-            tensor_shape {
-              dim {
-                size: 1
-              }
-            }
-            string_val: "global_step"
-          }
-        }
-      }
-    }
-    node {
-      name: "save_1/RestoreV2_6/shape_and_slices"
-      op: "Const"
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: 1
-              }
-            }
-          }
-        }
-      }
-      attr {
-        key: "dtype"
-        value {
-          type: DT_STRING
-        }
-      }
-      attr {
-        key: "value"
-        value {
-          tensor {
-            dtype: DT_STRING
-            tensor_shape {
-              dim {
-                size: 1
-              }
-            }
-            string_val: ""
-          }
-        }
-      }
-    }
-    node {
-      name: "save_1/RestoreV2_6"
-      op: "RestoreV2"
-      input: "save_1/Const"
-      input: "save_1/RestoreV2_6/tensor_names"
-      input: "save_1/RestoreV2_6/shape_and_slices"
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              unknown_rank: true
-            }
-          }
-        }
-      }
-      attr {
-        key: "dtypes"
-        value {
-          list {
-            type: DT_INT64
-          }
-        }
-      }
-    }
-    node {
-      name: "save_1/Assign_6"
-      op: "Assign"
       input: "global_step"
-      input: "save_1/RestoreV2_6"
+      input: "save_1/RestoreV2_4"
       attr {
         key: "T"
         value {
@@ -18072,8 +16496,6 @@ meta_graphs {
       input: "^save_1/Assign_2"
       input: "^save_1/Assign_3"
       input: "^save_1/Assign_4"
-      input: "^save_1/Assign_5"
-      input: "^save_1/Assign_6"
     }
     node {
       name: "save_1/restore_all"
@@ -18099,8 +16521,6 @@ meta_graphs {
       node_list {
         value: "dnn/hiddenlayer_0/weights/part_0:0"
         value: "dnn/hiddenlayer_0/biases/part_0:0"
-        value: "dnn/hiddenlayer_1/weights/part_0:0"
-        value: "dnn/hiddenlayer_1/biases/part_0:0"
         value: "dnn/logits/weights/part_0:0"
         value: "dnn/logits/biases/part_0:0"
       }
@@ -18128,8 +16548,6 @@ meta_graphs {
       node_list {
         value: "dnn/hiddenlayer_0/weights/part_0:0"
         value: "dnn/hiddenlayer_0/biases/part_0:0"
-        value: "dnn/hiddenlayer_1/weights/part_0:0"
-        value: "dnn/hiddenlayer_1/biases/part_0:0"
         value: "dnn/logits/weights/part_0:0"
         value: "dnn/logits/biases/part_0:0"
       }
@@ -18141,8 +16559,6 @@ meta_graphs {
       node_list {
         value: "dnn/dnn/hiddenlayer_0_fraction_of_zero_values:0"
         value: "dnn/dnn/hiddenlayer_0_activation:0"
-        value: "dnn/dnn/hiddenlayer_1_fraction_of_zero_values:0"
-        value: "dnn/dnn/hiddenlayer_1_activation:0"
         value: "dnn/dnn/logits_fraction_of_zero_values:0"
         value: "dnn/dnn/logits_activation:0"
       }
@@ -18164,11 +16580,9 @@ meta_graphs {
     key: "trainable_variables"
     value {
       bytes_list {
-        value: "\n\"dnn/hiddenlayer_0/weights/part_0:0\022\'dnn/hiddenlayer_0/weights/part_0/Assign\032\'dnn/hiddenlayer_0/weights/part_0/read:0\"\'\n\031dnn/hiddenlayer_0/weights\022\0021G\032\002\000\000\"\0021G"
-        value: "\n!dnn/hiddenlayer_0/biases/part_0:0\022&dnn/hiddenlayer_0/biases/part_0/Assign\032&dnn/hiddenlayer_0/biases/part_0/read:0\"#\n\030dnn/hiddenlayer_0/biases\022\001G\032\001\000\"\001G"
-        value: "\n\"dnn/hiddenlayer_1/weights/part_0:0\022\'dnn/hiddenlayer_1/weights/part_0/Assign\032\'dnn/hiddenlayer_1/weights/part_0/read:0\"\'\n\031dnn/hiddenlayer_1/weights\022\002G\013\032\002\000\000\"\002G\013"
-        value: "\n!dnn/hiddenlayer_1/biases/part_0:0\022&dnn/hiddenlayer_1/biases/part_0/Assign\032&dnn/hiddenlayer_1/biases/part_0/read:0\"#\n\030dnn/hiddenlayer_1/biases\022\001\013\032\001\000\"\001\013"
-        value: "\n\033dnn/logits/weights/part_0:0\022 dnn/logits/weights/part_0/Assign\032 dnn/logits/weights/part_0/read:0\" \n\022dnn/logits/weights\022\002\013\001\032\002\000\000\"\002\013\001"
+        value: "\n\"dnn/hiddenlayer_0/weights/part_0:0\022\'dnn/hiddenlayer_0/weights/part_0/Assign\032\'dnn/hiddenlayer_0/weights/part_0/read:0\"\'\n\031dnn/hiddenlayer_0/weights\022\0021b\032\002\000\000\"\0021b"
+        value: "\n!dnn/hiddenlayer_0/biases/part_0:0\022&dnn/hiddenlayer_0/biases/part_0/Assign\032&dnn/hiddenlayer_0/biases/part_0/read:0\"#\n\030dnn/hiddenlayer_0/biases\022\001b\032\001\000\"\001b"
+        value: "\n\033dnn/logits/weights/part_0:0\022 dnn/logits/weights/part_0/Assign\032 dnn/logits/weights/part_0/read:0\" \n\022dnn/logits/weights\022\002b\001\032\002\000\000\"\002b\001"
         value: "\n\032dnn/logits/biases/part_0:0\022\037dnn/logits/biases/part_0/Assign\032\037dnn/logits/biases/part_0/read:0\"\034\n\021dnn/logits/biases\022\001\001\032\001\000\"\001\001"
       }
     }
@@ -18178,11 +16592,9 @@ meta_graphs {
     value {
       bytes_list {
         value: "\n\rglobal_step:0\022\022global_step/Assign\032\022global_step/read:0"
-        value: "\n\"dnn/hiddenlayer_0/weights/part_0:0\022\'dnn/hiddenlayer_0/weights/part_0/Assign\032\'dnn/hiddenlayer_0/weights/part_0/read:0\"\'\n\031dnn/hiddenlayer_0/weights\022\0021G\032\002\000\000\"\0021G"
-        value: "\n!dnn/hiddenlayer_0/biases/part_0:0\022&dnn/hiddenlayer_0/biases/part_0/Assign\032&dnn/hiddenlayer_0/biases/part_0/read:0\"#\n\030dnn/hiddenlayer_0/biases\022\001G\032\001\000\"\001G"
-        value: "\n\"dnn/hiddenlayer_1/weights/part_0:0\022\'dnn/hiddenlayer_1/weights/part_0/Assign\032\'dnn/hiddenlayer_1/weights/part_0/read:0\"\'\n\031dnn/hiddenlayer_1/weights\022\002G\013\032\002\000\000\"\002G\013"
-        value: "\n!dnn/hiddenlayer_1/biases/part_0:0\022&dnn/hiddenlayer_1/biases/part_0/Assign\032&dnn/hiddenlayer_1/biases/part_0/read:0\"#\n\030dnn/hiddenlayer_1/biases\022\001\013\032\001\000\"\001\013"
-        value: "\n\033dnn/logits/weights/part_0:0\022 dnn/logits/weights/part_0/Assign\032 dnn/logits/weights/part_0/read:0\" \n\022dnn/logits/weights\022\002\013\001\032\002\000\000\"\002\013\001"
+        value: "\n\"dnn/hiddenlayer_0/weights/part_0:0\022\'dnn/hiddenlayer_0/weights/part_0/Assign\032\'dnn/hiddenlayer_0/weights/part_0/read:0\"\'\n\031dnn/hiddenlayer_0/weights\022\0021b\032\002\000\000\"\0021b"
+        value: "\n!dnn/hiddenlayer_0/biases/part_0:0\022&dnn/hiddenlayer_0/biases/part_0/Assign\032&dnn/hiddenlayer_0/biases/part_0/read:0\"#\n\030dnn/hiddenlayer_0/biases\022\001b\032\001\000\"\001b"
+        value: "\n\033dnn/logits/weights/part_0:0\022 dnn/logits/weights/part_0/Assign\032 dnn/logits/weights/part_0/read:0\" \n\022dnn/logits/weights\022\002b\001\032\002\000\000\"\002b\001"
         value: "\n\032dnn/logits/biases/part_0:0\022\037dnn/logits/biases/part_0/Assign\032\037dnn/logits/biases/part_0/read:0\"\034\n\021dnn/logits/biases\022\001\001\032\001\000\"\001\001"
       }
     }

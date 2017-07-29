@@ -24,7 +24,7 @@ import org.junit.Test;
 public class DNNClassifierTest extends EstimatorTest {
 
 	public DNNClassifierTest(){
-		super(new PMMLEquivalence(1e-4, 1e-4));
+		super(new PMMLEquivalence(6e-3, 1e-6));
 	}
 
 	@Test

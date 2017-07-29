@@ -4059,7 +4059,7 @@ meta_graphs {
                 size: 2
               }
             }
-            tensor_content: "\t\000\000\000\007\000\000\000"
+            tensor_content: "\t\000\000\000\022\000\000\000"
           }
         }
       }
@@ -4097,7 +4097,7 @@ meta_graphs {
             dtype: DT_FLOAT
             tensor_shape {
             }
-            float_val: -0.6123724579811096
+            float_val: -0.4714045226573944
           }
         }
       }
@@ -4135,7 +4135,7 @@ meta_graphs {
             dtype: DT_FLOAT
             tensor_shape {
             }
-            float_val: 0.6123724579811096
+            float_val: 0.4714045226573944
           }
         }
       }
@@ -4167,7 +4167,7 @@ meta_graphs {
                 size: 9
               }
               dim {
-                size: 7
+                size: 18
               }
             }
           }
@@ -4249,7 +4249,7 @@ meta_graphs {
                 size: 9
               }
               dim {
-                size: 7
+                size: 18
               }
             }
           }
@@ -4284,7 +4284,7 @@ meta_graphs {
                 size: 9
               }
               dim {
-                size: 7
+                size: 18
               }
             }
           }
@@ -4311,7 +4311,7 @@ meta_graphs {
                 size: 9
               }
               dim {
-                size: 7
+                size: 18
               }
             }
           }
@@ -4337,7 +4337,7 @@ meta_graphs {
               size: 9
             }
             dim {
-              size: 7
+              size: 18
             }
           }
         }
@@ -4377,7 +4377,7 @@ meta_graphs {
                 size: 9
               }
               dim {
-                size: 7
+                size: 18
               }
             }
           }
@@ -4423,7 +4423,7 @@ meta_graphs {
                 size: 9
               }
               dim {
-                size: 7
+                size: 18
               }
             }
           }
@@ -4447,7 +4447,7 @@ meta_graphs {
           list {
             shape {
               dim {
-                size: 7
+                size: 18
               }
             }
           }
@@ -4466,7 +4466,7 @@ meta_graphs {
             dtype: DT_FLOAT
             tensor_shape {
               dim {
-                size: 7
+                size: 18
               }
             }
             float_val: 0.0
@@ -4491,7 +4491,7 @@ meta_graphs {
           list {
             shape {
               dim {
-                size: 7
+                size: 18
               }
             }
           }
@@ -4514,7 +4514,7 @@ meta_graphs {
         value {
           shape {
             dim {
-              size: 7
+              size: 18
             }
           }
         }
@@ -4551,7 +4551,7 @@ meta_graphs {
           list {
             shape {
               dim {
-                size: 7
+                size: 18
               }
             }
           }
@@ -4594,7 +4594,7 @@ meta_graphs {
           list {
             shape {
               dim {
-                size: 7
+                size: 18
               }
             }
           }
@@ -4620,7 +4620,7 @@ meta_graphs {
                 size: 9
               }
               dim {
-                size: 7
+                size: 18
               }
             }
           }
@@ -4647,7 +4647,7 @@ meta_graphs {
                 size: -1
               }
               dim {
-                size: 7
+                size: 18
               }
             }
           }
@@ -4682,7 +4682,7 @@ meta_graphs {
           list {
             shape {
               dim {
-                size: 7
+                size: 18
               }
             }
           }
@@ -4709,7 +4709,7 @@ meta_graphs {
                 size: -1
               }
               dim {
-                size: 7
+                size: 18
               }
             }
           }
@@ -4741,7 +4741,7 @@ meta_graphs {
                 size: -1
               }
               dim {
-                size: 7
+                size: 18
               }
             }
           }
@@ -4798,7 +4798,7 @@ meta_graphs {
                 size: -1
               }
               dim {
-                size: 7
+                size: 18
               }
             }
           }
@@ -4830,7 +4830,7 @@ meta_graphs {
                 size: -1
               }
               dim {
-                size: 7
+                size: 18
               }
             }
           }
@@ -5047,7 +5047,7 @@ meta_graphs {
                 size: 2
               }
             }
-            tensor_content: "\007\000\000\000\005\000\000\000"
+            tensor_content: "\022\000\000\000\t\000\000\000"
           }
         }
       }
@@ -5085,7 +5085,7 @@ meta_graphs {
             dtype: DT_FLOAT
             tensor_shape {
             }
-            float_val: -0.7071067690849304
+            float_val: -0.4714045226573944
           }
         }
       }
@@ -5123,7 +5123,7 @@ meta_graphs {
             dtype: DT_FLOAT
             tensor_shape {
             }
-            float_val: 0.7071067690849304
+            float_val: 0.4714045226573944
           }
         }
       }
@@ -5152,10 +5152,10 @@ meta_graphs {
           list {
             shape {
               dim {
-                size: 7
+                size: 18
               }
               dim {
-                size: 5
+                size: 9
               }
             }
           }
@@ -5234,10 +5234,10 @@ meta_graphs {
           list {
             shape {
               dim {
-                size: 7
+                size: 18
               }
               dim {
-                size: 5
+                size: 9
               }
             }
           }
@@ -5269,10 +5269,10 @@ meta_graphs {
           list {
             shape {
               dim {
-                size: 7
+                size: 18
               }
               dim {
-                size: 5
+                size: 9
               }
             }
           }
@@ -5296,10 +5296,10 @@ meta_graphs {
           list {
             shape {
               dim {
-                size: 7
+                size: 18
               }
               dim {
-                size: 5
+                size: 9
               }
             }
           }
@@ -5322,10 +5322,10 @@ meta_graphs {
         value {
           shape {
             dim {
-              size: 7
+              size: 18
             }
             dim {
-              size: 5
+              size: 9
             }
           }
         }
@@ -5362,10 +5362,10 @@ meta_graphs {
           list {
             shape {
               dim {
-                size: 7
+                size: 18
               }
               dim {
-                size: 5
+                size: 9
               }
             }
           }
@@ -5408,10 +5408,10 @@ meta_graphs {
           list {
             shape {
               dim {
-                size: 7
+                size: 18
               }
               dim {
-                size: 5
+                size: 9
               }
             }
           }
@@ -5435,7 +5435,7 @@ meta_graphs {
           list {
             shape {
               dim {
-                size: 5
+                size: 9
               }
             }
           }
@@ -5454,7 +5454,7 @@ meta_graphs {
             dtype: DT_FLOAT
             tensor_shape {
               dim {
-                size: 5
+                size: 9
               }
             }
             float_val: 0.0
@@ -5479,7 +5479,7 @@ meta_graphs {
           list {
             shape {
               dim {
-                size: 5
+                size: 9
               }
             }
           }
@@ -5502,7 +5502,7 @@ meta_graphs {
         value {
           shape {
             dim {
-              size: 5
+              size: 9
             }
           }
         }
@@ -5539,7 +5539,7 @@ meta_graphs {
           list {
             shape {
               dim {
-                size: 5
+                size: 9
               }
             }
           }
@@ -5582,7 +5582,7 @@ meta_graphs {
           list {
             shape {
               dim {
-                size: 5
+                size: 9
               }
             }
           }
@@ -5605,10 +5605,10 @@ meta_graphs {
           list {
             shape {
               dim {
-                size: 7
+                size: 18
               }
               dim {
-                size: 5
+                size: 9
               }
             }
           }
@@ -5635,7 +5635,7 @@ meta_graphs {
                 size: -1
               }
               dim {
-                size: 5
+                size: 9
               }
             }
           }
@@ -5670,7 +5670,7 @@ meta_graphs {
           list {
             shape {
               dim {
-                size: 5
+                size: 9
               }
             }
           }
@@ -5697,7 +5697,7 @@ meta_graphs {
                 size: -1
               }
               dim {
-                size: 5
+                size: 9
               }
             }
           }
@@ -5729,7 +5729,7 @@ meta_graphs {
                 size: -1
               }
               dim {
-                size: 5
+                size: 9
               }
             }
           }
@@ -5786,7 +5786,7 @@ meta_graphs {
                 size: -1
               }
               dim {
-                size: 5
+                size: 9
               }
             }
           }
@@ -5818,7 +5818,7 @@ meta_graphs {
                 size: -1
               }
               dim {
-                size: 5
+                size: 9
               }
             }
           }
@@ -6035,7 +6035,7 @@ meta_graphs {
                 size: 2
               }
             }
-            tensor_content: "\005\000\000\000\003\000\000\000"
+            tensor_content: "\t\000\000\000\003\000\000\000"
           }
         }
       }
@@ -6073,7 +6073,7 @@ meta_graphs {
             dtype: DT_FLOAT
             tensor_shape {
             }
-            float_val: -0.8660253882408142
+            float_val: -0.7071067690849304
           }
         }
       }
@@ -6111,7 +6111,7 @@ meta_graphs {
             dtype: DT_FLOAT
             tensor_shape {
             }
-            float_val: 0.8660253882408142
+            float_val: 0.7071067690849304
           }
         }
       }
@@ -6140,7 +6140,7 @@ meta_graphs {
           list {
             shape {
               dim {
-                size: 5
+                size: 9
               }
               dim {
                 size: 3
@@ -6222,7 +6222,7 @@ meta_graphs {
           list {
             shape {
               dim {
-                size: 5
+                size: 9
               }
               dim {
                 size: 3
@@ -6257,7 +6257,7 @@ meta_graphs {
           list {
             shape {
               dim {
-                size: 5
+                size: 9
               }
               dim {
                 size: 3
@@ -6284,7 +6284,7 @@ meta_graphs {
           list {
             shape {
               dim {
-                size: 5
+                size: 9
               }
               dim {
                 size: 3
@@ -6310,7 +6310,7 @@ meta_graphs {
         value {
           shape {
             dim {
-              size: 5
+              size: 9
             }
             dim {
               size: 3
@@ -6350,7 +6350,7 @@ meta_graphs {
           list {
             shape {
               dim {
-                size: 5
+                size: 9
               }
               dim {
                 size: 3
@@ -6396,7 +6396,7 @@ meta_graphs {
           list {
             shape {
               dim {
-                size: 5
+                size: 9
               }
               dim {
                 size: 3
@@ -6593,7 +6593,7 @@ meta_graphs {
           list {
             shape {
               dim {
-                size: 5
+                size: 9
               }
               dim {
                 size: 3
@@ -8068,7 +8068,7 @@ meta_graphs {
             dtype: DT_STRING
             tensor_shape {
             }
-            string_val: "_temp_06774718ed734d9abf01d9270a76b840/part"
+            string_val: "_temp_9c491e30037a4a179eb4c90634221475/part"
           }
         }
       }
@@ -8251,12 +8251,12 @@ meta_graphs {
                 size: 9
               }
             }
-            string_val: "7 0,7"
-            string_val: "9 7 0,9:0,7"
-            string_val: "5 0,5"
-            string_val: "7 5 0,7:0,5"
+            string_val: "18 0,18"
+            string_val: "9 18 0,9:0,18"
+            string_val: "9 0,9"
+            string_val: "18 9 0,18:0,9"
             string_val: "3 0,3"
-            string_val: "5 3 0,5:0,3"
+            string_val: "9 3 0,9:0,3"
             string_val: "1 0,1"
             string_val: "3 1 0,3:0,1"
             string_val: ""
@@ -8462,7 +8462,7 @@ meta_graphs {
                 size: 1
               }
             }
-            string_val: "7 0,7"
+            string_val: "18 0,18"
           }
         }
       }
@@ -8517,7 +8517,7 @@ meta_graphs {
           list {
             shape {
               dim {
-                size: 7
+                size: 18
               }
             }
           }
@@ -8603,7 +8603,7 @@ meta_graphs {
                 size: 1
               }
             }
-            string_val: "9 7 0,9:0,7"
+            string_val: "9 18 0,9:0,18"
           }
         }
       }
@@ -8661,7 +8661,7 @@ meta_graphs {
                 size: 9
               }
               dim {
-                size: 7
+                size: 18
               }
             }
           }
@@ -8747,7 +8747,7 @@ meta_graphs {
                 size: 1
               }
             }
-            string_val: "5 0,5"
+            string_val: "9 0,9"
           }
         }
       }
@@ -8802,7 +8802,7 @@ meta_graphs {
           list {
             shape {
               dim {
-                size: 5
+                size: 9
               }
             }
           }
@@ -8888,7 +8888,7 @@ meta_graphs {
                 size: 1
               }
             }
-            string_val: "7 5 0,7:0,5"
+            string_val: "18 9 0,18:0,9"
           }
         }
       }
@@ -8943,10 +8943,10 @@ meta_graphs {
           list {
             shape {
               dim {
-                size: 7
+                size: 18
               }
               dim {
-                size: 5
+                size: 9
               }
             }
           }
@@ -9173,7 +9173,7 @@ meta_graphs {
                 size: 1
               }
             }
-            string_val: "5 3 0,5:0,3"
+            string_val: "9 3 0,9:0,3"
           }
         }
       }
@@ -9228,7 +9228,7 @@ meta_graphs {
           list {
             shape {
               dim {
-                size: 5
+                size: 9
               }
               dim {
                 size: 3
@@ -9766,7 +9766,7 @@ meta_graphs {
             dtype: DT_STRING
             tensor_shape {
             }
-            string_val: "_temp_74c80ea554784a2b8b31695cb64f1697/part"
+            string_val: "_temp_847f449e1a02465492fab518c94f7694/part"
           }
         }
       }
@@ -9949,12 +9949,12 @@ meta_graphs {
                 size: 9
               }
             }
-            string_val: "7 0,7"
-            string_val: "9 7 0,9:0,7"
-            string_val: "5 0,5"
-            string_val: "7 5 0,7:0,5"
+            string_val: "18 0,18"
+            string_val: "9 18 0,9:0,18"
+            string_val: "9 0,9"
+            string_val: "18 9 0,18:0,9"
             string_val: "3 0,3"
-            string_val: "5 3 0,5:0,3"
+            string_val: "9 3 0,9:0,3"
             string_val: "1 0,1"
             string_val: "3 1 0,3:0,1"
             string_val: ""
@@ -10160,7 +10160,7 @@ meta_graphs {
                 size: 1
               }
             }
-            string_val: "7 0,7"
+            string_val: "18 0,18"
           }
         }
       }
@@ -10215,7 +10215,7 @@ meta_graphs {
           list {
             shape {
               dim {
-                size: 7
+                size: 18
               }
             }
           }
@@ -10301,7 +10301,7 @@ meta_graphs {
                 size: 1
               }
             }
-            string_val: "9 7 0,9:0,7"
+            string_val: "9 18 0,9:0,18"
           }
         }
       }
@@ -10359,7 +10359,7 @@ meta_graphs {
                 size: 9
               }
               dim {
-                size: 7
+                size: 18
               }
             }
           }
@@ -10445,7 +10445,7 @@ meta_graphs {
                 size: 1
               }
             }
-            string_val: "5 0,5"
+            string_val: "9 0,9"
           }
         }
       }
@@ -10500,7 +10500,7 @@ meta_graphs {
           list {
             shape {
               dim {
-                size: 5
+                size: 9
               }
             }
           }
@@ -10586,7 +10586,7 @@ meta_graphs {
                 size: 1
               }
             }
-            string_val: "7 5 0,7:0,5"
+            string_val: "18 9 0,18:0,9"
           }
         }
       }
@@ -10641,10 +10641,10 @@ meta_graphs {
           list {
             shape {
               dim {
-                size: 7
+                size: 18
               }
               dim {
-                size: 5
+                size: 9
               }
             }
           }
@@ -10871,7 +10871,7 @@ meta_graphs {
                 size: 1
               }
             }
-            string_val: "5 3 0,5:0,3"
+            string_val: "9 3 0,9:0,3"
           }
         }
       }
@@ -10926,7 +10926,7 @@ meta_graphs {
           list {
             shape {
               dim {
-                size: 5
+                size: 9
               }
               dim {
                 size: 3
@@ -11475,11 +11475,11 @@ meta_graphs {
     key: "trainable_variables"
     value {
       bytes_list {
-        value: "\n\"dnn/hiddenlayer_0/weights/part_0:0\022\'dnn/hiddenlayer_0/weights/part_0/Assign\032\'dnn/hiddenlayer_0/weights/part_0/read:0\"\'\n\031dnn/hiddenlayer_0/weights\022\002\t\007\032\002\000\000\"\002\t\007"
-        value: "\n!dnn/hiddenlayer_0/biases/part_0:0\022&dnn/hiddenlayer_0/biases/part_0/Assign\032&dnn/hiddenlayer_0/biases/part_0/read:0\"#\n\030dnn/hiddenlayer_0/biases\022\001\007\032\001\000\"\001\007"
-        value: "\n\"dnn/hiddenlayer_1/weights/part_0:0\022\'dnn/hiddenlayer_1/weights/part_0/Assign\032\'dnn/hiddenlayer_1/weights/part_0/read:0\"\'\n\031dnn/hiddenlayer_1/weights\022\002\007\005\032\002\000\000\"\002\007\005"
-        value: "\n!dnn/hiddenlayer_1/biases/part_0:0\022&dnn/hiddenlayer_1/biases/part_0/Assign\032&dnn/hiddenlayer_1/biases/part_0/read:0\"#\n\030dnn/hiddenlayer_1/biases\022\001\005\032\001\000\"\001\005"
-        value: "\n\"dnn/hiddenlayer_2/weights/part_0:0\022\'dnn/hiddenlayer_2/weights/part_0/Assign\032\'dnn/hiddenlayer_2/weights/part_0/read:0\"\'\n\031dnn/hiddenlayer_2/weights\022\002\005\003\032\002\000\000\"\002\005\003"
+        value: "\n\"dnn/hiddenlayer_0/weights/part_0:0\022\'dnn/hiddenlayer_0/weights/part_0/Assign\032\'dnn/hiddenlayer_0/weights/part_0/read:0\"\'\n\031dnn/hiddenlayer_0/weights\022\002\t\022\032\002\000\000\"\002\t\022"
+        value: "\n!dnn/hiddenlayer_0/biases/part_0:0\022&dnn/hiddenlayer_0/biases/part_0/Assign\032&dnn/hiddenlayer_0/biases/part_0/read:0\"#\n\030dnn/hiddenlayer_0/biases\022\001\022\032\001\000\"\001\022"
+        value: "\n\"dnn/hiddenlayer_1/weights/part_0:0\022\'dnn/hiddenlayer_1/weights/part_0/Assign\032\'dnn/hiddenlayer_1/weights/part_0/read:0\"\'\n\031dnn/hiddenlayer_1/weights\022\002\022\t\032\002\000\000\"\002\022\t"
+        value: "\n!dnn/hiddenlayer_1/biases/part_0:0\022&dnn/hiddenlayer_1/biases/part_0/Assign\032&dnn/hiddenlayer_1/biases/part_0/read:0\"#\n\030dnn/hiddenlayer_1/biases\022\001\t\032\001\000\"\001\t"
+        value: "\n\"dnn/hiddenlayer_2/weights/part_0:0\022\'dnn/hiddenlayer_2/weights/part_0/Assign\032\'dnn/hiddenlayer_2/weights/part_0/read:0\"\'\n\031dnn/hiddenlayer_2/weights\022\002\t\003\032\002\000\000\"\002\t\003"
         value: "\n!dnn/hiddenlayer_2/biases/part_0:0\022&dnn/hiddenlayer_2/biases/part_0/Assign\032&dnn/hiddenlayer_2/biases/part_0/read:0\"#\n\030dnn/hiddenlayer_2/biases\022\001\003\032\001\000\"\001\003"
         value: "\n\033dnn/logits/weights/part_0:0\022 dnn/logits/weights/part_0/Assign\032 dnn/logits/weights/part_0/read:0\" \n\022dnn/logits/weights\022\002\003\001\032\002\000\000\"\002\003\001"
         value: "\n\032dnn/logits/biases/part_0:0\022\037dnn/logits/biases/part_0/Assign\032\037dnn/logits/biases/part_0/read:0\"\034\n\021dnn/logits/biases\022\001\001\032\001\000\"\001\001"
@@ -11491,11 +11491,11 @@ meta_graphs {
     value {
       bytes_list {
         value: "\n\rglobal_step:0\022\022global_step/Assign\032\022global_step/read:0"
-        value: "\n\"dnn/hiddenlayer_0/weights/part_0:0\022\'dnn/hiddenlayer_0/weights/part_0/Assign\032\'dnn/hiddenlayer_0/weights/part_0/read:0\"\'\n\031dnn/hiddenlayer_0/weights\022\002\t\007\032\002\000\000\"\002\t\007"
-        value: "\n!dnn/hiddenlayer_0/biases/part_0:0\022&dnn/hiddenlayer_0/biases/part_0/Assign\032&dnn/hiddenlayer_0/biases/part_0/read:0\"#\n\030dnn/hiddenlayer_0/biases\022\001\007\032\001\000\"\001\007"
-        value: "\n\"dnn/hiddenlayer_1/weights/part_0:0\022\'dnn/hiddenlayer_1/weights/part_0/Assign\032\'dnn/hiddenlayer_1/weights/part_0/read:0\"\'\n\031dnn/hiddenlayer_1/weights\022\002\007\005\032\002\000\000\"\002\007\005"
-        value: "\n!dnn/hiddenlayer_1/biases/part_0:0\022&dnn/hiddenlayer_1/biases/part_0/Assign\032&dnn/hiddenlayer_1/biases/part_0/read:0\"#\n\030dnn/hiddenlayer_1/biases\022\001\005\032\001\000\"\001\005"
-        value: "\n\"dnn/hiddenlayer_2/weights/part_0:0\022\'dnn/hiddenlayer_2/weights/part_0/Assign\032\'dnn/hiddenlayer_2/weights/part_0/read:0\"\'\n\031dnn/hiddenlayer_2/weights\022\002\005\003\032\002\000\000\"\002\005\003"
+        value: "\n\"dnn/hiddenlayer_0/weights/part_0:0\022\'dnn/hiddenlayer_0/weights/part_0/Assign\032\'dnn/hiddenlayer_0/weights/part_0/read:0\"\'\n\031dnn/hiddenlayer_0/weights\022\002\t\022\032\002\000\000\"\002\t\022"
+        value: "\n!dnn/hiddenlayer_0/biases/part_0:0\022&dnn/hiddenlayer_0/biases/part_0/Assign\032&dnn/hiddenlayer_0/biases/part_0/read:0\"#\n\030dnn/hiddenlayer_0/biases\022\001\022\032\001\000\"\001\022"
+        value: "\n\"dnn/hiddenlayer_1/weights/part_0:0\022\'dnn/hiddenlayer_1/weights/part_0/Assign\032\'dnn/hiddenlayer_1/weights/part_0/read:0\"\'\n\031dnn/hiddenlayer_1/weights\022\002\022\t\032\002\000\000\"\002\022\t"
+        value: "\n!dnn/hiddenlayer_1/biases/part_0:0\022&dnn/hiddenlayer_1/biases/part_0/Assign\032&dnn/hiddenlayer_1/biases/part_0/read:0\"#\n\030dnn/hiddenlayer_1/biases\022\001\t\032\001\000\"\001\t"
+        value: "\n\"dnn/hiddenlayer_2/weights/part_0:0\022\'dnn/hiddenlayer_2/weights/part_0/Assign\032\'dnn/hiddenlayer_2/weights/part_0/read:0\"\'\n\031dnn/hiddenlayer_2/weights\022\002\t\003\032\002\000\000\"\002\t\003"
         value: "\n!dnn/hiddenlayer_2/biases/part_0:0\022&dnn/hiddenlayer_2/biases/part_0/Assign\032&dnn/hiddenlayer_2/biases/part_0/read:0\"#\n\030dnn/hiddenlayer_2/biases\022\001\003\032\001\000\"\001\003"
         value: "\n\033dnn/logits/weights/part_0:0\022 dnn/logits/weights/part_0/Assign\032 dnn/logits/weights/part_0/read:0\" \n\022dnn/logits/weights\022\002\003\001\032\002\000\000\"\002\003\001"
         value: "\n\032dnn/logits/biases/part_0:0\022\037dnn/logits/biases/part_0/Assign\032\037dnn/logits/biases/part_0/read:0\"\034\n\021dnn/logits/biases\022\001\001\032\001\000\"\001\001"

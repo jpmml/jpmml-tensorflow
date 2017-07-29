@@ -1,15 +1,21 @@
 from pandas import DataFrame
-from tensorflow.contrib.learn import DNNClassifier, DNNRegressor, LinearClassifier, LinearRegressor
+from tensorflow.contrib.learn import DNNClassifier, DNNRegressor, LinearClassifier, LinearRegressor, RunConfig
 from tensorflow.contrib.layers import one_hot_column, real_valued_column, sparse_column_with_keys
 from tensorflow.contrib.layers.python.layers.feature_column import _OneHotColumn, _RealValuedColumn, _SparseColumnKeys
 from tensorflow.contrib.learn.python.learn.utils.input_fn_utils import InputFnOps
 
 import numpy
-import pandas
 import os
+import pandas
 import shutil
 import tempfile
 import tensorflow as tf
+
+tf.logging.set_verbosity(tf.logging.INFO)
+
+#tf.reset_default_graph()
+
+estimator_conf = RunConfig(num_cores = 1, tf_random_seed = 42)
 
 def load_csv(name):
 	return pandas.read_csv("csv/" + name)
@@ -61,8 +67,8 @@ def audit_input_fn():
 def audit_serving_input_fn():
 	return _serving_input_fn(audit_cont_columns, audit_cat_columns)
 
-def build_audit(classifier, name, with_proba = True):
-	classifier.fit(input_fn = audit_input_fn, steps = 2000)
+def build_audit(classifier, max_steps, name, with_proba = True):
+	classifier.fit(input_fn = audit_input_fn, max_steps = max_steps)
 
 	adjusted = DataFrame(classifier.predict(input_fn = audit_input_fn, as_iterable = False), columns = ["_target"])
 	if(with_proba):
@@ -72,8 +78,8 @@ def build_audit(classifier, name, with_proba = True):
 
 	store_savedmodel(classifier, audit_serving_input_fn, name)
 
-build_audit(DNNClassifier(hidden_units = [71, 11], feature_columns = _dnn_feature_columns(audit_feature_columns)), "DNNClassificationAudit")
-build_audit(LinearClassifier(feature_columns = audit_feature_columns), "LinearClassificationAudit")
+build_audit(DNNClassifier(hidden_units = [2 * 49], feature_columns = _dnn_feature_columns(audit_feature_columns), optimizer = tf.train.AdamOptimizer(learning_rate = 0.00001), config = estimator_conf), 2000, "DNNClassificationAudit")
+build_audit(LinearClassifier(feature_columns = audit_feature_columns, optimizer = tf.train.AdamOptimizer(learning_rate = 0.00025), config = estimator_conf), 5000, "LinearClassificationAudit")
 
 #
 # Multi-class classification
@@ -92,8 +98,8 @@ def iris_input_fn():
 def iris_serving_input_fn():
 	return _serving_input_fn(iris_cont_columns, [])
 
-def build_iris(classifier, name, with_proba = True):
-	classifier.fit(input_fn = iris_input_fn, steps = 500)
+def build_iris(classifier, max_steps, name, with_proba = True):
+	classifier.fit(input_fn = iris_input_fn, max_steps = max_steps)
 
 	species = DataFrame(classifier.predict(input_fn = iris_input_fn, as_iterable = False), columns = ["_target"])
 	if(with_proba):
@@ -103,8 +109,8 @@ def build_iris(classifier, name, with_proba = True):
 
 	store_savedmodel(classifier, iris_serving_input_fn, name)
 
-build_iris(DNNClassifier(hidden_units = [11], feature_columns = _dnn_feature_columns(iris_feature_columns), n_classes = 3), "DNNClassificationIris")
-build_iris(LinearClassifier(feature_columns = iris_feature_columns, n_classes = 3), "LinearClassificationIris")
+build_iris(DNNClassifier(hidden_units = [4 * 3, 2 * 3], feature_columns = _dnn_feature_columns(iris_feature_columns), n_classes = 3, optimizer = tf.train.AdamOptimizer, config = estimator_conf), 2000, "DNNClassificationIris")
+build_iris(LinearClassifier(feature_columns = iris_feature_columns, n_classes = 3, optimizer = tf.train.AdamOptimizer, config = estimator_conf), 5000, "LinearClassificationIris")
 
 #
 # Regression
@@ -124,13 +130,13 @@ def auto_input_fn():
 def auto_serving_input_fn():
 	return _serving_input_fn(auto_cont_columns, auto_cat_columns)
 
-def build_auto(regressor, name):
-	regressor.fit(input_fn = auto_input_fn, steps = 2000)
+def build_auto(regressor, max_steps, name):
+	regressor.fit(input_fn = auto_input_fn, max_steps = max_steps)
 
 	mpg = DataFrame(regressor.predict(input_fn = auto_input_fn, as_iterable = False), columns = ["_target"])
 	store_csv(mpg, name + ".csv")
 
 	store_savedmodel(regressor, auto_serving_input_fn, name)
 
-build_auto(DNNRegressor(hidden_units = [7, 5, 3], feature_columns = _dnn_feature_columns(auto_feature_columns)), "DNNRegressionAuto")
-build_auto(LinearRegressor(feature_columns = auto_feature_columns), "LinearRegressionAuto")
+build_auto(DNNRegressor(hidden_units = [2 * 9, 9, 3], feature_columns = _dnn_feature_columns(auto_feature_columns), optimizer = tf.train.AdamOptimizer(learning_rate = 0.001), config = estimator_conf), 2000, "DNNRegressionAuto")
+build_auto(LinearRegressor(feature_columns = auto_feature_columns, optimizer = tf.train.AdamOptimizer, config = estimator_conf), 1000, "LinearRegressionAuto")

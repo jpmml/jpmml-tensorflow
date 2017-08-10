@@ -37,7 +37,7 @@
 	</issueManagement>
 
 	<properties>
-		<protoc.exe>/usr/local/bin/protoc</protoc.exe>
+		<protoc.exe>protoc</protoc.exe>
 	</properties>
 
 	<dependencies>

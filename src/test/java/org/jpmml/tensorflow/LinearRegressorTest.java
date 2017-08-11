@@ -18,12 +18,13 @@
  */
 package org.jpmml.tensorflow;
 
+import org.jpmml.evaluator.FloatEquivalence;
 import org.junit.Test;
 
 public class LinearRegressorTest extends EstimatorTest {
 
 	public LinearRegressorTest(){
-		super(new TensorFlowEquivalence(2));
+		super(new FloatEquivalence(0));
 	}
 
 	@Test

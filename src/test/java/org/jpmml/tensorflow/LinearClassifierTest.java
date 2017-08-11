@@ -24,7 +24,7 @@ import org.junit.Test;
 public class LinearClassifierTest extends EstimatorTest {
 
 	public LinearClassifierTest(){
-		super(new PMMLEquivalence(3e-6, 1e-6));
+		super(new PMMLEquivalence(1e-6, 1e-6));
 	}
 
 	@Test
